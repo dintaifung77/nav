@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 1 — The Call of the Disciple · Fun Version · 門徒呼召 第一課·趣味版</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F2E9; --bg2:#EFE9DC; --card:#FFFFFF; --line:#E4DECE;
+  --ink:#201D3A; --muted:#6E6B82;
+  --violet:#5B3DF0; --violet2:#8B5CF6; --violet-bg:#EFEBFF;
+  --green:#1E9E68; --green2:#34C98A; --green-bg:#E9F9F1;
+  --amber:#E3920D; --amber2:#F5A623; --amber-bg:#FDF3E1;
+  --red:#E5484D; --red2:#F87171; --red-bg:#FDEDEE;
+  --gold:#E8A020;
+  --radius:18px; --shadow:0 10px 30px rgba(32,29,58,.10); --shadow-lg:0 20px 60px rgba(32,29,58,.16);
+  --font-display:'Space Grotesk','Noto Sans TC',sans-serif; --font-body:'Inter','Noto Sans TC',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--ink);background:
+  radial-gradient(1000px 500px at 85% -10%, rgba(91,61,240,.08), transparent 60%),
+  radial-gradient(800px 500px at 5% 10%, rgba(232,160,32,.10), transparent 55%),
+  var(--bg);
+  line-height:1.6}
+img{max-width:100%;display:block}
+h1,h2,h3,h4{font-family:var(--font-display);line-height:1.2}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+::selection{background:rgba(91,61,240,.18)}
+.icons{display:none}
+
+/* ---------- Navbar ---------- */
+nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:12px 26px;background:rgba(246,242,233,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);gap:14px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;letter-spacing:.02em;white-space:nowrap}
+.brand svg{width:26px;height:26px;color:var(--gold);flex:none}
+.badge{font-size:11px;font-weight:700;letter-spacing:.12em;padding:4px 10px;border-radius:999px;
+  background:var(--violet);color:#fff;white-space:nowrap}
+nav ul{display:flex;gap:4px;list-style:none;flex-wrap:wrap}
+nav ul a{font-size:13px;font-weight:600;padding:8px 12px;border-radius:10px;color:var(--muted);transition:.2s}
+nav ul a:hover{background:var(--card);color:var(--ink)}
+@media(max-width:920px){nav ul{display:none}}
+
+/* ---------- Language toggle ---------- */
+.lang-switch{display:flex;align-items:center;gap:8px;margin-left:auto;flex:none}
+.lang-switch .l{font-size:12px;font-weight:800;letter-spacing:.04em}
+.lang-switch .l.en{color:var(--violet)}
+.lang-switch .l.zh{color:var(--muted)}
+.switch{position:relative;width:52px;height:28px;flex:none}
+.switch input{opacity:0;width:0;height:0}
+.slider{position:absolute;inset:0;background:#D9D3C4;border-radius:99px;transition:.25s;cursor:pointer}
+.slider:before{content:"";position:absolute;left:3px;top:3px;width:22px;height:22px;border-radius:50%;
+  background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);transition:.25s}
+.switch input:checked + .slider{background:var(--violet)}
+.switch input:checked + .slider:before{transform:translateX(24px)}
+.lang-switch.zh .l.en{color:var(--muted)}
+.lang-switch.zh .l.zh{color:var(--violet)}
+
+/* ---------- Hero ---------- */
+.hero{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:60px 24px;position:relative}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--violet);background:var(--violet-bg);border:1px solid rgba(91,61,240,.25);
+  padding:8px 16px;border-radius:999px;margin-bottom:24px}
+.hero h1{font-size:clamp(44px,8vw,104px);font-weight:700;letter-spacing:-.02em;line-height:.98}
+.hero h1 .crown{display:inline-block;transform:rotate(-8deg);color:var(--gold);vertical-align:middle}
+.hero .sub{font-size:clamp(17px,2.4vw,23px);color:var(--muted);max-width:680px;margin:22px auto 0}
+.chips{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:32px}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);
+  border-radius:14px;padding:10px 16px;font-size:13.5px;font-weight:600;box-shadow:var(--shadow)}
+.chip svg{width:17px;height:17px;color:var(--violet);flex:none}
+.cta{display:inline-flex;align-items:center;gap:10px;margin-top:40px;padding:16px 34px;border:none;border-radius:14px;
+  background:linear-gradient(135deg,var(--violet),var(--violet2));color:#fff;font-size:16px;font-weight:700;
+  font-family:var(--font-display);box-shadow:0 12px 30px rgba(91,61,240,.35);transition:.2s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(91,61,240,.45)}
+.gamepath{margin-top:48px;width:min(900px,92vw)}
+.scrollfor{margin-top:28px;color:var(--muted);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  display:flex;flex-direction:column;align-items:center;gap:6px;animation:float 2.2s infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* ---------- Phase tracker strip ---------- */
+.tracker{position:sticky;top:58px;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);padding:12px 20px}
+.tracker-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.track-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.track-total{margin-left:auto;display:flex;align-items:center;gap:8px;font-family:var(--font-display);
+  font-weight:700;font-size:15px}
+.track-total svg{width:18px;height:18px;color:var(--violet)}
+.pbar{width:120px;height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--violet),var(--violet2));transition:width .5s}
+.steps{display:flex;gap:8px;flex-wrap:wrap}
+.step{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;color:var(--muted);
+  padding:7px 12px;border-radius:99px;border:1px solid var(--line);background:var(--card);cursor:pointer;transition:.2s}
+.step b{font-family:var(--font-display)}
+.step .t{font-weight:600;color:var(--muted);font-size:11px;opacity:.85}
+.step[data-color="violet"].on{background:var(--violet-bg);border-color:var(--violet);color:var(--violet)}
+.step[data-color="green"].on{background:var(--green-bg);border-color:var(--green);color:var(--green)}
+.step[data-color="amber"].on{background:var(--amber-bg);border-color:var(--amber);color:#9a6b00}
+.step[data-color="red"].on{background:var(--red-bg);border-color:var(--red);color:var(--red)}
+.step .done-dot{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.step.on .done-dot{background:currentColor}
+
+/* ---------- Sections ---------- */
+main{max-width:1080px;margin:0 auto;padding:0 24px 80px}
+.section{padding:70px 0 10px}
+.section-head{display:flex;align-items:flex-start;gap:20px;margin-bottom:28px}
+.sec-num{font-family:var(--font-display);font-size:clamp(52px,7vw,84px);font-weight:700;line-height:.9;
+  background:linear-gradient(135deg,var(--accent,var(--violet)),var(--accent2,var(--violet2)));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-title-wrap .sec-tag{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.sec-title-wrap h2{font-size:clamp(28px,4vw,42px);margin:4px 0 8px}
+.sec-title-wrap .time{margin-top:6px}
+.time-badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#fff;
+  background:var(--accent,var(--violet));padding:6px 14px;border-radius:99px}
+.time-badge svg{width:15px;height:15px}
+.sec-lede{color:var(--muted);max-width:700px;font-size:15.5px}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:860px){.grid2,.grid3{grid-template-columns:1fr}}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:26px;position:relative;overflow:hidden}
+.card .bar{position:absolute;top:0;left:0;right:0;height:5px}
+.card h3{font-size:20px;display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.card h3 svg{width:22px;height:22px;color:var(--accent,var(--violet));flex:none}
+.card p{font-size:15px;color:#3A3759}
+.card ul{font-size:15px;color:#3A3759;padding-left:20px}
+.card ul li{margin:6px 0}
+.card .small{font-size:13px;color:var(--muted)}
+.card-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 10px;border-radius:8px;background:var(--accent-bg,var(--violet-bg));color:var(--accent,var(--violet));
+  margin-bottom:12px}
+.pad-0{padding:0}
+
+.sec-1{--accent:var(--violet);--accent2:var(--violet2);--accent-bg:var(--violet-bg)}
+.sec-2{--accent:var(--green);--accent2:var(--green2);--accent-bg:var(--green-bg)}
+.sec-3{--accent:var(--amber);--accent2:#f0b400;--accent-bg:var(--amber-bg)}
+.sec-4{--accent:var(--red);--accent2:var(--red2);--accent-bg:var(--red-bg)}
+.card[data-accent="violet"]{--accent:var(--violet);--accent-bg:var(--violet-bg)}
+.card[data-accent="green"]{--accent:var(--green);--accent-bg:var(--green-bg)}
+.card[data-accent="amber"]{--accent:var(--amber);--accent-bg:var(--amber-bg)}
+.card[data-accent="red"]{--accent:var(--red);--accent-bg:var(--red-bg)}
+.card[data-accent="gold"]{--accent:var(--gold);--accent-bg:var(--amber-bg)}
+
+/* verse chips */
+.verses{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.vbtn{font-size:14px;font-weight:700;font-family:var(--font-display);color:var(--accent,var(--violet));
+  background:var(--accent-bg,var(--violet-bg));border:1.5px solid currentColor;padding:9px 16px;border-radius:12px;
+  transition:.15s}
+.vbtn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(32,29,58,.12)}
+.vbtn.gold{color:#9a6b00;background:var(--amber-bg);border-color:#e8c97a}
+
+/* hot take callout */
+.callout{display:flex;gap:16px;align-items:flex-start;background:var(--amber-bg);border:1.5px dashed var(--amber);
+  border-radius:var(--radius);padding:20px 22px;margin:22px 0}
+.callout svg{width:26px;height:26px;color:var(--amber);flex:none;margin-top:2px}
+.callout h4{font-size:16px;margin-bottom:4px}
+.callout p{font-size:14.5px;color:#6b5320}
+
+/* 3-column table */
+.colgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+.colcard{background:#FBF9F3;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.colcard h4{font-size:15px;color:var(--violet);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.colcard h4 svg{width:17px;height:17px;flex:none}
+.colcard p{font-size:13.5px;color:var(--muted)}
+@media(max-width:860px){.colgrid{grid-template-columns:1fr}}
+
+/* scenario cards with images */
+.scenario .pic{border-radius:14px;overflow:hidden;margin-bottom:16px;position:relative}
+.scenario .pic img{width:100%;height:200px;object-fit:cover}
+.scenario .pic .tag{position:absolute;top:12px;left:12px;font-size:11px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;background:rgba(32,29,58,.78);color:#fff;padding:5px 11px;border-radius:99px}
+.opt{display:flex;align-items:flex-start;gap:12px;background:var(--accent-bg,var(--violet-bg));
+  border:1px solid rgba(0,0,0,.06);border-radius:12px;padding:12px 14px;margin-top:12px;font-size:14px}
+.opt b{flex:none}
+
+/* 7 markers */
+.markers{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-top:8px}
+.marker{background:var(--amber-bg);border:1.5px solid var(--amber);border-radius:12px;padding:12px 6px;
+  text-align:center;font-family:var(--font-display);font-weight:700;font-size:13px;color:#7a5200;transition:.15s}
+.marker small{display:block;font-family:var(--font-body);font-weight:600;font-size:11px;color:#9a6b00;margin-top:2px}
+.marker.sel{border-color:var(--green);background:var(--green-bg);color:var(--green);transform:scale(1.05);
+  box-shadow:0 6px 16px rgba(30,158,104,.25)}
+@media(max-width:860px){.markers{grid-template-columns:repeat(4,1fr)}}
+
+/* objective list */
+.obj li{display:flex;gap:12px;align-items:flex-start;margin:8px 0;font-size:15px;color:#3A3759}
+.obj svg{width:18px;height:18px;color:var(--violet);flex:none;margin-top:4px}
+
+/* final boss questions */
+.boss{display:flex;align-items:flex-start;gap:18px;margin-bottom:18px}
+.boss .num{font-family:var(--font-display);font-weight:700;font-size:40px;background:linear-gradient(135deg,var(--red),var(--red2));
+  -webkit-background-clip:text;background-clip:text;color:transparent;line-height:1;flex:none}
+.boss h3{font-size:19px;margin-bottom:4px}
+.boss p{color:#3A3759;font-size:14.5px}
+
+/* continue buttons */
+.continue{display:inline-flex;align-items:center;gap:10px;margin-top:30px;padding:14px 26px;border:none;
+  border-radius:14px;background:var(--accent,var(--violet));color:#fff;font-weight:700;font-family:var(--font-display);
+  font-size:15px;transition:.2s}
+.continue svg{width:18px;height:18px}
+.continue:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(32,29,58,.22)}
+.complete-row{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:26px;flex-wrap:wrap}
+.check-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;border-radius:13px;
+  border:2px solid var(--accent,var(--violet));background:#fff;color:var(--accent,var(--violet));font-weight:700;
+  font-family:var(--font-display);font-size:14px;transition:.2s}
+.check-btn.on{background:var(--accent,var(--violet));color:#fff}
+.check-btn svg{width:17px;height:17px}
+.xp{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;color:var(--green);
+  background:var(--green-bg);border:1px solid rgba(30,158,104,.3);padding:8px 14px;border-radius:99px}
+.xp svg{width:16px;height:16px}
+
+/* overview cards */
+.ov-grid .card h3 svg{color:var(--gold)}
+.material{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+.material:last-child{border:none}
+.material svg{width:18px;height:18px;color:var(--violet);flex:none}
+
+/* footer */
+footer{margin-top:60px;border-top:1px solid var(--line);padding:34px 24px 40px;text-align:center;color:var(--muted);
+  font-size:13.5px}
+footer .mini-crown{color:var(--gold)}
+
+/* ---------- floating widgets ---------- */
+#timer{position:fixed;right:20px;bottom:20px;z-index:60;background:var(--ink);color:#fff;border-radius:16px;
+  padding:14px 16px;width:210px;box-shadow:0 16px 40px rgba(32,29,58,.35);font-family:var(--font-display)}
+#timer .lbl{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#a9a6c4;display:flex;gap:6px;align-items:center}
+#timer .lbl svg{width:13px;height:13px}
+#timer .clock{font-size:30px;font-weight:700;margin:4px 0 10px;font-variant-numeric:tabular-nums}
+#timer .btns{display:flex;gap:6px}
+#timer button{flex:1;border:none;border-radius:9px;padding:7px 0;font-size:12px;font-weight:700;font-family:inherit;
+  color:var(--ink);background:#fff;transition:.15s}
+#timer button:hover{opacity:.85}
+#timer button.primary{background:var(--green);color:#fff}
+#timer button.reset{background:rgba(255,255,255,.14);color:#fff}
+#timer .mini{height:5px;background:rgba(255,255,255,.15);border-radius:99px;overflow:hidden;margin-top:10px}
+#timer .mini i{display:block;height:100%;width:0;background:var(--gold);transition:width 1s linear}
+#timer.over .clock{color:var(--red2)}
+
+#scorebtn{position:fixed;right:20px;bottom:104px;z-index:60;border:none;background:var(--gold);color:#fff;width:52px;height:52px;
+  border-radius:50%;box-shadow:0 12px 30px rgba(232,160,32,.5);display:flex;align-items:center;justify-content:center;transition:.2s}
+#scorebtn svg{width:24px;height:24px}
+#scorebtn:hover{transform:scale(1.06)}
+#scoreboard{position:fixed;right:20px;bottom:170px;z-index:60;background:#fff;border:1px solid var(--line);
+  border-radius:16px;box-shadow:var(--shadow-lg);width:250px;padding:16px;display:none}
+#scoreboard.open{display:block}
+#scoreboard h4{font-size:14px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+#scoreboard h4 svg{width:16px;height:16px;color:var(--gold)}
+.squad{display:flex;align-items:center;gap:8px;margin:8px 0}
+.squad .name{flex:1;font-size:13px;font-weight:700}
+.squad .pts{width:44px;text-align:right;font-family:var(--font-display);font-weight:700;font-variant-numeric:tabular-nums}
+.squad button{width:26px;height:26px;border-radius:8px;border:1px solid var(--line);background:var(--bg);font-weight:700;
+  font-size:14px;line-height:1;transition:.15s}
+.squad button:hover{background:var(--violet-bg);color:var(--violet)}
+.squad button.minus:hover{background:var(--red-bg);color:var(--red)}
+.scorebar{height:6px;background:var(--line);border-radius:99px;overflow:hidden}
+.scorebar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),#ffb84d);transition:width .4s}
+
+/* ---------- verse modal ---------- */
+#modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;
+  background:rgba(32,29,58,.55);backdrop-filter:blur(4px);padding:20px}
+#modal.open{display:flex}
+#modal .box{background:#fff;border-radius:20px;max-width:600px;width:100%;padding:30px 30px 26px;box-shadow:0 30px 80px rgba(0,0,0,.35);
+  animation:pop .25s ease;position:relative}
+@keyframes pop{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
+#modal .ref{font-family:var(--font-display);font-weight:700;font-size:19px;color:var(--violet);display:flex;
+  align-items:center;gap:10px;margin-bottom:14px}
+#modal .ref svg{width:20px;height:20px}
+#modal .txt{font-size:16.5px;color:#2b2847;font-style:italic;line-height:1.7}
+#modal .src{margin-top:14px;font-size:12.5px;color:var(--muted)}
+#modal .x{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);
+  background:#fff;font-size:16px;font-weight:700;color:var(--muted);display:flex;align-items:center;justify-content:center}
+#modal .x svg{width:15px;height:15px}
+
+/* completion banner */
+#victory{display:none;position:fixed;inset:0;z-index:90;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,rgba(91,61,240,.92),rgba(143,94,246,.92));padding:24px;color:#fff;text-align:center}
+#victory.open{display:flex}
+#victory .box{padding:40px}
+#victory svg{width:80px;height:80px;color:var(--gold);margin-bottom:16px}
+#victory h2{font-size:clamp(28px,5vw,46px);margin-bottom:10px}
+#victory p{opacity:.9;max-width:520px;margin:0 auto 24px}
+#victory button{border:none;background:#fff;color:var(--violet);font-weight:800;font-family:var(--font-display);
+  padding:14px 30px;border-radius:14px;font-size:15px}
+#victory .esc{font-size:12px;opacity:.7;margin-top:14px}
+
+@media(max-width:640px){
+  .tracker{top:52px}
+  #timer{right:12px;bottom:12px;width:180px}
+  #scorebtn{right:12px;bottom:96px}
+  #scoreboard{right:12px;bottom:160px}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= SVG ICON LIBRARY ================= -->
+<svg class="icons" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-crown" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2.5 17.5 4 8l4.5 4L12 5.5 15.5 12 20 8l1.5 9.5z"/><path d="M2.5 17.5h19v2h-19z"/>
+  </symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+  </symbol>
+  <symbol id="i-dice" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.1" fill="currentColor" stroke="none"/>
+    <circle cx="15.5" cy="15.5" r="1.1" fill="currentColor" stroke="none"/><circle cx="15.5" cy="8.5" r="1.1" fill="currentColor" stroke="none"/>
+    <circle cx="8.5" cy="15.5" r="1.1" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.1" fill="currentColor" stroke="none"/>
+  </symbol>
+  <symbol id="i-sword" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 21 15 9"/><path d="M14 4l6 6 1-1-6-6z" fill="currentColor" stroke="none" opacity=".9"/>
+    <path d="M13 6l3 3M14.5 3l6.5 6.5"/><path d="M3 18l3 3" opacity=".6"/>
+  </symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+    <path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4.5 12.5 10 18 19.5 6.5"/>
+  </symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+    <path d="M12 5v14M5 12h14"/>
+  </symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+    <path d="M5 12h14"/>
+  </symbol>
+  <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 6.5C10.5 5 8 4.5 4.5 5v13.5c3.5-.5 6 0 7.5 1.5 1.5-1.5 4-2 7.5-1.5V5c-3.5-.5-6 0-7.5 1.5z"/>
+    <path d="M12 6.5V20"/>
+  </symbol>
+  <symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 4h8v6a4 4 0 0 1-8 0z"/><path d="M8 6H4a3 3 0 0 0 3 3h1M16 6h4a3 3 0 0 1-3 3h-1M12 14v3M9 20h6M10 17h4"/>
+  </symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 5v14M5 12l7 7 7-7"/>
+  </symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3 5 6v5c0 4.5 3 8.5 7 10 4-1.5 7-5.5 7-10V6z"/><path d="M12 8v5M9.5 10.5h5"/>
+  </symbol>
+  <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.5-4 3-6 6.5-6s6 2 6.5 6"/>
+    <circle cx="17" cy="9" r="2.5"/><path d="M16.5 14.2c2.4.2 4 1.9 4.5 5"/>
+  </symbol>
+  <symbol id="i-scroll" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 3h12a2 2 0 0 1 2 2v3h-4"/>
+    <path d="M6 3H4a2 2 0 0 0-2 2v2a3 3 0 0 0 3 3h9a2 2 0 0 1 2 2v6h1"/>
+    <path d="M6 3v11a2 2 0 0 0 2 2h12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z" fill="currentColor" stroke="none" opacity=".12"/>
+    <path d="M9 7h6M9 10h6"/>
+  </symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 3v18M5 4h13l-2.5 4 2.5 4H5"/>
+  </symbol>
+  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+    <path d="M6 6l12 12M18 6 6 18"/>
+  </symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H13z"/>
+  </symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>
+  </symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 21s-7.5-4.5-9.5-9C1 8.5 3 5 6.5 5c2.3 0 3.8 1.4 4.5 2.8C11.7 6.4 13.2 5 15.5 5 19 5 21 8.5 19.5 12c-2 4.5-9.5 9-9.5 9z"/>
+  </symbol>
+</svg>
+
+<!-- ================= NAVBAR ================= -->
+<nav>
+  <a class="brand" href="#top">
+    <svg><use href="#i-crown"/></svg>
+    <span data-i="nav.brand">Cost of the Crown</span>
+    <span class="badge" data-i="nav.badge">FUN VERSION</span>
+  </a>
+  <ul>
+    <li><a href="#overview" data-i="nav.menu.overview">Overview</a></li>
+    <li><a href="#level1" data-i="nav.menu.l1">Lv.1 Stat Sheet</a></li>
+    <li><a href="#level2" data-i="nav.menu.l2">Lv.2 Choice Points</a></li>
+    <li><a href="#level3" data-i="nav.menu.l3">Lv.3 IRL Inventory</a></li>
+    <li><a href="#level4" data-i="nav.menu.l4">Lv.4 Final Boss</a></li>
+  </ul>
+  <div class="lang-switch" id="langBox">
+    <span class="l en">EN</span>
+    <label class="switch"><input type="checkbox" id="langToggle"><span class="slider"></span></label>
+    <span class="l zh">中文</span>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <span class="kicker"><svg width="15" height="15"><use href="#i-dice"/></svg><span data-i="hero.kicker">A Tabletop Simulation · Facilitator Dashboard</span></span>
+  <h1><span data-i="hero.t1">The Cost of</span> <span class="crown"><svg width="1em" height="1em"><use href="#i-crown"/></svg></span><br><span data-i="hero.t2">the Crown</span></h1>
+  <p class="sub" data-i="hero.sub">Four playable levels. One hour on the clock. Will your squad follow the King — and pay the price?</p>
+  <div class="chips">
+    <span class="chip"><svg><use href="#i-flag"/></svg><span data-i="hero.chip.phases">4 Levels</span></span>
+    <span class="chip"><svg><use href="#i-clock"/></svg><span data-i="hero.chip.time">60 minutes</span></span>
+    <span class="chip"><svg><use href="#i-users"/></svg><span data-i="hero.chip.squad">Squads of 3–6</span></span>
+    <span class="chip"><svg><use href="#i-bolt"/></svg><span data-i="hero.chip.xp">+XP to earn</span></span>
+  </div>
+  <a class="cta" href="#overview"><span data-i="hero.cta">Enter the Game</span> <svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+
+  <svg class="gamepath" viewBox="0 0 900 190" fill="none">
+    <path d="M20 120 C 140 40, 260 40, 300 110 S 480 180, 520 100 S 700 20, 760 100 L 900 100"
+      stroke="var(--line)" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 14"/>
+    <circle cx="60" cy="120" r="16" fill="#fff" stroke="var(--green)" stroke-width="3"/>
+    <text x="60" y="126" text-anchor="middle" font-size="13" font-weight="700" fill="var(--green)" font-family="Space Grotesk">GO</text>
+    <circle cx="300" cy="110" r="14" fill="#fff" stroke="var(--violet)" stroke-width="3"/>
+    <text x="300" y="116" text-anchor="middle" font-size="12" font-weight="700" fill="var(--violet)" font-family="Space Grotesk">1</text>
+    <circle cx="520" cy="100" r="14" fill="#fff" stroke="var(--green)" stroke-width="3"/>
+    <text x="520" y="106" text-anchor="middle" font-size="12" font-weight="700" fill="var(--green)" font-family="Space Grotesk">2</text>
+    <circle cx="760" cy="100" r="14" fill="#fff" stroke="var(--amber)" stroke-width="3"/>
+    <text x="760" y="106" text-anchor="middle" font-size="12" font-weight="700" fill="#b97907" font-family="Space Grotesk">3</text>
+    <circle cx="870" cy="100" r="15" fill="var(--red)"/>
+    <text x="870" y="106" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="Space Grotesk">4</text>
+    <g transform="translate(440,18)">
+      <use href="#i-star" width="20" height="20" stroke="#e8c97a" fill="#fdf3e1"/>
+      <use href="#i-star" x="70" y="6" width="14" height="14" stroke="#e8c97a" fill="#fdf3e1"/>
+      <use href="#i-star" x="125" y="-2" width="18" height="18" stroke="#e8c97a" fill="#fdf3e1"/>
+    </g>
+  </svg>
+  <div class="scrollfor"><span data-i="hero.scroll">Scroll for more</span> <svg width="18" height="18"><use href="#i-arrow"/></svg></div>
+</header>
+
+<!-- ================= TRACKER ================= -->
+<div class="tracker">
+  <div class="tracker-inner">
+    <span class="track-label" data-i="tracker.label">Session Plan</span>
+    <div class="steps" id="steps">
+      <a class="step on" data-color="violet" href="#level1"><b>1</b><span data-i="tracker.s1">Stat Sheet</span><span class="t" data-i="tracker.t1">20m</span><span class="done-dot"></span></a>
+      <a class="step" data-color="green" href="#level2"><b>2</b><span data-i="tracker.s2">Choice Points</span><span class="t" data-i="tracker.t2">15m</span><span class="done-dot"></span></a>
+      <a class="step" data-color="amber" href="#level3"><b>3</b><span data-i="tracker.s3">IRL Inventory</span><span class="t" data-i="tracker.t3">15m</span><span class="done-dot"></span></a>
+      <a class="step" data-color="red" href="#level4"><b>4</b><span data-i="tracker.s4">Final Boss</span><span class="t" data-i="tracker.t4">10m</span><span class="done-dot"></span></a>
+    </div>
+    <div class="track-total"><svg><use href="#i-clock"/></svg><span>60:00</span><span class="pbar"><i id="pbarfill"></i></span></div>
+  </div>
+</div>
+
+<main>
+
+  <!-- ================= OVERVIEW ================= -->
+  <section class="section" id="overview">
+    <div class="section-head">
+      <div class="sec-num">0</div>
+      <div class="sec-title-wrap">
+        <div class="sec-tag" data-i="ov.tag">Briefing</div>
+        <h2 data-i="ov.title">Overview &amp; Objective</h2>
+        <div class="sec-lede" data-i="ov.lede">This simulation replaces traditional round-robin reading with a competitive, collaborative tabletop game framework. The goal is not winning points — it is choosing.</div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card ov-grid" data-accent="gold">
+        <div class="bar" style="background:linear-gradient(90deg,var(--gold),#f7c457)"></div>
+        <h3><svg><use href="#i-flag"/></svg><span data-i="ov.obj.h">Objective</span></h3>
+        <ul class="obj" style="list-style:none">
+          <li><svg><use href="#i-check"/></svg><span data-i="ov.obj1">Squads analyze, debate, and apply all the content and ESV verses from the original study.</span></li>
+          <li><svg><use href="#i-check"/></svg><span data-i="ov.obj2">Teams earn points for the depth of their arguments, the accuracy of their biblical analysis, and the practicality of their applications.</span></li>
+          <li><svg><use href="#i-check"/></svg><span data-i="ov.obj3">Leave with a concrete, personal next move for the week ahead.</span></li>
+        </ul>
+      </div>
+      <div class="card ov-grid" data-accent="violet">
+        <div class="bar" style="background:linear-gradient(90deg,var(--violet),var(--violet2))"></div>
+        <h3><svg><use href="#i-users"/></svg><span data-i="ov.squad.h">Squads &amp; Setup</span></h3>
+        <p class="small" style="margin-bottom:6px" data-i="ov.squad.p1">Divide the students into small squads. Nominate a captain to keep time and a scribe to keep score. One game board per squad.</p>
+        <p class="small" data-i="ov.squad.p2">Kick off with a 5-minute warm-up: “If you were offered a crown worth more than everything you own, what would you have to leave behind to take it?”</p>
+      </div>
+      <div class="card ov-grid" style="grid-column:1/-1" data-accent="amber">
+        <div class="bar" style="background:linear-gradient(90deg,var(--amber),#f7c457)"></div>
+        <h3><svg><use href="#i-trophy"/></svg><span data-i="ov.mat.h">Loadout — Materials Needed</span></h3>
+        <div class="grid3" style="margin-top:10px">
+          <div>
+            <div class="material"><svg><use href="#i-dice"/></svg><span data-i="ov.mat1">Game board: whiteboard with dry-erase markers, or a shared digital document / large paper sheet</span></div>
+            <div class="material"><svg><use href="#i-book"/></svg><span data-i="ov.mat2">Printed copy or digital reference of the ESV verses for quick lookup</span></div>
+            <div class="material"><svg><use href="#i-scroll"/></svg><span data-i="ov.mat3">7 disciple marker cards</span></div>
+          </div>
+          <div>
+            <div class="material"><svg><use href="#i-users"/></svg><span data-i="ov.mat4">One marker per person</span></div>
+            <div class="material"><svg><use href="#i-clock"/></svg><span data-i="ov.mat5">Timer — 60-minute session clock</span></div>
+            <div class="material"><svg><use href="#i-star"/></svg><span data-i="ov.mat6">Snacks</span></div>
+          </div>
+          <div>
+            <div class="material"><svg><use href="#i-shield"/></svg><span data-i="ov.mat7">Room setup: table + chairs</span></div>
+            <div class="material"><svg><use href="#i-bolt"/></svg><span data-i="ov.mat8">Small prizes for the final round</span></div>
+            <div class="material"><svg><use href="#i-check"/></svg><span data-i="ov.mat9">Post-session follow-up plan</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="continue" href="#level1"><svg><use href="#i-arrow"/></svg><span data-i="ov.cont">Start Level 1</span></a>
+  </section>
+
+  <!-- ================= LEVEL 1 ================= -->
+  <section class="section sec-1" id="level1" data-phase="1">
+    <div class="section-head">
+      <div class="sec-num">1</div>
+      <div class="sec-title-wrap">
+        <div class="sec-tag" data-i="p1.tag">Level 1 · 20 min</div>
+        <h2 data-i="p1.title">The Character Stat Sheet</h2>
+        <div class="time"><span class="time-badge"><svg><use href="#i-clock"/></svg><span data-i="p1.time">20 minutes</span></span></div>
+        <div class="sec-lede" data-i="p1.lede">Part 1: The Call. Squads build a “character profile” for their assigned verses on their board — then defend the cost of following Jesus.</div>
+      </div>
+    </div>
+
+    <div class="card" data-accent="violet">
+      <div class="bar" style="background:linear-gradient(90deg,var(--violet),var(--violet2))"></div>
+      <div class="card-badge" data-i="p1.badge">Part 1 · The Call</div>
+      <h3><svg><use href="#i-scroll"/></svg><span data-i="p1.h">Character Profile — The Table</span></h3>
+      <p data-i="p1.p">Assign each squad one or two of the core verses below, then have them build a “character profile” on their board by filling out three columns:</p>
+      <div class="colgrid">
+        <div class="colcard">
+          <h4><svg><use href="#i-eye"/></svg><span data-i="p1.col1.h">Context / Situation</span></h4>
+          <p data-i="p1.col1.p">What is happening in the passage?</p>
+        </div>
+        <div class="colcard">
+          <h4><svg><use href="#i-book"/></svg><span data-i="p1.col2.h">Meaning</span></h4>
+          <p data-i="p1.col2.p">What does Jesus’ command actually mean?</p>
+        </div>
+        <div class="colcard">
+          <h4><svg><use href="#i-heart"/></svg><span data-i="p1.col3.h">Attitude</span></h4>
+          <p data-i="p1.col3.p">What heart attitude does it require?</p>
+        </div>
+      </div>
+      <div class="verses">
+        <button class="vbtn" data-vid="v1"></button>
+        <button class="vbtn" data-vid="v2"></button>
+        <button class="vbtn" data-vid="v3"></button>
+        <button class="vbtn" data-vid="v4"></button>
+        <button class="vbtn" data-vid="v5"></button>
+        <button class="vbtn" data-vid="v6"></button>
+        <button class="vbtn" data-vid="v7"></button>
+        <button class="vbtn gold" data-vid="v8"></button>
+      </div>
+    </div>
+
+    <div class="callout">
+      <svg><use href="#i-bolt"/></svg>
+      <div>
+        <h4 data-i="p1.hot.h">The Hot Take Round — 3 minutes</h4>
+        <p data-i="p1.hot.p">Pose this central question to the room: “Is Jesus asking way too much here, or does this make total sense? Defend your verse.” Each team presents its verse as evidence and argues whether Jesus’ standard is overwhelmingly impossible or realistically achievable. The facilitator awards points for strong textual backing.</p>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card" data-accent="green">
+        <div class="bar" style="background:linear-gradient(90deg,var(--green),var(--green2))"></div>
+        <div class="card-badge" data-i="p1.plot.badge">Plot Check</div>
+        <h3><svg><use href="#i-flag"/></svg><span data-i="p1.plot.h">Unlock the Game for Everyone</span></h3>
+        <p data-i="p1.plot.p">Direct all teams to <button class="vbtn gold" data-vid="v8" style="font-size:12.5px;padding:4px 10px">Matt 28:19–20</button>. Frame the question: “Jesus started with 12 players, but how does this command unlock the game for everyone else today?”</p>
+      </div>
+      <div class="card" data-accent="amber">
+        <div class="bar" style="background:linear-gradient(90deg,var(--amber),#f7c457)"></div>
+        <div class="card-badge" data-i="p1.stmt.badge">Team Statement</div>
+        <h3><svg><use href="#i-scroll"/></svg><span data-i="p1.stmt.h">The Squad Creed</span></h3>
+        <p data-i="p1.stmt.p">Optional wrap-up: squads quickly write down their team statement for Question 4 — the ultimate purpose of being called as a Christian disciple. Recite it with dramatic flair.</p>
+        <p class="small" style="margin-top:10px" data-i="p1.stmt.opt">“Because the King ________ me, I will ________. Even when it costs me ________, I will ________, because ________.”</p>
+      </div>
+    </div>
+
+    <div class="complete-row">
+      <button class="check-btn" data-done="1"><svg><use href="#i-check"/></svg><span data-i="done.1">Mark Level 1 Complete</span></button>
+      <span class="xp"><svg><use href="#i-bolt"/></svg><span data-i="p1.xp">+1500 XP</span></span>
+    </div>
+    <a class="continue" href="#level2"><svg><use href="#i-arrow"/></svg><span data-i="p1.cont">Continue to Level 2</span></a>
+  </section>
+
+  <!-- ================= LEVEL 2 ================= -->
+  <section class="section sec-2" id="level2" data-phase="2">
+    <div class="section-head">
+      <div class="sec-num">2</div>
+      <div class="sec-title-wrap">
+        <div class="sec-tag" data-i="p2.tag">Level 2 · 15 min</div>
+        <h2 data-i="p2.title">Lore &amp; Choice Points</h2>
+        <div class="time"><span class="time-badge"><svg><use href="#i-clock"/></svg><span data-i="p2.time">15 minutes</span></span></div>
+        <div class="sec-lede" data-i="p2.lede">Part 2: Mark 1 and Mark 10. Turn the two Gospel narrative texts into interactive decision points where teams must weigh the costs and choices of biblical figures.</div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card scenario pad-0" data-accent="green">
+        <div class="bar" style="background:linear-gradient(90deg,var(--green),var(--green2))"></div>
+        <div class="pic">
+          <img src="peter-andrew-calling.jpg" alt="The calling of Peter and Andrew">
+          <span class="tag" data-i="p2a.tag">Scenario A · Mark 1:14–20</span>
+        </div>
+        <div style="padding:4px 26px 26px">
+          <div class="card-badge" data-i="p2a.badge">The Early Squad</div>
+          <h3><svg><use href="#i-sword"/></svg><span data-i="p2a.h">Join the Lobby</span></h3>
+          <p data-i="p2a.p">Have teams roleplay as the fishermen instantly dropping their nets.</p>
+          <button class="vbtn" data-vid="v9" data-i-key="p2a.vbtn"></button>
+          <div class="opt"><b data-i="p2a.optb">Discussion Prompt —</b> <span data-i="p2a.opt">“What was the price tag of joining this lobby right away? If you were in their shoes, would you hit ‘accept’ or ‘decline’ and why?”</span></div>
+        </div>
+      </div>
+
+      <div class="card scenario pad-0" data-accent="amber">
+        <div class="bar" style="background:linear-gradient(90deg,var(--amber),#f7c457)"></div>
+        <div class="pic">
+          <img src="rich-young-ruler.jpg" alt="Christ and the rich young ruler">
+          <span class="tag" data-i="p2b.tag">Scenario B · Mark 10:17–31</span>
+        </div>
+        <div style="padding:4px 26px 26px">
+          <div class="card-badge" data-i="p2b.badge">The Rich Young Ruler</div>
+          <h3><svg><use href="#i-trophy"/></svg><span data-i="p2b.h">The High-Stakes Dilemma</span></h3>
+          <p data-i="p2b.p">Frame this scenario as a high-stakes moral dilemma choice in a game narrative.</p>
+          <button class="vbtn gold" data-vid="v10" data-i-key="p2b.vbtn"></button>
+          <div class="opt"><b data-i="p2b.optb">Discussion Prompt —</b> <span data-i="p2b.opt">“This guy had everything unlocked, but Jesus hit him with a major roadblock. Why did Jesus answer him that way? What was his actual blocker?” Teams debate whether the rich man walked away making a smart or terrible choice, and what lessons the original disciples learned from it.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-accent="violet" style="margin-top:20px">
+      <div class="bar" style="background:linear-gradient(90deg,var(--violet),var(--violet2))"></div>
+      <h3><svg><use href="#i-dice"/></svg><span data-i="p2.dice.h">The Dice Ask: Which Do You Feel More?</span></h3>
+      <p data-i="p2.dice.p">One squad member shares honestly: which of the two are you more like — the ones who dropped everything, or the one who kept everything? The group stays quiet and listens. No fixing, no preaching — just honesty.</p>
+    </div>
+
+    <div class="complete-row">
+      <button class="check-btn" data-done="2"><svg><use href="#i-check"/></svg><span data-i="done.2">Mark Level 2 Complete</span></button>
+      <span class="xp"><svg><use href="#i-bolt"/></svg><span data-i="p2.xp">+1500 XP</span></span>
+    </div>
+    <a class="continue" href="#level3"><svg><use href="#i-arrow"/></svg><span data-i="p2.cont">Continue to Level 3</span></a>
+  </section>
+
+  <!-- ================= LEVEL 3 ================= -->
+  <section class="section sec-3" id="level3" data-phase="3">
+    <div class="section-head">
+      <div class="sec-num">3</div>
+      <div class="sec-title-wrap">
+        <div class="sec-tag" data-i="p3.tag">Level 3 · 15 min</div>
+        <h2 data-i="p3.title">The IRL Inventory Builder</h2>
+        <div class="time"><span class="time-badge"><svg><use href="#i-clock"/></svg><span data-i="p3.time">15 minutes</span></span></div>
+        <div class="sec-lede" data-i="p3.lede">Practical application, treated as Inventory Management for Real Life. Teams equip a disciple marker and pitch one wild, creative, ultra-specific real-world scenario for living it out this week.</div>
+      </div>
+    </div>
+
+    <div class="card" data-accent="amber">
+      <div class="bar" style="background:linear-gradient(90deg,var(--amber),#f7c457)"></div>
+      <div class="card-badge" data-i="p3.step1.badge">The Setup</div>
+      <h3><svg><use href="#i-star"/></svg><span data-i="p3.step1.h">The 7 Disciple Markers</span></h3>
+      <p data-i="p3.step1.p">Provide teams with the list of the 7 disciple markers. Each team must select one or more to equip this week. Tap a marker to highlight your pick.</p>
+      <div class="markers">
+        <button class="marker" data-i="p3.m1"></button>
+        <button class="marker" data-i="p3.m2"></button>
+        <button class="marker" data-i="p3.m3"></button>
+        <button class="marker" data-i="p3.m4"></button>
+        <button class="marker" data-i="p3.m5"></button>
+        <button class="marker" data-i="p3.m6"></button>
+        <button class="marker" data-i="p3.m7"></button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card" data-accent="green">
+        <div class="bar" style="background:linear-gradient(90deg,var(--green),var(--green2))"></div>
+        <div class="card-badge" data-i="p3.step2.badge">The Challenge</div>
+        <h3><svg><use href="#i-bolt"/></svg><span data-i="p3.step2.h">Pitch a Real-World Scenario</span></h3>
+        <p data-i="p3.step2.p">Pitch one wild, creative, or ultra-specific real-world scenario of how a student can actually equip and live out that “item” this week — at school or online.</p>
+      </div>
+      <div class="card" data-accent="violet">
+        <div class="bar" style="background:linear-gradient(90deg,var(--violet),var(--violet2))"></div>
+        <div class="card-badge" data-i="p3.step3.badge">Scoring</div>
+        <h3><svg><use href="#i-trophy"/></svg><span data-i="p3.step3.h">Vote for the Best Pitch</span></h3>
+        <p data-i="p3.step3.p">The whole group or facilitator votes on the most practical, creative, and realistic strategy to award bonus points.</p>
+      </div>
+    </div>
+
+    <div class="complete-row">
+      <button class="check-btn" data-done="3"><svg><use href="#i-check"/></svg><span data-i="done.3">Mark Level 3 Complete</span></button>
+      <span class="xp"><svg><use href="#i-bolt"/></svg><span data-i="p3.xp">+1500 XP</span></span>
+    </div>
+    <a class="continue" href="#level4"><svg><use href="#i-arrow"/></svg><span data-i="p3.cont">Continue to Level 4</span></a>
+  </section>
+
+  <!-- ================= LEVEL 4 ================= -->
+  <section class="section sec-4" id="level4" data-phase="4">
+    <div class="section-head">
+      <div class="sec-num">4</div>
+      <div class="sec-title-wrap">
+        <div class="sec-tag" data-i="p4.tag">Level 4 · 10 min</div>
+        <h2 data-i="p4.title">Final Boss Round</h2>
+        <div class="time"><span class="time-badge"><svg><use href="#i-clock"/></svg><span data-i="p4.time">10 minutes</span></span></div>
+        <div class="sec-lede" data-i="p4.lede">Walking This Out. Conclude the session with an open-mic discussion or a quick-fire response session covering the final reflection questions.</div>
+      </div>
+    </div>
+
+    <div class="card" data-accent="red">
+      <div class="bar" style="background:linear-gradient(90deg,var(--red),var(--red2))"></div>
+      <div class="card-badge" data-i="p4.badge">The Boss Encounter</div>
+      <h3><svg><use href="#i-flag"/></svg><span data-i="p4.h">Open Mic — Final Reflection Questions</span></h3>
+      <div style="margin-top:14px">
+        <div class="boss">
+          <div class="num">1</div>
+          <div>
+            <h3 data-i="p4.q1.h">Mentors &amp; Leaders</h3>
+            <p data-i="p4.q1.p">“Who are the real-life mentors, contemporary figures, or historical leaders whose teachings you respect or follow? What do you appreciate about them?”</p>
+          </div>
+        </div>
+        <div class="boss">
+          <div class="num">2</div>
+          <div>
+            <h3 data-i="p4.q2.h">The Realistic Follower</h3>
+            <p data-i="p4.q2.p">“Do you genuinely think it’s realistic for someone to follow Jesus today? If an absolute stranger walked up to you tomorrow claiming they want to follow Jesus, what kind of vibe or traits would you realistically expect them to have based on what we just read?”</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card" data-accent="green">
+        <div class="bar" style="background:linear-gradient(90deg,var(--green),var(--green2))"></div>
+        <h3><svg><use href="#i-users"/></svg><span data-i="p4.deb.h">Open-Mic Format</span></h3>
+        <ul>
+          <li data-i="p4.deb1">Each person shares their answer to Question 1.</li>
+          <li data-i="p4.deb2">Each person shares their answer to Question 2.</li>
+          <li data-i="p4.deb3">The squad agrees on one accountability check-in before next session.</li>
+        </ul>
+      </div>
+      <div class="card" data-accent="gold">
+        <div class="bar" style="background:linear-gradient(90deg,var(--gold),#f7c457)"></div>
+        <h3><svg><use href="#i-crown"/></svg><span data-i="p4.vic.h">Victory Screen</span></h3>
+        <p data-i="p4.vic.p">Close by praying for one another — that the squad would carry the cost of the crown this week. Then present the small prizes and ring the bell: session complete.</p>
+        <p class="small" style="margin-top:10px" data-i="p4.vic.small">The King gave everything. A disciple gives everything back — and finds it is never lost.</p>
+      </div>
+    </div>
+
+    <div class="complete-row">
+      <button class="check-btn" data-done="4"><svg><use href="#i-check"/></svg><span data-i="done.4">Mark Level 4 Complete</span></button>
+      <span class="xp"><svg><use href="#i-bolt"/></svg><span data-i="p4.xp">+2500 XP</span></span>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div style="margin-bottom:10px"><svg width="26" height="26" class="mini-crown"><use href="#i-crown"/></svg></div>
+  <div data-i="ui.foot1">The Cost of the Crown — Fun Version · 4 Levels · 60 minutes</div>
+  <div data-i="ui.foot2">Scripture: ESV (English) / CCB 中文當代譯本 (Chinese). Artwork: Caravaggio and Heinrich Hofmann (public domain).</div>
+  <div data-i="ui.foot3">Published — hosted on the nav game site (GitHub Pages).</div>
+</footer>
+
+<!-- ================= FLOATING TIMER ================= -->
+<div id="timer">
+  <div class="lbl"><svg><use href="#i-clock"/></svg><span data-i="ui.timer">Session Clock</span></div>
+  <div class="clock" id="clock">60:00</div>
+  <div class="btns">
+    <button id="startbtn" class="primary" data-i="ui.start">Start</button>
+    <button id="resetbtn" class="reset" data-i="ui.reset">Reset</button>
+  </div>
+  <div class="mini"><i id="tbar"></i></div>
+</div>
+
+<!-- ================= SCOREBOARD ================= -->
+<button id="scorebtn" title="Squad XP"><svg><use href="#i-trophy"/></svg></button>
+<div id="scoreboard">
+  <h4><svg><use href="#i-trophy"/></svg><span data-i="ui.score">Squad XP</span></h4>
+  <div id="squads"></div>
+</div>
+
+<!-- ================= VERSE MODAL ================= -->
+<div id="modal">
+  <div class="box">
+    <div class="ref"><svg><use href="#i-book"/></svg><span id="mref"></span></div>
+    <p class="txt" id="mtxt"></p>
+    <p class="src" data-i="ui.modal.src">ESV · English Standard Version</p>
+    <button class="x" id="mclose"><svg width="16" height="16"><use href="#i-x"/></svg></button>
+  </div>
+</div>
+
+<!-- ================= VICTORY ================= -->
+<div id="victory">
+  <div class="box">
+    <svg><use href="#i-crown"/></svg>
+    <h2 data-i="ui.victory.h">Quest Complete!</h2>
+    <p data-i="ui.victory.p">All four levels cleared. The crown is worth the cost — now go live it out this week.</p>
+    <button id="victory-close" data-i="ui.victory.btn">Replay</button>
+    <div class="esc" data-i="ui.victory.esc">Press Esc to close</div>
+  </div>
+</div>
+
+<script>
+/* ---------- Verse data: ESV (English) / CCB 中文當代譯本 (Traditional) ---------- */
+const VERSES = {
+  v1: { ref_en:"Matt 16:24", ref_zh:"馬太福音 16:24",
+    en:"Then Jesus told his disciples, “If anyone would come after me, let him deny himself and take up his cross and follow me.”",
+    zh:"於是耶穌對門徒說：“如果有人要跟從我，就應當捨己，背起他的十字架跟從我。”" },
+  v2: { ref_en:"Luke 14:26", ref_zh:"路加福音 14:26",
+    en:"“If anyone comes to me and does not hate his own father and mother and wife and children and brothers and sisters, yes, and even his own life, he cannot be my disciple.”",
+    zh:"“若有人要跟從我，就要愛我勝過愛他的父母、妻子、兒女、弟兄、姊妹，甚至自己的生命，否則就不能做我的門徒。”" },
+  v3: { ref_en:"Luke 14:27", ref_zh:"路加福音 14:27",
+    en:"“Whoever does not bear his own cross and come after me cannot be my disciple.”",
+    zh:"若不背起自己的十字架跟從我，就不能做我的門徒。" },
+  v4: { ref_en:"Luke 14:33", ref_zh:"路加福音 14:33",
+    en:"“So therefore, any one of you who does not renounce all that he has cannot be my disciple.”",
+    zh:"“同樣，你們若不撇下一切，就不能做我的門徒。”" },
+  v5: { ref_en:"John 8:31–32", ref_zh:"約翰福音 8:31–32",
+    en:"So Jesus said to the Jews who had believed him, “If you abide in my word, you are truly my disciples, and you will know the truth, and the truth will set you free.”",
+    zh:"耶穌對信祂的猶太人說：“你們若持守我的道，就真是我的門徒了。\n\n你們必認識真理，真理必叫你們得到自由。”" },
+  v6: { ref_en:"John 13:34–35", ref_zh:"約翰福音 13:34–35",
+    en:"“A new commandment I give to you, that you love one another: just as I have loved you, you also are to love one another. By this all people will know that you are my disciples, if you have love for one another.”",
+    zh:"我賜給你們一條新命令——你們要彼此相愛。我怎樣愛你們，你們也要怎樣彼此相愛。\n\n你們如果彼此相愛，世人就會認出你們是我的門徒。”" },
+  v7: { ref_en:"John 15:8", ref_zh:"約翰福音 15:8",
+    en:"“By this my Father is glorified, that you bear much fruit and so prove to be my disciples.”",
+    zh:"你們多結果子，證明自己是我的門徒，就會給我父帶來榮耀。" },
+  v8: { ref_en:"Matt 28:19–20", ref_zh:"馬太福音 28:19–20",
+    en:"“Go therefore and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, teaching them to observe all that I have commanded you. And behold, I am with you always, to the end of the age.”",
+    zh:"所以，你們要去使萬民做我的門徒，奉父、子、聖靈的名給他們施洗，\n\n教導他們遵守我吩咐你們的一切。記住，我必常與你們同在，一直到世界的末了。”" },
+  v9: { ref_en:"Mark 1:14–20", ref_zh:"馬可福音 1:14–20",
+    en:"Now after John was arrested, Jesus came into Galilee, proclaiming the gospel of God, and saying, “The time is fulfilled, and the kingdom of God is at hand; repent and believe in the gospel.” Passing alongside the Sea of Galilee, he saw Simon and Andrew the brother of Simon casting a net into the sea, for they were fishermen. And Jesus said to them, “Follow me, and I will make you become fishers of men.” And immediately they left their nets and followed him. And when he had gone a little farther, he saw James the son of Zebedee and John his brother, who were in their boat mending the nets. And immediately he called them. And they left their father Zebedee in the boat with the hired servants and followed him.",
+    zh:"約翰被捕後，耶穌來到加利利宣講上帝的福音，說：\n\n“時候到了，上帝的國臨近了，你們要悔改，相信福音。”\n\n耶穌沿著加利利湖邊走，看見兩個漁夫——西門和他的弟弟安得烈正在湖上撒網捕魚。\n\n耶穌對他們說：“來跟從我！我要使你們成為得人的漁夫。”\n\n他們立刻拋下漁網，跟從了耶穌。\n\n耶穌往前走了不遠，又看見西庇太的兩個兒子雅各和約翰正在船上補網，\n\n便立刻呼召他們。他們就辭別父親和船上的工人，跟從了耶穌。" },
+  v10: { ref_en:"Mark 10:17–31", ref_zh:"馬可福音 10:17–31",
+    en:"And as he was setting out on his journey, a man ran up and knelt before him and asked him, “Good Teacher, what must I do to inherit eternal life?” And Jesus said to him, “Why do you call me good? No one is good except God alone. You know the commandments: ‘Do not murder, Do not commit adultery, Do not steal, Do not bear false witness, Do not defraud, Honor your father and mother.’” And he said to him, “Teacher, all these I have kept from my youth.” And Jesus, looking at him, loved him, and said to him, “You lack one thing: go, sell all that you have and give to the poor, and you will have treasure in heaven; and come, follow me.” Disheartened by the saying, he went away sorrowful, for he had great possessions. And Jesus looked around and said to his disciples, “How difficult it will be for those who have wealth to enter the kingdom of God!” And the disciples were amazed at his words. But Jesus said to them again, “Children, how difficult it is to enter the kingdom of God! It is easier for a camel to go through the eye of a needle than for a rich person to enter the kingdom of God.” And they were exceedingly astonished, and said to him, “Then who can be saved?” Jesus looked at them and said, “With man it is impossible, but not with God. For all things are possible with God.” Peter began to say to him, “See, we have left everything and followed you.” Jesus said, “Truly, I say to you, there is no one who has left house or brothers or sisters or mother or father or children or lands, for my sake and for the gospel, who will not receive a hundredfold now in this time, houses and brothers and sisters and mothers and children and lands, with persecutions, and in the age to come eternal life. But many who are first will be last, and the last first.”",
+    zh:"耶穌正要上路，有一個人跑來跪在祂跟前，問祂：“良善的老師，我該做什麼才能承受永生？”\n\n耶穌說：“你為什麼稱呼我‘良善的老師’呢？只有上帝是良善的。\n\n你知道‘不可殺人，不可通姦，不可偷盜，不可作偽證，不可欺詐，要孝敬父母’這些誡命。”\n\n那人說：“老師，我從小就遵行這些誡命。”\n\n耶穌望著他，心中愛他，便說：“你還有一件事沒有做，就是變賣你所有的產業，送給窮人，你必有財寶存在天上，然後你還要來跟從我。”\n\n那人聽了，臉色驟變，便沮喪地走了，因為他有許多產業。\n\n耶穌看看周圍的人，對門徒說：“有錢人進上帝的國真難啊！”\n\n門徒聽了感到驚奇，耶穌便再次對他們說：“孩子們，進上帝的國多麼難啊！\n\n駱駝穿過針眼比有錢人進上帝的國還容易呢！”\n\n門徒更加驚奇，便議論說：“這樣，誰能得救呢？”\n\n耶穌看著他們說：“對人而言，這不可能，但對上帝而言，凡事都可能。”\n\n彼得說：“你看，我們已經撇下一切來跟從你了。”\n\n耶穌說：“我實在告訴你們，任何人為了我和福音而撇下房屋、弟兄、姊妹、父母、兒女或田地，\n\n今世必在房屋、弟兄、姊妹、父母、兒女或田地方面獲得百倍的回報，來世必得永生。當然他也會受到迫害。\n\n然而，許多為首的將要殿後，殿後的將要為首。”" }
+};
+
+/* ---------- Translations ---------- */
+const I18N = {
+en:{
+  "nav.brand":"Lesson 1 · The Call",
+  "nav.badge":"FUN VERSION",
+  "nav.menu.overview":"Overview",
+  "nav.menu.l1":"Lv.1 Stat Sheet",
+  "nav.menu.l2":"Lv.2 Choice Points",
+  "nav.menu.l3":"Lv.3 IRL Inventory",
+  "nav.menu.l4":"Lv.4 Final Boss",
+  "hero.kicker":"Lesson 1 — The Call of the Disciple · Tabletop Simulation",
+  "hero.t1":"The Call of",
+  "hero.t2":"the Disciple",
+  "hero.sub":"The King calls you to follow — but the crown has a cost. Four playable levels in one hour: will your squad pay the price?",
+  "hero.chip.phases":"4 Levels",
+  "hero.chip.time":"60 minutes",
+  "hero.chip.squad":"Squads of 3–6",
+  "hero.chip.xp":"+XP to earn",
+  "hero.cta":"Enter the Game",
+  "hero.scroll":"Scroll for more",
+  "tracker.label":"Session Plan",
+  "tracker.s1":"Stat Sheet","tracker.t1":"20m",
+  "tracker.s2":"Choice Points","tracker.t2":"15m",
+  "tracker.s3":"IRL Inventory","tracker.t3":"15m",
+  "tracker.s4":"Final Boss","tracker.t4":"10m",
+  "ov.tag":"Briefing",
+  "ov.title":"Overview &amp; Objective",
+  "ov.lede":"This simulation replaces traditional round-robin reading with a competitive, collaborative tabletop game framework. The goal is not winning points — it is choosing.",
+  "ov.obj.h":"Objective",
+  "ov.obj1":"Squads analyze, debate, and apply all the content and ESV verses from the original study.",
+  "ov.obj2":"Teams earn points for the depth of their arguments, the accuracy of their biblical analysis, and the practicality of their applications.",
+  "ov.obj3":"Leave with a concrete, personal next move for the week ahead.",
+  "ov.squad.h":"Squads &amp; Setup",
+  "ov.squad.p1":"Divide the students into small squads. Nominate a captain to keep time and a scribe to keep score. One game board per squad.",
+  "ov.squad.p2":"Kick off with a 5-minute warm-up: “If you were offered a crown worth more than everything you own, what would you have to leave behind to take it?”",
+  "ov.mat.h":"Loadout — Materials Needed",
+  "ov.mat1":"Game board: whiteboard with dry-erase markers, or a shared digital document / large paper sheet",
+  "ov.mat2":"Printed copy or digital reference of the ESV verses for quick lookup",
+  "ov.mat3":"7 disciple marker cards",
+  "ov.mat4":"One marker per person",
+  "ov.mat5":"Timer — 60-minute session clock",
+  "ov.mat6":"Snacks",
+  "ov.mat7":"Room setup: table + chairs",
+  "ov.mat8":"Small prizes for the final round",
+  "ov.mat9":"Post-session follow-up plan",
+  "ov.cont":"Start Level 1",
+  "p1.tag":"Level 1 · 20 min",
+  "p1.title":"The Character Stat Sheet",
+  "p1.time":"20 minutes",
+  "p1.lede":"Part 1: The Call. Squads build a “character profile” for their assigned verses on their board — then defend the cost of following Jesus.",
+  "p1.badge":"Part 1 · The Call",
+  "p1.h":"Character Profile — The Table",
+  "p1.p":"Assign each squad one or two of the core verses below, then have them build a “character profile” on their board by filling out three columns:",
+  "p1.col1.h":"Context / Situation",
+  "p1.col1.p":"What is happening in the passage?",
+  "p1.col2.h":"Meaning",
+  "p1.col2.p":"What does Jesus’ command actually mean?",
+  "p1.col3.h":"Attitude",
+  "p1.col3.p":"What heart attitude does it require?",
+  "p1.hot.h":"The Hot Take Round — 3 minutes",
+  "p1.hot.p":"Pose this central question to the room: “Is Jesus asking way too much here, or does this make total sense? Defend your verse.” Each team presents its verse as evidence and argues whether Jesus’ standard is overwhelmingly impossible or realistically achievable. The facilitator awards points for strong textual backing.",
+  "p1.plot.badge":"Plot Check",
+  "p1.plot.h":"Unlock the Game for Everyone",
+  "p1.plot.p":"Direct all teams to <button class=\"vbtn gold\" data-vid=\"v8\" style=\"font-size:12.5px;padding:4px 10px\">Matt 28:19–20</button>. Frame the question: “Jesus started with 12 players, but how does this command unlock the game for everyone else today?”",
+  "p1.stmt.badge":"Team Statement",
+  "p1.stmt.h":"The Squad Creed",
+  "p1.stmt.p":"Optional wrap-up: squads quickly write down their team statement for Question 4 — the ultimate purpose of being called as a Christian disciple. Recite it with dramatic flair.",
+  "p1.stmt.opt":"“Because the King ________ me, I will ________. Even when it costs me ________, I will ________, because ________.”",
+  "p1.xp":"+1500 XP",
+  "p1.cont":"Continue to Level 2",
+  "p2.tag":"Level 2 · 15 min",
+  "p2.title":"Lore &amp; Choice Points",
+  "p2.time":"15 minutes",
+  "p2.lede":"Part 2: Mark 1 and Mark 10. Turn the two Gospel narrative texts into interactive decision points where teams must weigh the costs and choices of biblical figures.",
+  "p2a.tag":"Scenario A · Mark 1:14–20",
+  "p2a.badge":"The Early Squad",
+  "p2a.h":"Join the Lobby",
+  "p2a.p":"Have teams roleplay as the fishermen instantly dropping their nets.",
+  "p2a.vbtn":"Read Mark 1:14–20",
+  "p2a.optb":"Discussion Prompt —",
+  "p2a.opt":"“What was the price tag of joining this lobby right away? If you were in their shoes, would you hit ‘accept’ or ‘decline’ and why?”",
+  "p2b.tag":"Scenario B · Mark 10:17–31",
+  "p2b.badge":"The Rich Young Ruler",
+  "p2b.h":"The High-Stakes Dilemma",
+  "p2b.p":"Frame this scenario as a high-stakes moral dilemma choice in a game narrative.",
+  "p2b.vbtn":"Read Mark 10:17–31",
+  "p2b.optb":"Discussion Prompt —",
+  "p2b.opt":"“This guy had everything unlocked, but Jesus hit him with a major roadblock. Why did Jesus answer him that way? What was his actual blocker?” Teams debate whether the rich man walked away making a smart or terrible choice, and what lessons the original disciples learned from it.",
+  "p2.dice.h":"The Dice Ask: Which Do You Feel More?",
+  "p2.dice.p":"One squad member shares honestly: which of the two are you more like — the ones who dropped everything, or the one who kept everything? The group stays quiet and listens. No fixing, no preaching — just honesty.",
+  "p2.xp":"+1500 XP",
+  "p2.cont":"Continue to Level 3",
+  "p3.tag":"Level 3 · 15 min",
+  "p3.title":"The IRL Inventory Builder",
+  "p3.time":"15 minutes",
+  "p3.lede":"Practical application, treated as Inventory Management for Real Life. Teams equip a disciple marker and pitch one wild, creative, ultra-specific real-world scenario for living it out this week.",
+  "p3.step1.badge":"The Setup",
+  "p3.step1.h":"The 7 Disciple Markers",
+  "p3.step1.p":"Provide teams with the list of the 7 disciple markers. Each team must select one or more to equip this week. Tap a marker to highlight your pick.",
+  "p3.m1":"Abiding in the Word<small>John 8:31–32</small>",
+  "p3.m2":"Bearing fruit<small>John 15:8</small>",
+  "p3.m3":"Taking up the cross<small>Luke 14:27</small>",
+  "p3.m4":"Denying oneself<small>Matthew 16:24</small>",
+  "p3.m5":"Christ first<small>Luke 14:26</small>",
+  "p3.m6":"Renouncing all<small>Luke 14:33</small>",
+  "p3.m7":"God’s love<small>John 13:34–35</small>",
+  "p3.step2.badge":"The Challenge",
+  "p3.step2.h":"Pitch a Real-World Scenario",
+  "p3.step2.p":"Pitch one wild, creative, or ultra-specific real-world scenario of how a student can actually equip and live out that “item” this week — at school or online.",
+  "p3.step3.badge":"Scoring",
+  "p3.step3.h":"Vote for the Best Pitch",
+  "p3.step3.p":"The whole group or facilitator votes on the most practical, creative, and realistic strategy to award bonus points.",
+  "p3.xp":"+1500 XP",
+  "p3.cont":"Continue to Level 4",
+  "p4.tag":"Level 4 · 10 min",
+  "p4.title":"Final Boss Round",
+  "p4.time":"10 minutes",
+  "p4.lede":"Walking This Out. Conclude the session with an open-mic discussion or a quick-fire response session covering the final reflection questions.",
+  "p4.badge":"The Boss Encounter",
+  "p4.h":"Open Mic — Final Reflection Questions",
+  "p4.q1.h":"Mentors &amp; Leaders",
+  "p4.q1.p":"“Who are the real-life mentors, contemporary figures, or historical leaders whose teachings you respect or follow? What do you appreciate about them?”",
+  "p4.q2.h":"The Realistic Follower",
+  "p4.q2.p":"“Do you genuinely think it’s realistic for someone to follow Jesus today? If an absolute stranger walked up to you tomorrow claiming they want to follow Jesus, what kind of vibe or traits would you realistically expect them to have based on what we just read?”",
+  "p4.deb.h":"Open-Mic Format",
+  "p4.deb1":"Each person shares their answer to Question 1.",
+  "p4.deb2":"Each person shares their answer to Question 2.",
+  "p4.deb3":"The squad agrees on one accountability check-in before next session.",
+  "p4.vic.h":"Victory Screen",
+  "p4.vic.p":"Close by praying for one another — that the squad would carry the cost of the crown this week. Then present the small prizes and ring the bell: session complete.",
+  "p4.vic.small":"The King gave everything. A disciple gives everything back — and finds it is never lost.",
+  "p4.xp":"+2500 XP",
+  "done.1":"Mark Level 1 Complete","done.1.on":"Level 1 Complete!",
+  "done.2":"Mark Level 2 Complete","done.2.on":"Level 2 Complete!",
+  "done.3":"Mark Level 3 Complete","done.3.on":"Level 3 Complete!",
+  "done.4":"Mark Level 4 Complete","done.4.on":"Level 4 Complete!",
+  "ui.timer":"Session Clock",
+  "ui.start":"Start","ui.pause":"Pause","ui.reset":"Reset",
+  "ui.score":"Squad XP",
+  "ui.squad":"Squad ",
+  "ui.modal.src":"ESV · English Standard Version",
+  "ui.victory.h":"Quest Complete!",
+  "ui.victory.p":"All four levels cleared. The crown is worth the cost — now go live it out this week.",
+  "ui.victory.btn":"Replay",
+  "ui.victory.esc":"Press Esc to close",
+  "ui.foot1":"Lesson 1 — The Call of the Disciple · Fun Version · 4 Levels · 60 minutes",
+  "ui.foot2":"Scripture: ESV (English) / CCB 中文當代譯本 (Chinese). Artwork: Caravaggio and Heinrich Hofmann (public domain).",
+  "ui.foot3":"Published — hosted on the nav game site (GitHub Pages)."
+},
+zh:{
+  "nav.brand":"門徒呼召 第一課",
+  "nav.badge":"趣味版",
+  "nav.menu.overview":"總覽",
+  "nav.menu.l1":"第1關 角色資料",
+  "nav.menu.l2":"第2關 抉擇點",
+  "nav.menu.l3":"第3關 生活裝備",
+  "nav.menu.l4":"第4關 最終關主",
+  "hero.kicker":"門徒呼召 第一課 · 桌上遊戲模擬",
+  "hero.t1":"門徒的",
+  "hero.t2":"呼召",
+  "hero.sub":"君王呼召你跟隨——但冠冕有它的代價。一小時內四個可玩的關卡：你的小隊願意付上嗎？",
+  "hero.chip.phases":"4 個關卡",
+  "hero.chip.time":"60 分鐘",
+  "hero.chip.squad":"小隊 3–6 人",
+  "hero.chip.xp":"累積經驗值",
+  "hero.cta":"開始遊戲",
+  "hero.scroll":"往下瀏覽",
+  "tracker.label":"流程計畫",
+  "tracker.s1":"角色資料","tracker.t1":"20分",
+  "tracker.s2":"抉擇點","tracker.t2":"15分",
+  "tracker.s3":"生活裝備","tracker.t3":"15分",
+  "tracker.s4":"最終關主","tracker.t4":"10分",
+  "ov.tag":"任務簡報",
+  "ov.title":"總覽與目標",
+  "ov.lede":"這個模擬以競爭性、合作的桌上遊戲架構取代傳統的輪流朗讀。目標不是贏得分數——而是作出選擇。",
+  "ov.obj.h":"目標",
+  "ov.obj1":"小隊分析、辯論，並應用原始研經中的全部內容與 ESV 經文。",
+  "ov.obj2":"小隊依論證深度、聖經分析準確度與應用實際度來得分。",
+  "ov.obj3":"帶著接下來一週具體的個人行動離開。",
+  "ov.squad.h":"小隊與準備",
+  "ov.squad.p1":"把學生分成幾個小隊。指定一位隊長掌握時間、一位書記記分。每隊一張遊戲板。",
+  "ov.squad.p2":"用五分鐘熱身開場：「如果送你一頂比你所擁有一切更值錢的冠冕，你必須捨下什麼才能得到它？」",
+  "ov.mat.h":"裝備清單——所需材料",
+  "ov.mat1":"遊戲板：白板加可擦式白板筆，或共用的數位文件／大張紙",
+  "ov.mat2":"ESV 經文的列印本或數位參考，方便快速查閱",
+  "ov.mat3":"七張門徒標記卡",
+  "ov.mat4":"每人一枝標記筆",
+  "ov.mat5":"計時器——60 分鐘聚會時鐘",
+  "ov.mat6":"點心",
+  "ov.mat7":"場地佈置：桌椅",
+  "ov.mat8":"最終回合的小獎品",
+  "ov.mat9":"會後跟進計畫",
+  "ov.cont":"開始第 1 關",
+  "p1.tag":"第 1 關 · 20 分鐘",
+  "p1.title":"角色資料表",
+  "p1.time":"20 分鐘",
+  "p1.lede":"第一部分：呼召。小隊在板上為所分配的經文建立「角色資料」——然後為跟隨耶穌的代價辯護。",
+  "p1.badge":"第一部分 · 呼召",
+  "p1.h":"角色資料——表格",
+  "p1.p":"把下方一或兩節核心經文分配給各小隊，然後讓它們在板上填滿三欄，建立「角色資料」：",
+  "p1.col1.h":"處境／情境",
+  "p1.col1.p":"經文中發生了什麼事？",
+  "p1.col2.h":"含義",
+  "p1.col2.p":"耶穌的命令究竟是什麼意思？",
+  "p1.col3.h":"心態",
+  "p1.col3.p":"它需要什麼樣的心態？",
+  "p1.hot.h":"快評回合——3 分鐘",
+  "p1.hot.p":"向全場提出核心問題：「耶穌在這裡要求得太多，還是完全合理？為你的經文辯護。」每隊以經文為證據，論證耶穌的標準是難如登天，還是切實可行。帶領者根據充分的經文根據加分。",
+  "p1.plot.badge":"劇情檢核",
+  "p1.plot.h":"為所有人解鎖遊戲",
+  "p1.plot.p":"帶領全體看向 <button class=\"vbtn gold\" data-vid=\"v8\" style=\"font-size:12.5px;padding:4px 10px\">馬太福音 28:19–20</button>。提出問題：「耶穌最初只有 12 位玩家，但這道命令如何為今天的每一個人解鎖遊戲？」",
+  "p1.stmt.badge":"小隊宣言",
+  "p1.stmt.h":"小隊信條",
+  "p1.stmt.p":"（可選）小隊快速寫下對問題 4 的宣言——作為基督徒門徒被呼召的最終目的。以戲劇化的語氣宣讀出來。",
+  "p1.stmt.opt":"「因為君王 ________ 了我，所以我將 ________。即使這會讓我付出 ________ 的代價，我仍將 ________，因為 ________。」",
+  "p1.xp":"+1500 經驗值",
+  "p1.cont":"繼續到第 2 關",
+  "p2.tag":"第 2 關 · 15 分鐘",
+  "p2.title":"故事與抉擇點",
+  "p2.time":"15 分鐘",
+  "p2.lede":"第二部分：馬可福音第 1 章與第 10 章。把兩段福音敘事變成互動抉擇點，讓小隊衡量聖經人物的代價與選擇。",
+  "p2a.tag":"情境 A · 馬可福音 1:14–20",
+  "p2a.badge":"最早的團隊",
+  "p2a.h":"加入戰局",
+  "p2a.p":"讓小隊扮演立刻拋下漁網的漁夫。",
+  "p2a.vbtn":"閱讀馬可福音 1:14–20",
+  "p2a.optb":"討論引導——",
+  "p2a.opt":"「立刻加入這個戰局，要付出什麼代價？如果你身歷其境，你會按『接受』還是『拒絕』？為什麼？」",
+  "p2b.tag":"情境 B · 馬可福音 10:17–31",
+  "p2b.badge":"富有的年輕官長",
+  "p2b.h":"高風險的道德兩難",
+  "p2b.p":"把這個情境塑造成遊戲敘事中的高風險道德抉擇。",
+  "p2b.vbtn":"閱讀馬可福音 10:17–31",
+  "p2b.optb":"討論引導——",
+  "p2b.opt":"「這人已經解鎖了一切，耶穌卻給他設了一道大障礙。為什麼耶穌這樣回答他？他真正的阻礙是什麼？」小隊辯論：這富人的離開是明智還是糟糕的選擇，以及最初的門徒從中學到了什麼教訓。",
+  "p2.dice.h":"擲骰發問：你更像哪一個？",
+  "p2.dice.p":"一位隊員誠實分享：你更像哪一方——拋下一切的人，還是保有一切的人？小組安靜聆聽，不糾正、不說教——只要誠實。",
+  "p2.xp":"+1500 經驗值",
+  "p2.cont":"繼續到第 3 關",
+  "p3.tag":"第 3 關 · 15 分鐘",
+  "p3.title":"真實生活的裝備管理員",
+  "p3.time":"15 分鐘",
+  "p3.lede":"把實際應用當作「真實生活的裝備管理」。小隊裝備一項門徒標記，並提出一個大膽、有創意、超具體的真實世界情境，在本週活出來。",
+  "p3.step1.badge":"設定",
+  "p3.step1.h":"七個門徒標記",
+  "p3.step1.p":"提供小隊七個門徒標記的清單。每隊必須選擇一個或多個本週要裝備的標記。點選標記以突顯你的選擇。",
+  "p3.m1":"常在主的話語裡<small>約翰福音 8:31–32</small>",
+  "p3.m2":"多結果子<small>約翰福音 15:8</small>",
+  "p3.m3":"背起十字架<small>路加福音 14:27</small>",
+  "p3.m4":"捨己<small>馬太福音 16:24</small>",
+  "p3.m5":"基督居首<small>路加福音 14:26</small>",
+  "p3.m6":"撇下一切<small>路加福音 14:33</small>",
+  "p3.m7":"上帝之愛<small>約翰福音 13:34–35</small>",
+  "p3.step2.badge":"挑戰",
+  "p3.step2.h":"提出真實世界的行動方案",
+  "p3.step2.p":"提出一個大膽、有創意、或超具體的真實世界情境，說明學生本週如何真正裝備並活出這個「道具」——在校園裡或網路上。",
+  "p3.step3.badge":"計分",
+  "p3.step3.h":"票選最佳方案",
+  "p3.step3.p":"全體或帶領者票選最實際、最有創意、最可行的策略，頒發加分。",
+  "p3.xp":"+1500 經驗值",
+  "p3.cont":"繼續到第 4 關",
+  "p4.tag":"第 4 關 · 10 分鐘",
+  "p4.title":"最終關主回合",
+  "p4.time":"10 分鐘",
+  "p4.lede":"行出信仰。以開放麥克風討論或快問快答回合收尾，涵蓋最終反思問題。",
+  "p4.badge":"最終對決",
+  "p4.h":"開放麥克風——最終反思問題",
+  "p4.q1.h":"導師與領袖",
+  "p4.q1.p":"「有哪些真實生活中的導師、當代人物，或歷史領袖，是你尊重或跟隨其教導的？你欣賞他們什麼？」",
+  "p4.q2.h":"真實的跟隨者",
+  "p4.q2.p":"「你真認為今天有人跟隨耶穌是切實可行的嗎？如果明天有個陌生人走到你面前，聲稱自己想跟隨耶穌，根據我們剛才讀的內容，你會實際期待他具有什麼樣的氣質或特質？」",
+  "p4.deb.h":"開放麥克風形式",
+  "p4.deb1":"每人分享對問題 1 的回答。",
+  "p4.deb2":"每人分享對問題 2 的回答。",
+  "p4.deb3":"小隊約定下次聚會前的一次彼此問責。",
+  "p4.vic.h":"勝利畫面",
+  "p4.vic.p":"最後彼此代禱——願小隊本週背負冠冕的代價。然後頒發小獎品並敲鐘：聚會圓滿完成。",
+  "p4.vic.small":"君王付出了一切。門徒把一切還給祂——卻發現從未失去。",
+  "p4.xp":"+2500 經驗值",
+  "done.1":"完成第 1 關","done.1.on":"第 1 關完成！",
+  "done.2":"完成第 2 關","done.2.on":"第 2 關完成！",
+  "done.3":"完成第 3 關","done.3.on":"第 3 關完成！",
+  "done.4":"完成第 4 關","done.4.on":"第 4 關完成！",
+  "ui.timer":"聚會計時器",
+  "ui.start":"開始","ui.pause":"暫停","ui.reset":"重置",
+  "ui.score":"小隊經驗值",
+  "ui.squad":"小隊 ",
+  "ui.modal.src":"CCB · 中文當代譯本",
+  "ui.victory.h":"任務完成！",
+  "ui.victory.p":"四個關卡全數通關。冠冕值得付出代價——本週就去活出來。",
+  "ui.victory.btn":"再玩一次",
+  "ui.victory.esc":"按 Esc 關閉",
+  "ui.foot1":"《門徒呼召 第一課》——趣味版 · 4 個關卡 · 60 分鐘",
+  "ui.foot2":"經文：ESV（英文）／中文當代譯本（繁體中文）。畫作：卡拉瓦喬與海因里希·霍夫曼（公有領域）。",
+  "ui.foot3":"已發布——由 nav 遊戲網站（GitHub Pages）託管。"
+}
+};
+
+let lang = localStorage.getItem('cotc_lang') || 'en';
+const toggle = document.getElementById('langToggle');
+const langBox = document.getElementById('langBox');
+
+function applyLang(l){
+  lang = l;
+  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
+  document.querySelectorAll('[data-i]').forEach(el=>{
+    const key = el.dataset.i;
+    if(el.classList.contains('check-btn')) return;
+    el.innerHTML = I18N[l][key] !== undefined ? I18N[l][key] : el.innerHTML;
+  });
+  document.querySelectorAll('[data-i-key]').forEach(el=>{
+    el.textContent = I18N[l][el.dataset.iKey];
+  });
+  document.querySelectorAll('.vbtn[data-vid]').forEach(b=>{
+    const v = VERSES[b.dataset.vid];
+    if(v && !b.hasAttribute('data-i-key')) b.textContent = v['ref_'+(l==='zh'?'zh':'en')];
+  });
+  document.querySelectorAll('.check-btn').forEach(b=>{
+    const k = 'done.'+b.dataset.done + (b.classList.contains('on') ? '.on' : '');
+    b.querySelector('span').textContent = I18N[l][k];
+  });
+  document.getElementById('startbtn').textContent = running ? I18N[l]['ui.pause'] : I18N[l]['ui.start'];
+  document.getElementById('resetbtn').textContent = I18N[l]['ui.reset'];
+  drawScores();
+  langBox.classList.toggle('zh', l==='zh');
+  toggle.checked = (l==='zh');
+  localStorage.setItem('cotc_lang', l);
+}
+
+/* ---------- verse modal (delegated) ---------- */
+const modal = document.getElementById('modal');
+document.addEventListener('click', e=>{
+  const vb = e.target.closest('.vbtn');
+  if(vb){
+    const v = VERSES[vb.dataset.vid];
+    if(v){
+      document.getElementById('mref').textContent = v['ref_'+(lang==='zh'?'zh':'en')];
+      document.getElementById('mtxt').innerHTML = v[lang==='zh'?'zh':'en'].replace(/\n/g,'<br>');
+      modal.classList.add('open');
+    }
+    return;
+  }
+  const cb = e.target.closest('.check-btn');
+  if(cb){
+    cb.classList.toggle('on');
+    const k = 'done.'+cb.dataset.done + (cb.classList.contains('on') ? '.on' : '');
+    cb.querySelector('span').textContent = I18N[lang][k];
+    updateProgress();
+    return;
+  }
+  const mk = e.target.closest('.marker');
+  if(mk){
+    const was = mk.classList.contains('sel');
+    document.querySelectorAll('.marker').forEach(x=>x.classList.remove('sel'));
+    if(!was) mk.classList.add('sel');
+    return;
+  }
+});
+function closeModal(){modal.classList.remove('open')}
+document.getElementById('mclose').addEventListener('click',closeModal);
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+
+/* ---------- phase completion ---------- */
+const totalPhases = 4;
+function updateProgress(){
+  let done = 0;
+  document.querySelectorAll('.check-btn[data-done]').forEach(b=>{ if(b.classList.contains('on')) done++; });
+  const steps = document.querySelectorAll('.step');
+  document.querySelectorAll('section[data-phase]').forEach(sec=>{
+    const ph = +sec.dataset.phase;
+    const step = steps[ph-1];
+    const btn = sec.querySelector('.check-btn');
+    if(step && btn) step.classList.toggle('on', btn.classList.contains('on'));
+  });
+  document.getElementById('pbarfill').style.width = (done/totalPhases*100)+'%';
+  if(done===totalPhases) document.getElementById('victory').classList.add('open');
+}
+
+/* ---------- session clock ---------- */
+let seconds = 3600, running = false, interval = null;
+const clockEl = document.getElementById('clock');
+const timerBox = document.getElementById('timer');
+const startBtn = document.getElementById('startbtn');
+function fmt(s){const m=Math.floor(s/60),r=s%60;return String(m).padStart(2,'0')+':'+String(r).padStart(2,'0')}
+function paint(){
+  clockEl.textContent = fmt(seconds);
+  document.getElementById('tbar').style.width = ((3600-seconds)/3600*100)+'%';
+  timerBox.classList.toggle('over', seconds<=0);
+}
+function tick(){ if(seconds>0){seconds--;paint()} else {stop();paint()} }
+function start(){
+  if(running) return;
+  if(seconds<=0) seconds = 3600;
+  running = true;
+  startBtn.textContent = I18N[lang]['ui.pause'];
+  interval = setInterval(tick,1000);
+}
+function stop(){
+  running = false;
+  startBtn.textContent = I18N[lang]['ui.start'];
+  clearInterval(interval);
+}
+startBtn.addEventListener('click',()=> running?stop():start());
+document.getElementById('resetbtn').addEventListener('click',()=>{stop();seconds=3600;paint()});
+
+/* ---------- squad XP scoreboard ---------- */
+const SCORES_KEY = 'cotc_fun_scores';
+const scores = JSON.parse(localStorage.getItem(SCORES_KEY)||'null') || {A:0,B:0,C:0,D:0};
+const squadEl = document.getElementById('squads');
+function saveScores(){localStorage.setItem(SCORES_KEY, JSON.stringify(scores))}
+function drawScores(){
+  squadEl.innerHTML = '';
+  const label = I18N[lang]['ui.squad'];
+  let max = 1;
+  Object.values(scores).forEach(v=>max=Math.max(max,v));
+  ['A','B','C','D'].forEach(k=>{
+    const row = document.createElement('div');
+    row.className = 'squad';
+    row.innerHTML = '<span class="name">'+label+k+'</span>'+
+      '<button class="minus" data-k="'+k+'"><svg width="12" height="12"><use href="#i-minus"/></svg></button>'+
+      '<span class="pts">'+scores[k]+'</span>'+
+      '<button data-k="'+k+'"><svg width="12" height="12"><use href="#i-plus"/></svg></button>';
+    squadEl.appendChild(row);
+    const bar = document.createElement('div');
+    bar.className = 'scorebar';
+    bar.innerHTML = '<i style="width:'+Math.max(0,(scores[k]/max*100))+'%"></i>';
+    squadEl.appendChild(bar);
+  });
+}
+squadEl.addEventListener('click',e=>{
+  const btn = e.target.closest('button');
+  if(!btn) return;
+  const k = btn.dataset.k;
+  scores[k] += btn.classList.contains('minus') ? -1 : 1;
+  saveScores(); drawScores();
+});
+document.getElementById('scorebtn').addEventListener('click',()=>{
+  document.getElementById('scoreboard').classList.toggle('open');
+});
+
+/* ---------- victory close ---------- */
+document.getElementById('victory-close').addEventListener('click',()=>{
+  document.getElementById('victory').classList.remove('open');
+});
+
+/* ---------- keyboard & scroll ---------- */
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeModal();document.getElementById('victory').classList.remove('open')}
+});
+const sections = [...document.querySelectorAll('section[data-phase]')];
+window.addEventListener('scroll',()=>{
+  let current = sections.findIndex(s=>s.getBoundingClientRect().top < 200);
+  if(current < 0) current = sections.length-1;
+  document.querySelectorAll('.step').forEach((st,i)=>{ st.classList.toggle('on', i <= current); });
+}, {passive:true});
+
+/* ---------- init ---------- */
+toggle.addEventListener('change', ()=> applyLang(toggle.checked ? 'zh':'en'));
+paint();
+drawScores();
+applyLang(lang);
+</script>
+</body>
+</html>
