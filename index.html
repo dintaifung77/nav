@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>曠野之行（第一課・門徒呼召）</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050810;
+            --bg-2: #0a101f;
+            --card: #0e1628;
+            --card-2: #131d33;
+            --border: #1d2a47;
+            --border-2: #2b3d63;
+            --text: #eef2f9;
+            --muted: #94a5c6;
+            --dim: #5d6f92;
+            --gold: #f5c518;
+            --gold-soft: #ffd95c;
+            --gold-dim: #c9a227;
+            --gold-bg: rgba(245, 197, 24, 0.10);
+            --blue: #5b9bd5;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        .serif { font-family: 'Noto Serif TC', serif; }
+
+        /* ---- ambient background ---- */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 90% 60% at 15% -10%, rgba(91, 155, 213, 0.10) 0%, transparent 55%),
+                radial-gradient(ellipse 70% 50% at 85% 100%, rgba(245, 197, 24, 0.05) 0%, transparent 55%),
+                radial-gradient(ellipse 60% 40% at 50% 40%, rgba(23, 36, 68, 0.55) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+        .star {
+            position: absolute;
+            border-radius: 50%;
+            background: #fff;
+            opacity: 0;
+            animation: twinkle ease-in-out infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.15; transform: scale(1); }
+            50% { opacity: 0.9; transform: scale(1.25); }
+        }
+
+        /* ---- scroll progress ---- */
+        .scroll-progress {
+            position: fixed;
+            top: 0; left: 0;
+            height: 3px;
+            width: 0;
+            background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-soft));
+            z-index: 200;
+            box-shadow: 0 0 14px rgba(245, 197, 24, 0.55);
+        }
+
+        /* ---- navbar ---- */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.9rem 1.6rem;
+            background: rgba(5, 8, 16, 0.55);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(43, 61, 99, 0.35);
+        }
+        .navbar-logo {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 900;
+            font-size: 1.15rem;
+            letter-spacing: 0.28em;
+            color: var(--text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        .navbar-logo .dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: var(--gold);
+            box-shadow: 0 0 12px rgba(245, 197, 24, 0.8);
+        }
+        .navbar-links { display: flex; align-items: center; gap: 1.1rem; }
+        .navbar-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            transition: color 0.25s ease;
+        }
+        .navbar-links a:hover { color: var(--gold-soft); }
+        .menu-btn {
+            display: none;
+            background: none;
+            border: 1px solid var(--border-2);
+            color: var(--text);
+            font-size: 0.85rem;
+            padding: 0.35rem 0.8rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .menu-btn:hover { border-color: var(--gold); color: var(--gold-soft); }
+
+        .mobile-menu {
+            position: fixed;
+            top: 56px; left: 0; right: 0;
+            z-index: 99;
+            background: rgba(7, 11, 20, 0.96);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 1.5rem;
+            display: none;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a {
+            color: var(--muted);
+            text-decoration: none;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed var(--border);
+            font-size: 0.9rem;
+        }
+        .mobile-menu a:last-child { border-bottom: none; }
+        .mobile-menu a:hover { color: var(--gold-soft); }
+
+        /* ---- side progress tracker ---- */
+        .tracker {
+            position: fixed;
+            left: 2.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 90;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .tracker-item { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+        .tracker-dot {
+            width: 11px; height: 11px;
+            border-radius: 50%;
+            border: 2px solid var(--border-2);
+            background: var(--bg);
+            transition: all 0.35s ease;
+            flex-shrink: 0;
+        }
+        .tracker-label {
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            color: var(--dim);
+            transition: all 0.35s ease;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(-6px);
+            transition: all 0.35s ease;
+        }
+        .tracker-item:hover .tracker-label { opacity: 1; transform: none; color: var(--muted); }
+        .tracker-item.active .tracker-dot {
+            border-color: var(--gold);
+            background: var(--gold);
+            box-shadow: 0 0 14px rgba(245, 197, 24, 0.8);
+        }
+        .tracker-item.active .tracker-label {
+            opacity: 1;
+            transform: none;
+            color: var(--gold-soft);
+        }
+
+        /* ---- reveal ---- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(34px);
+            transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible { opacity: 1; transform: none; }
+
+        /* ---- layout shells ---- */
+        .stage {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1.8rem;
+        }
+        section.block {
+            position: relative;
+            padding: 6.5rem 0;
+        }
+        section.block::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        /* big ghost number */
+        .ghost-num {
+            position: absolute;
+            top: 3.2rem;
+            right: 0.5rem;
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 900;
+            font-size: clamp(6rem, 16vw, 13rem);
+            line-height: 1;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(148, 165, 198, 0.12);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* ---- hero ---- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            padding: 6rem 1.5rem 4rem;
+        }
+        .hero-chapter {
+            font-size: 0.85rem;
+            letter-spacing: 0.6em;
+            color: var(--muted);
+            font-weight: 500;
+            margin-bottom: 1.6rem;
+            text-indent: 0.6em;
+        }
+        .hero-outline {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 900;
+            font-size: clamp(1.6rem, 4vw, 2.6rem);
+            color: transparent;
+            -webkit-text-stroke: 1.5px rgba(238, 242, 249, 0.55);
+            letter-spacing: 0.2em;
+            text-indent: 0.2em;
+            margin-bottom: 1.2rem;
+        }
+        .hero-title {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 900;
+            font-size: clamp(3rem, 10vw, 7rem);
+            line-height: 1.08;
+            background: linear-gradient(160deg, #fff 20%, var(--gold-soft) 55%, var(--gold) 85%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.06em;
+            text-shadow: 0 0 90px rgba(245, 197, 24, 0.25);
+            margin-bottom: 0.6rem;
+        }
+        .hero-tagline {
+            font-family: 'Noto Serif TC', serif;
+            font-size: clamp(1rem, 2.2vw, 1.3rem);
+            color: var(--muted);
+            font-weight: 500;
+            letter-spacing: 0.1em;
+        }
+        .hero-bubbles {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.9rem;
+            margin-top: 3.4rem;
+            max-width: 720px;
+        }
+        .bubble {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 0.95rem;
+            padding: 0.55rem 1.25rem;
+            border-radius: 999px;
+            border: 1px solid var(--border-2);
+            background: rgba(19, 29, 51, 0.55);
+            backdrop-filter: blur(6px);
+            color: var(--muted);
+            letter-spacing: 0.05em;
+            animation: floaty 6s ease-in-out infinite;
+            cursor: default;
+            transition: all 0.3s ease;
+        }
+        .bubble:nth-child(2n) { animation-delay: 1.2s; }
+        .bubble:nth-child(3n) { animation-delay: 2.4s; }
+        .bubble:hover { border-color: var(--gold-dim); color: var(--gold-soft); transform: translateY(-3px); }
+        @keyframes floaty {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .btn {
+            display: inline-block;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-indent: 0.25em;
+            color: #1a1403;
+            background: linear-gradient(160deg, var(--gold-soft), var(--gold));
+            padding: 1rem 2.6rem;
+            border-radius: 999px;
+            text-decoration: none;
+            box-shadow: 0 8px 40px rgba(245, 197, 24, 0.35);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            margin-top: 3rem;
+        }
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 14px 60px rgba(245, 197, 24, 0.5);
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--dim);
+            font-size: 0.72rem;
+            letter-spacing: 0.4em;
+            text-indent: 0.4em;
+        }
+        .scroll-hint .line {
+            width: 1px;
+            height: 54px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            animation: drop 2.2s ease-in-out infinite;
+        }
+        @keyframes drop {
+            0% { transform: scaleY(0); transform-origin: top; }
+            50% { transform: scaleY(1); transform-origin: top; }
+            51% { transform-origin: bottom; }
+            100% { transform: scaleY(0); transform-origin: bottom; }
+        }
+
+        /* ---- section header ---- */
+        .kicker {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.5em;
+            text-indent: 0.5em;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+        }
+        .kicker::before {
+            content: '';
+            width: 34px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold));
+        }
+        .big-title {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 900;
+            font-size: clamp(2rem, 5.5vw, 3.6rem);
+            line-height: 1.15;
+            letter-spacing: 0.04em;
+        }
+        .big-title .hl {
+            color: var(--gold);
+        }
+        .big-sub {
+            font-family: 'Noto Serif TC', serif;
+            font-size: clamp(1rem, 2.4vw, 1.45rem);
+            color: var(--muted);
+            margin-top: 0.9rem;
+            font-weight: 500;
+        }
+        .sec-rule {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-2), transparent);
+            margin: 2.2rem 0;
+        }
+
+        /* ---- paragraph styles ---- */
+        .lead {
+            font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+            color: var(--text);
+            font-weight: 500;
+            line-height: 1.9;
+        }
+        .lead strong, .content strong {
+            color: var(--gold-soft);
+            font-weight: 700;
+        }
+        .content { color: var(--muted); font-size: 0.98rem; line-height: 1.9; }
+
+        /* ---- question cards ---- */
+        .q-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-top: 1.8rem;
+        }
+        .q-card {
+            background: linear-gradient(150deg, var(--card-2) 0%, var(--card) 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.6rem 1.5rem;
+            position: relative;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+        }
+        .q-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 1.5rem; right: 1.5rem;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold-dim), transparent);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+        .q-card:hover { transform: translateY(-6px); border-color: var(--gold-dim); box-shadow: 0 14px 44px rgba(0,0,0,0.5); }
+        .q-card:hover::before { opacity: 1; }
+        .q-card .q-num {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 900;
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-bottom: 0.6rem;
+            display: block;
+        }
+        .q-card .q-text {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.02rem;
+            line-height: 1.7;
+            color: var(--text);
+        }
+
+        /* ---- scripture chips ---- */
+        .ref-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.8rem;
+        }
+        .chip {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            padding: 0.6rem 1.3rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-2);
+            background: var(--card);
+            color: var(--gold-soft);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+        }
+        .chip:hover {
+            border-color: var(--gold);
+            background: var(--gold-bg);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(245, 197, 24, 0.2);
+        }
+
+        /* ---- note ---- */
+        .note {
+            font-size: 0.92rem;
+            color: var(--dim);
+            font-style: italic;
+            border-left: 3px solid var(--border-2);
+            padding-left: 1rem;
+            margin-top: 1.8rem;
+        }
+
+        /* ---- table ---- */
+        .table-wrap {
+            margin-top: 1.8rem;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            background: var(--card);
+        }
+        .table-scroll { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; min-width: 640px; }
+        thead th {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.2em;
+            text-indent: 0.2em;
+            color: #1a1403;
+            background: linear-gradient(160deg, var(--gold-soft), var(--gold));
+            padding: 1rem 1.2rem;
+            text-align: center;
+            white-space: nowrap;
+        }
+        tbody td {
+            padding: 0.9rem 1.2rem;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.92rem;
+            text-align: center;
+            vertical-align: middle;
+        }
+        tbody tr:nth-child(even) { background: rgba(19, 29, 51, 0.4); }
+        tbody tr:hover { background: rgba(245, 197, 24, 0.04); }
+        tbody tr.ref-row { transition: background 0.6s ease; }
+        tbody tr.flash {
+            background: var(--gold-bg);
+            box-shadow: inset 0 0 0 1px var(--gold-dim);
+        }
+        td.ref-cell {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 700;
+            color: var(--gold-soft);
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+        td.write-cell { position: relative; min-height: 58px; color: transparent; }
+        td.write-cell::after {
+            content: '';
+            position: absolute;
+            left: 14px; right: 14px; bottom: 10px;
+            border-bottom: 1px dashed rgba(148, 165, 198, 0.3);
+        }
+        td.app-label {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 700;
+            color: var(--text);
+            text-align: left;
+            letter-spacing: 0.05em;
+        }
+        td.app-label .ref {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--gold-soft);
+            margin-top: 0.25rem;
+            letter-spacing: 0.04em;
+        }
+        td.app-write { text-align: left; min-width: 280px; }
+
+        /* ---- highlight card ---- */
+        .highlight-card {
+            margin-top: 2.4rem;
+            background:
+                radial-gradient(ellipse 120% 120% at 100% 0%, rgba(245, 197, 24, 0.08) 0%, transparent 50%),
+                linear-gradient(150deg, var(--card-2) 0%, var(--card) 100%);
+            border: 1px solid var(--gold-dim);
+            border-radius: 18px;
+            padding: 2rem 2.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .highlight-card::before {
+            content: '“';
+            position: absolute;
+            top: -1.2rem;
+            right: 0.8rem;
+            font-family: 'Noto Serif TC', serif;
+            font-size: 8rem;
+            color: rgba(245, 197, 24, 0.12);
+            line-height: 1;
+            pointer-events: none;
+        }
+        .highlight-card .hq {
+            font-family: 'Noto Serif TC', serif;
+            font-size: clamp(1.15rem, 2.6vw, 1.55rem);
+            font-weight: 700;
+            line-height: 1.75;
+            color: var(--text);
+        }
+        .highlight-card .hq-sub {
+            font-size: 0.9rem;
+            color: var(--dim);
+            margin-top: 1rem;
+            line-height: 1.7;
+        }
+
+        /* ---- writing lines ---- */
+        .write-lines { margin-top: 1.4rem; display: flex; flex-direction: column; gap: 1.1rem; }
+        .write-line {
+            height: 1px;
+            background: linear-gradient(90deg, rgba(148, 165, 198, 0.45), rgba(148, 165, 198, 0.12));
+            position: relative;
+        }
+        .write-line::after {
+            content: '';
+            position: absolute;
+            left: 0; top: -3px;
+            width: 5px; height: 7px;
+            background: var(--gold);
+            opacity: 0.5;
+            clip-path: polygon(0 100%, 100% 50%, 0 0);
+        }
+
+        /* ---- passage cards ---- */
+        .passage-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.4rem;
+            margin-top: 2.2rem;
+        }
+        .passage-card {
+            background: linear-gradient(155deg, var(--card-2) 0%, var(--card) 100%);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem 1.9rem;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.35);
+        }
+        .passage-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--gold-dim);
+            box-shadow: 0 18px 54px rgba(0, 0, 0, 0.55);
+        }
+        .passage-card .p-kicker {
+            font-size: 0.72rem;
+            letter-spacing: 0.4em;
+            text-indent: 0.4em;
+            color: var(--dim);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .passage-card .p-ref {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 900;
+            font-size: clamp(1.7rem, 4vw, 2.5rem);
+            background: linear-gradient(160deg, var(--gold-soft), var(--gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.04em;
+            margin-bottom: 1.6rem;
+        }
+        .passage-card .p-q {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            padding: 0.85rem 0;
+            border-top: 1px dashed var(--border);
+            font-family: 'Noto Serif TC', serif;
+            font-size: 0.98rem;
+            line-height: 1.7;
+            color: var(--muted);
+        }
+        .passage-card .p-q:first-of-type { border-top: none; padding-top: 0; }
+        .passage-card .p-q::before {
+            content: '?';
+            flex-shrink: 0;
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            font-size: 0.78rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0.2rem;
+        }
+
+        /* ---- clickable scripture links ---- */
+        .vref {
+            cursor: pointer;
+            border-bottom: 1px dashed rgba(245, 197, 24, 0.5);
+            border-radius: 3px;
+            padding: 0 2px;
+            transition: color 0.25s ease, background 0.25s ease;
+        }
+        .vref:hover { color: var(--gold-soft); background: var(--gold-bg); }
+        .vref:focus-visible { outline: 1px solid var(--gold); outline-offset: 2px; }
+        td.ref-cell.vref { border-bottom-color: transparent; }
+        td.ref-cell.vref:hover { background: var(--gold-bg); }
+        .bubble.vref { cursor: pointer; }
+        .app-label .ref.vref { border-bottom-color: transparent; }
+        .app-row .ref.vref { border-bottom-color: transparent; }
+
+        /* ---- passage images ---- */
+        .passage-card { padding: 0; overflow: hidden; }
+        .p-img { position: relative; margin: 0; }
+        .p-img img { width: 100%; height: 230px; object-fit: cover; display: block; }
+        .p-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(14, 22, 40, 0.95) 0%, rgba(14, 22, 40, 0.35) 45%, transparent 100%);
+        }
+        .p-img-cap {
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            z-index: 2;
+            padding: 0.6rem 1.5rem;
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
+            color: rgba(238, 242, 249, 0.85);
+        }
+        .p-body { padding: 1.8rem 1.9rem 2.1rem; }
+
+        /* ---- verse modal ---- */
+        .verse-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 300;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.2rem;
+            background: rgba(3, 5, 10, 0.72);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .verse-overlay.open { opacity: 1; visibility: visible; }
+        .verse-modal {
+            width: min(660px, 100%);
+            max-height: 82vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(155deg, var(--card-2) 0%, var(--card) 100%);
+            border: 1px solid var(--gold-dim);
+            border-radius: 20px;
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(245, 197, 24, 0.12), 0 0 70px rgba(245, 197, 24, 0.08);
+            transform: translateY(18px) scale(0.97);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .verse-overlay.open .verse-modal { transform: none; }
+        .verse-modal-head {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .verse-modal-tag {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-indent: 0.18em;
+            color: #1a1403;
+            background: linear-gradient(160deg, var(--gold-soft), var(--gold));
+            padding: 0.3rem 0.65rem;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+        .verse-modal-title {
+            flex: 1;
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 700;
+            font-size: 1.08rem;
+            color: var(--text);
+        }
+        .verse-close {
+            background: none;
+            border: none;
+            color: var(--dim);
+            font-size: 1.6rem;
+            line-height: 1;
+            width: 34px; height: 34px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        .verse-close:hover { color: var(--gold-soft); background: var(--gold-bg); }
+        .verse-modal-body {
+            padding: 1.4rem 1.6rem 1.2rem;
+            overflow-y: auto;
+        }
+        .verse-line { display: flex; gap: 0.75rem; margin-bottom: 1rem; }
+        .verse-line .vnum {
+            flex-shrink: 0;
+            width: 26px; height: 26px;
+            border-radius: 50%;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 700;
+            font-size: 0.78rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0.18rem;
+        }
+        .verse-line .vtext {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.04rem;
+            line-height: 1.85;
+            color: var(--text);
+        }
+        .verse-modal-foot {
+            padding: 0.9rem 1.6rem 1.15rem;
+            border-top: 1px solid var(--border);
+            color: var(--dim);
+            font-size: 0.74rem;
+            letter-spacing: 0.12em;
+            text-align: center;
+        }
+        @media (max-width: 640px) {
+            .p-img img { height: 170px; }
+            .p-body { padding: 1.4rem 1.4rem 1.6rem; }
+            .verse-modal-body { padding: 1.2rem 1.2rem 1rem; }
+        }
+
+        /* ---- application rows (mobile fallback) ---- */
+        .app-row {
+            background: linear-gradient(150deg, var(--card-2), var(--card));
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.2rem 1.3rem;
+            margin-top: 0.9rem;
+        }
+        .app-row .app-label { font-family: 'Noto Serif TC', serif; font-weight: 700; color: var(--text); }
+        .app-row .ref { color: var(--gold-soft); font-size: 0.85rem; margin-top: 0.2rem; }
+        .app-row .write-slot { margin-top: 0.8rem; border-bottom: 1px dashed rgba(148,165,198,0.3); height: 34px; }
+        @media (min-width: 768px) { .app-row { display: none; } }
+
+        /* ---- reflection ---- */
+        .reflect-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+            margin-top: 2.2rem;
+        }
+        .reflect-card {
+            background: linear-gradient(150deg, var(--card-2), var(--card));
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--gold);
+            border-radius: 16px;
+            padding: 1.7rem 2rem;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 22px rgba(0,0,0,0.3);
+        }
+        .reflect-card:hover { transform: translateX(6px); border-color: var(--gold-dim); }
+        .reflect-card .r-tag {
+            font-size: 0.7rem;
+            letter-spacing: 0.4em;
+            text-indent: 0.4em;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 0.6rem;
+        }
+        .reflect-card .r-text {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--text);
+        }
+
+        /* ---- footer ---- */
+        footer.end {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 5rem 1.5rem 4rem;
+            border-top: 1px solid var(--border);
+            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+        }
+        footer.end .end-mark {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 900;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            background: linear-gradient(160deg, #fff, var(--gold-soft));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.3em;
+            text-indent: 0.3em;
+        }
+        footer.end .end-sub {
+            color: var(--dim);
+            font-size: 0.85rem;
+            letter-spacing: 0.3em;
+            text-indent: 0.3em;
+            margin-top: 1rem;
+        }
+
+        /* ---- responsive ---- */
+        @media (max-width: 900px) {
+            .tracker { display: none; }
+            .navbar-links { display: none; }
+            .menu-btn { display: block; }
+            .passage-grid { grid-template-columns: 1fr; }
+        }
+        @media (min-width: 901px) {
+            .menu-btn { display: none; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal, .bubble, .scroll-hint .line { transition: none; animation: none; }
+            .reveal { opacity: 1; transform: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="stars" id="stars"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="#top" class="navbar-logo"><span class="dot"></span>曠野之行</a>
+        <div class="navbar-links">
+            <a href="#sec1">站在高處</a>
+            <a href="#sec2">穿上鞋去行</a>
+            <a href="#sec3">實際應用</a>
+            <a href="#sec4">這樣去行</a>
+        </div>
+        <button class="menu-btn" id="menuBtn" aria-label="選單">目錄</button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#sec1">站在高處一聖經怎麼說？</a>
+        <a href="#sec2">穿上鞋去行</a>
+        <a href="#sec3">實際應用</a>
+        <a href="#sec4">這樣去行一他人怎麼說？</a>
+    </div>
+
+    <!-- SIDE TRACKER -->
+    <div class="tracker" id="tracker">
+        <a class="tracker-item" href="#sec1" data-track="0"><span class="tracker-dot"></span><span class="tracker-label">聖經怎麼說？</span></a>
+        <a class="tracker-item" href="#sec2" data-track="1"><span class="tracker-dot"></span><span class="tracker-label">穿上鞋去行</span></a>
+        <a class="tracker-item" href="#sec3" data-track="2"><span class="tracker-dot"></span><span class="tracker-label">實際應用</span></a>
+        <a class="tracker-item" href="#sec4" data-track="3"><span class="tracker-dot"></span><span class="tracker-label">這樣去行</span></a>
+    </div>
+
+    <!-- HERO -->
+    <header class="hero" id="top">
+        <div class="hero-chapter reveal">第一課</div>
+        <div class="hero-outline reveal">曠野之行</div>
+        <h1 class="hero-title reveal">門徒呼召</h1>
+        <p class="hero-tagline reveal">耶穌說要成為祂的門徒要有那些特性？</p>
+
+        <div class="hero-bubbles reveal">
+            <span class="bubble vref" data-verse="太十六:24" tabindex="0">太十六:24</span>
+            <span class="bubble vref" data-verse="路十四:27" tabindex="0">路十四:27</span>
+            <span class="bubble vref" data-verse="十四:26" tabindex="0">十四:26</span>
+            <span class="bubble vref" data-verse="十四:33" tabindex="0">十四:33</span>
+            <span class="bubble vref" data-verse="約八:31、32" tabindex="0">約八:31、32</span>
+            <span class="bubble vref" data-verse="十三:34、35" tabindex="0">十三:34、35</span>
+            <span class="bubble vref" data-verse="十五:8" tabindex="0">十五:8</span>
+        </div>
+
+        <a href="#sec1" class="btn">開始</a>
+
+        <div class="scroll-hint">
+            <span>繼續</span>
+            <div class="line"></div>
+        </div>
+    </header>
+
+    <!-- SECTION 1 -->
+    <section class="block" id="sec1">
+        <div class="ghost-num">01</div>
+        <div class="stage">
+            <div class="kicker reveal">站在高處</div>
+            <div class="big-title reveal">站在高處<span class="hl">一</span>聖經怎麼說？</div>
+
+            <div class="sec-rule reveal"></div>
+
+            <p class="lead reveal">閱讀以下經文，耶穌說要<strong>成為祂的門徒</strong>要有那些特性？</p>
+
+            <p class="content reveal" style="margin-top:1.6rem;">當你注意這些門徒特點時，思考這些問題：</p>
+
+            <div class="q-grid">
+                <div class="q-card reveal">
+                    <span class="q-num">Q1</span>
+                    <p class="q-text">耶穌在這段經文中真正要表達的是什麼？</p>
+                </div>
+                <div class="q-card reveal">
+                    <span class="q-num">Q2</span>
+                    <p class="q-text">祂的要求很高嗎？</p>
+                </div>
+                <div class="q-card reveal">
+                    <span class="q-num">Q3</span>
+                    <p class="q-text">在隨從每一個命令時，重要的心態是什麼？</p>
+                </div>
+            </div>
+
+            <div class="ref-chips reveal" id="refChips">
+                <button class="chip" data-ref="0" data-verse="太十六:24">太十六:24</button>
+                <button class="chip" data-ref="1" data-verse="路十四:27">路十四:27</button>
+                <button class="chip" data-ref="2" data-verse="十四:26">十四:26</button>
+                <button class="chip" data-ref="3" data-verse="十四:33">十四:33</button>
+                <button class="chip" data-ref="4" data-verse="約八:31、32">約八:31、32</button>
+                <button class="chip" data-ref="5" data-verse="十三:34、35">十三:34、35</button>
+                <button class="chip" data-ref="6" data-verse="十五:8">十五:8</button>
+            </div>
+
+            <p class="note reveal">（你可以如下圖，畫一個表來完成這部分學習）</p>
+
+            <div class="table-wrap reveal">
+                <div class="table-scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>經文</th>
+                                <th>當時狀況</th>
+                                <th>意義</th>
+                                <th>心態</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="ref-row" data-ref="0"><td class="ref-cell vref" data-verse="太十六:24" tabindex="0">太十六:24</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+                            <tr class="ref-row" data-ref="1"><td class="ref-cell vref" data-verse="路十四:27" tabindex="0">路十四:27</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+                            <tr class="ref-row" data-ref="2"><td class="ref-cell vref" data-verse="十四:26" tabindex="0">十四:26</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+                            <tr class="ref-row" data-ref="3"><td class="ref-cell vref" data-verse="十四:33" tabindex="0">十四:33</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+                            <tr class="ref-row" data-ref="4"><td class="ref-cell vref" data-verse="約八:31、32" tabindex="0">約八:31、32</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+                            <tr class="ref-row" data-ref="5"><td class="ref-cell vref" data-verse="十三:34、35" tabindex="0">十三:34、35</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+                            <tr class="ref-row" data-ref="6"><td class="ref-cell vref" data-verse="十五:8" tabindex="0">十五:8</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="highlight-card reveal">
+                <p class="hq">耶穌有十二個門徒，今天我們是否可能成為門徒？</p>
+                <p class="hq-sub">查考<span class="vref" data-verse="太二十八:19、20" tabindex="0">太二十八:19、20</span>耶穌的命令如何幫助我們回答這個問題？</p>
+            </div>
+
+            <div class="highlight-card reveal" style="border-color: var(--border-2);">
+                <p class="hq">寫出你認為被呼召作基督門徒的目的。</p>
+                <p class="hq-sub">耶穌的門徒被呼召作 ....</p>
+                <div class="write-lines">
+                    <div class="write-line"></div>
+                    <div class="write-line"></div>
+                    <div class="write-line"></div>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top:3rem;">
+                <a href="#sec2" class="btn">繼續</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section class="block" id="sec2" style="background: linear-gradient(to bottom, transparent, rgba(10,16,31,0.6) 18%, rgba(10,16,31,0.6) 82%, transparent);">
+        <div class="ghost-num">02</div>
+        <div class="stage">
+            <div class="kicker reveal">穿上鞋去行</div>
+            <div class="big-title reveal">穿上鞋去行<span class="hl">一</span>我從他人的經驗中學習到了什麼？</div>
+
+            <div class="sec-rule reveal"></div>
+
+            <p class="lead reveal">查考這些經文，看看門徒如何回應耶穌的呼召，以及作門徒要付出什麼代價。</p>
+
+            <div class="passage-grid">
+                <article class="passage-card reveal" data-verse="可一:14 ～ 20" tabindex="0" role="button" aria-label="查看經文 可一:14 ～ 20">
+                    <figure class="p-img">
+                        <img src="peter-andrew-calling.jpg" alt="卡拉瓦喬《呼召彼得與安得烈》" loading="lazy">
+                        <figcaption class="p-img-cap">呼召彼得與安得烈 — 卡拉瓦喬 (Caravaggio)</figcaption>
+                    </figure>
+                    <div class="p-body">
+                        <div class="p-kicker">查考</div>
+                        <div class="p-ref vref" data-verse="可一:14 ～ 20">可一:14 ～ 20</div>
+                        <div class="p-q">耶穌向這些門徒潛力的人說些什麼？那是什麼意思？</div>
+                        <div class="p-q">他們對耶穌的回應是什麼？</div>
+                        <div class="p-q">對這些人而言，作門徒的代價有哪些？</div>
+                    </div>
+                </article>
+
+                <article class="passage-card reveal" data-verse="可十:17 ～ 31" tabindex="0" role="button" aria-label="查看經文 可十:17 ～ 31">
+                    <figure class="p-img">
+                        <img src="rich-young-ruler.jpg" alt="霍夫曼《基督與富有的青年官長》" loading="lazy">
+                        <figcaption class="p-img-cap">基督與富有的青年官長 — 海因里希・霍夫曼 (Heinrich Hofmann)</figcaption>
+                    </figure>
+                    <div class="p-body">
+                        <div class="p-kicker">查考</div>
+                        <div class="p-ref vref" data-verse="可十:17 ～ 31">可十:17 ～ 31</div>
+                        <div class="p-q">這個人的問題是什麼？耶穌怎麼回答？為什麼耶穌這樣回答？</div>
+                        <div class="p-q">什麼因素使得他要跟從耶穌？</div>
+                        <div class="p-q">門徒們從這件事學習到什麼？</div>
+                    </div>
+                </article>
+            </div>
+
+            <div style="text-align:center; margin-top:3.4rem;">
+                <a href="#sec3" class="btn">繼續</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section class="block" id="sec3">
+        <div class="ghost-num">03</div>
+        <div class="stage">
+            <div class="kicker reveal">實際應用</div>
+            <div class="big-title reveal">實際應用<span class="hl">一</span>我該怎麼做以成為耶穌的跟隨者？</div>
+
+            <div class="sec-rule reveal"></div>
+
+            <p class="lead reveal">查考下列經文，再次注意這些門徒的標誌。你可以實際的做些什麼以在生活中應用神的話？</p>
+
+            <div class="table-wrap reveal">
+                <div class="table-scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>經文</th>
+                                <th>實際應用</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="app-label">遵守神的話<span class="ref vref" data-verse="約八:31、32" tabindex="0">— 約八:31、32</span></td><td class="write-cell app-write"></td></tr>
+                            <tr><td class="app-label">結果子<span class="ref vref" data-verse="約十五:8" tabindex="0">— 約十五:8</span></td><td class="write-cell app-write"></td></tr>
+                            <tr><td class="app-label">背十字架<span class="ref vref" data-verse="路十四:27" tabindex="0">— 路十四:27</span></td><td class="write-cell app-write"></td></tr>
+                            <tr><td class="app-label">捨己<span class="ref vref" data-verse="太十六:24" tabindex="0">— 太十六:24</span></td><td class="write-cell app-write"></td></tr>
+                            <tr><td class="app-label">基督居首位<span class="ref vref" data-verse="路十四:26" tabindex="0">— 路十四:26</span></td><td class="write-cell app-write"></td></tr>
+                            <tr><td class="app-label">捨棄一切<span class="ref vref" data-verse="路十四:33" tabindex="0">— 路十四:33</span></td><td class="write-cell app-write"></td></tr>
+                            <tr><td class="app-label">神的愛<span class="ref vref" data-verse="約十三:34、35" tabindex="0">— 約十三:34、35</span></td><td class="write-cell app-write"></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="appRows">
+                <div class="app-row">
+                    <div class="app-label">遵守神的話</div>
+                    <div class="ref vref" data-verse="約八:31、32" tabindex="0">— 約八:31、32</div>
+                    <div class="write-slot"></div>
+                </div>
+                <div class="app-row">
+                    <div class="app-label">結果子</div>
+                    <div class="ref vref" data-verse="約十五:8" tabindex="0">— 約十五:8</div>
+                    <div class="write-slot"></div>
+                </div>
+                <div class="app-row">
+                    <div class="app-label">背十字架</div>
+                    <div class="ref vref" data-verse="路十四:27" tabindex="0">— 路十四:27</div>
+                    <div class="write-slot"></div>
+                </div>
+                <div class="app-row">
+                    <div class="app-label">捨己</div>
+                    <div class="ref vref" data-verse="太十六:24" tabindex="0">— 太十六:24</div>
+                    <div class="write-slot"></div>
+                </div>
+                <div class="app-row">
+                    <div class="app-label">基督居首位</div>
+                    <div class="ref vref" data-verse="路十四:26" tabindex="0">— 路十四:26</div>
+                    <div class="write-slot"></div>
+                </div>
+                <div class="app-row">
+                    <div class="app-label">捨棄一切</div>
+                    <div class="ref vref" data-verse="路十四:33" tabindex="0">— 路十四:33</div>
+                    <div class="write-slot"></div>
+                </div>
+                <div class="app-row">
+                    <div class="app-label">神的愛</div>
+                    <div class="ref vref" data-verse="約十三:34、35" tabindex="0">— 約十三:34、35</div>
+                    <div class="write-slot"></div>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top:3.4rem;">
+                <a href="#sec4" class="btn">繼續</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section class="block" id="sec4" style="background: linear-gradient(to bottom, transparent, rgba(10,16,31,0.6) 18%, rgba(10,16,31,0.6) 82%, transparent);">
+        <div class="ghost-num">04</div>
+        <div class="stage">
+            <div class="kicker reveal">這樣去行</div>
+            <div class="big-title reveal">這樣去行<span class="hl">一</span>他人怎麼說？</div>
+
+            <div class="sec-rule reveal"></div>
+
+            <div class="reflect-grid">
+                <div class="reflect-card reveal">
+                    <div class="r-tag">省思</div>
+                    <p class="r-text">你有否遵行任何現代或前人的教訓？你欣賞他們什麼？</p>
+                </div>
+                <div class="reflect-card reveal">
+                    <div class="r-tag">省思</div>
+                    <p class="r-text">你認為一個人要跟隨耶穌可能嗎？</p>
+                </div>
+                <div class="reflect-card reveal">
+                    <div class="r-tag">省思</div>
+                    <p class="r-text">如果你遇見一個人他想跟隨耶穌，你會期望他們是怎樣的人？</p>
+                </div>
+            </div>
+
+            <div class="write-lines reveal" style="margin-top:2.4rem;">
+                <div class="write-line"></div>
+                <div class="write-line"></div>
+                <div class="write-line"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="end">
+        <div class="end-mark reveal">曠野之行</div>
+        <div class="end-sub reveal">第一課・門徒呼召</div>
+        <div style="margin-top:2.4rem;">
+            <a href="#top" class="btn">回到頂部</a>
+        </div>
+    </footer>
+
+    <!-- VERSE MODAL -->
+    <div class="verse-overlay" id="verseOverlay">
+        <div class="verse-modal" role="dialog" aria-modal="true" aria-labelledby="verseTitle">
+            <div class="verse-modal-head">
+                <span class="verse-modal-tag">CCB</span>
+                <div class="verse-modal-title" id="verseTitle"></div>
+                <button class="verse-close" id="verseClose" aria-label="關閉">&times;</button>
+            </div>
+            <div class="verse-modal-body" id="verseBody"></div>
+            <div class="verse-modal-foot">中文當代譯本・Chinese Contemporary Bible (CCB)</div>
+        </div>
+    </div>
+
+    <script>
+        // ---- starfield ----
+        (function () {
+            const wrap = document.getElementById('stars');
+            if (!wrap) return;
+            const count = 90;
+            for (let i = 0; i < count; i++) {
+                const s = document.createElement('span');
+                s.className = 'star';
+                const size = Math.random() * 2.2 + 0.6;
+                s.style.width = size + 'px';
+                s.style.height = size + 'px';
+                s.style.left = Math.random() * 100 + '%';
+                s.style.top = Math.random() * 100 + '%';
+                s.style.animationDuration = (2 + Math.random() * 5) + 's';
+                s.style.animationDelay = (Math.random() * 6) + 's';
+                wrap.appendChild(s);
+            }
+        })();
+
+        // ---- scroll progress + tracker + reveal ----
+        const progress = document.getElementById('scrollProgress');
+        const trackerItems = document.querySelectorAll('.tracker-item');
+        const sections = ['sec1', 'sec2', 'sec3', 'sec4'].map(id => document.getElementById(id));
+        const revealEls = document.querySelectorAll('.reveal');
+
+        function onScroll() {
+            const h = document.documentElement;
+            const max = h.scrollHeight - h.clientHeight;
+            progress.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+
+            let current = 0;
+            sections.forEach((sec, i) => {
+                if (sec) {
+                    const r = sec.getBoundingClientRect();
+                    if (r.top <= window.innerHeight * 0.5) current = i;
+                }
+            });
+            trackerItems.forEach((item, i) => {
+                item.classList.toggle('active', i === current);
+            });
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    io.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+        revealEls.forEach(el => io.observe(el));
+
+        // ---- mobile menu ----
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+        });
+        mobileMenu.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        });
+
+        // ---- verse popup (CCB 中文當代譯本) ----
+        const VERSES = {
+            '太十六:24': {
+                title: '馬太福音 16:24',
+                verses: [['24', '於是耶穌對門徒說：“如果有人要跟從我，就應當捨己，背起他的十字架跟從我。']]
+            },
+            '路十四:27': {
+                title: '路加福音 14:27',
+                verses: [['27', '若不背起自己的十字架跟從我，就不能做我的門徒。']]
+            },
+            '十四:26': {
+                title: '路加福音 14:26',
+                verses: [['26', '“若有人要跟從我，就要愛我勝過愛他的父母、妻子、兒女、弟兄、姊妹，甚至自己的生命，否則就不能做我的門徒。']]
+            },
+            '十四:33': {
+                title: '路加福音 14:33',
+                verses: [['33', '“同樣，你們若不撇下一切，就不能做我的門徒。']]
+            },
+            '約八:31、32': {
+                title: '約翰福音 8:31-32',
+                verses: [
+                    ['31', '耶穌對信祂的猶太人說：“你們若持守我的道，就真是我的門徒了。'],
+                    ['32', '你們必認識真理，真理必叫你們得到自由。”']
+                ]
+            },
+            '十三:34、35': {
+                title: '約翰福音 13:34-35',
+                verses: [
+                    ['34', '我賜給你們一條新命令——你們要彼此相愛。我怎樣愛你們，你們也要怎樣彼此相愛。'],
+                    ['35', '你們如果彼此相愛，世人就會認出你們是我的門徒。”']
+                ]
+            },
+            '十五:8': {
+                title: '約翰福音 15:8',
+                verses: [['8', '你們多結果子，證明自己是我的門徒，就會給我父帶來榮耀。']]
+            },
+            '太二十八:19、20': {
+                title: '馬太福音 28:19-20',
+                verses: [
+                    ['19', '所以，你們要去使萬民做我的門徒，奉父、子、聖靈的名給他們施洗，'],
+                    ['20', '教導他們遵守我吩咐你們的一切。記住，我必常與你們同在，一直到世界的末了。”']
+                ]
+            },
+            '可一:14 ～ 20': {
+                title: '馬可福音 1:14-20',
+                verses: [
+                    ['14', '約翰被捕後，耶穌來到加利利宣講上帝的福音，說：'],
+                    ['15', '“時候到了，上帝的國臨近了，你們要悔改，相信福音。”'],
+                    ['16', '耶穌沿著加利利湖邊走，看見兩個漁夫——西門和他的弟弟安得烈正在湖上撒網捕魚。'],
+                    ['17', '耶穌對他們說：“來跟從我！我要使你們成為得人的漁夫。”'],
+                    ['18', '他們立刻拋下漁網，跟從了耶穌。'],
+                    ['19', '耶穌往前走了不遠，又看見西庇太的兩個兒子雅各和約翰正在船上補網，'],
+                    ['20', '便立刻呼召他們。他們就辭別父親和船上的工人，跟從了耶穌。']
+                ]
+            },
+            '可十:17 ～ 31': {
+                title: '馬可福音 10:17-31',
+                verses: [
+                    ['17', '耶穌正要上路，有一個人跑來跪在祂跟前，問祂：“良善的老師，我該做什麼才能承受永生？”'],
+                    ['18', '耶穌說：“你為什麼稱呼我‘良善的老師’呢？只有上帝是良善的。'],
+                    ['19', '你知道‘不可殺人，不可通姦，不可偷盜，不可作偽證，不可欺詐，要孝敬父母’這些誡命。”'],
+                    ['20', '那人說：“老師，我從小就遵行這些誡命。”'],
+                    ['21', '耶穌望著他，心中愛他，便說：“你還有一件事沒有做，就是變賣你所有的產業，送給窮人，你必有財寶存在天上，然後你還要來跟從我。”'],
+                    ['22', '那人聽了，臉色驟變，便沮喪地走了，因為他有許多產業。'],
+                    ['23', '耶穌看看周圍的人，對門徒說：“有錢人進上帝的國真難啊！”'],
+                    ['24', '門徒聽了感到驚奇，耶穌便再次對他們說：“孩子們，進上帝的國多麼難啊！'],
+                    ['25', '駱駝穿過針眼比有錢人進上帝的國還容易呢！”'],
+                    ['26', '門徒更加驚奇，便議論說：“這樣，誰能得救呢？”'],
+                    ['27', '耶穌看著他們說：“對人而言，這不可能，但對上帝而言，凡事都可能。”'],
+                    ['28', '彼得說：“你看，我們已經撇下一切來跟從你了。”'],
+                    ['29', '耶穌說：“我實在告訴你們，任何人為了我和福音而撇下房屋、弟兄、姊妹、父母、兒女或田地，'],
+                    ['30', '今世必在房屋、弟兄、姊妹、父母、兒女或田地方面獲得百倍的回報，來世必得永生。當然他也會受到迫害。'],
+                    ['31', '然而，許多為首的將要殿後，殿後的將要為首。”']
+                ]
+            }
+        };
+
+        VERSES['約十五:8'] = VERSES['十五:8'];
+        VERSES['約十三:34、35'] = VERSES['十三:34、35'];
+        VERSES['路十四:26'] = VERSES['十四:26'];
+        VERSES['路十四:33'] = VERSES['十四:33'];
+
+        const verseOverlay = document.getElementById('verseOverlay');
+        const verseTitleEl = document.getElementById('verseTitle');
+        const verseBodyEl = document.getElementById('verseBody');
+        const verseCloseEl = document.getElementById('verseClose');
+
+        function openVerse(key) {
+            const data = VERSES[key];
+            if (!data) return;
+            verseTitleEl.textContent = data.title;
+            verseBodyEl.innerHTML = data.verses.map(function (v) {
+                return '<div class="verse-line"><span class="vnum">' + v[0] + '</span><span class="vtext">' + v[1] + '</span></div>';
+            }).join('');
+            verseOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVerse() {
+            verseOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        verseOverlay.addEventListener('click', function (e) {
+            if (e.target === verseOverlay) closeVerse();
+        });
+        verseCloseEl.addEventListener('click', closeVerse);
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && verseOverlay.classList.contains('open')) closeVerse();
+        });
+
+        document.querySelectorAll('[data-verse]').forEach(function (el) {
+            el.addEventListener('click', function () {
+                openVerse(el.dataset.verse);
+            });
+            el.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openVerse(el.dataset.verse);
+                }
+            });
+        });
+
+        // ---- scripture chip -> table row highlight ----
+        const chips = document.querySelectorAll('#refChips .chip');
+        const rows = document.querySelectorAll('tbody tr.ref-row');
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                const target = chip.dataset.ref;
+                rows.forEach(r => r.classList.remove('flash'));
+                const row = document.querySelector('tr.ref-row[data-ref="' + target + '"]');
+                if (row) {
+                    row.classList.add('flash');
+                    row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    setTimeout(() => row.classList.remove('flash'), 2200);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
