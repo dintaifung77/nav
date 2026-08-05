@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiet Time Dashboard 靜時刻 (Bilingual 雙語)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0f1a;
+            --bg-elevated: #111827;
+            --card: #141d2f;
+            --border: #243048;
+            --border-light: #2d3a55;
+            --text: #e8ecf4;
+            --text-muted: #8b9bc3;
+            --text-dim: #5a6b8a;
+            --accent: #d4a843;
+            --accent-glow: #e8c56d;
+            --accent-dim: #a88333;
+            --accent-bg: rgba(212, 168, 67, 0.12);
+            --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(212, 168, 67, 0.06);
+            --card-shadow-hover: 0 12px 48px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 168, 67, 0.2), 0 0 60px rgba(212, 168, 67, 0.08);
+            --know-color: #3498db;
+            --tips-color: #27ae60;
+            --abc-color: #9b59b6;
+            --start-color: #e67e22;
+            --prayer-color: #e74c3c;
+        }
+
+        * { box-sizing: border-box; }
+        html, body { height: 100%; margin: 0; }
+        body {
+            font-family: 'Inter', 'Noto Serif TC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse 80% 50% at 20% 10%, rgba(52, 152, 219, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 80% 90%, rgba(155, 89, 182, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 2.5rem 1rem 0.5rem;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        .hero-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.4rem;
+            background: linear-gradient(135deg, var(--text) 0%, var(--accent-glow) 50%, var(--text) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-subtitle {
+            font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+            color: var(--text-muted);
+            font-weight: 300;
+            line-height: 1.5;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .hero-author {
+            margin-top: 0.5rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--accent-dim);
+        }
+
+        /* Language toggle */
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 auto 1.2rem;
+            justify-content: center;
+        }
+        .lang-switch .l {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .lang-switch .l.en { color: var(--accent-glow); }
+        .lang-switch .l.zh { color: var(--text-dim); }
+        .switch { position: relative; width: 52px; height: 28px; flex: none; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute; inset: 0;
+            background: var(--border);
+            border-radius: 99px;
+            transition: 0.25s;
+            cursor: pointer;
+            box-shadow: inset 0 0 0 1px var(--border-light);
+        }
+        .slider:before {
+            content: "";
+            position: absolute; left: 3px; top: 3px;
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            background: var(--text);
+            transition: 0.25s;
+        }
+        .switch input:checked + .slider { background: var(--accent); }
+        .switch input:checked + .slider:before { transform: translateX(24px); background: #0a0f1a; }
+        .lang-switch.zh .l.en { color: var(--text-dim); }
+        .lang-switch.zh .l.zh { color: var(--accent-glow); }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem 2rem;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin: 2rem 0 1rem;
+            position: relative;
+        }
+        .section-header::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .section-header h2 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent-glow);
+            background: var(--bg);
+            padding: 0 1rem;
+            display: inline-block;
+            position: relative;
+        }
+
+        /* Flow Container */
+        .flow-container {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            overflow-x: auto;
+            padding: 1rem 0;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        .flow-container::-webkit-scrollbar { height: 6px; }
+        .flow-container::-webkit-scrollbar-track { background: var(--bg); }
+        .flow-container::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 3px; }
+
+        /* Flow Arrow */
+        .flow-arrow {
+            flex: 0 0 auto;
+            width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-dim);
+            font-size: 1.5rem;
+            scroll-snap-align: none;
+        }
+
+        /* Flow Cards */
+        .flow-card {
+            flex: 0 0 auto;
+            width: 180px;
+            background: linear-gradient(145deg, var(--card) 0%, var(--bg-elevated) 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            scroll-snap-align: center;
+        }
+        .flow-card:hover {
+            box-shadow: var(--card-shadow-hover);
+            border-color: var(--accent-dim);
+            transform: translateY(-4px) scale(1.02);
+        }
+
+        /* Card Type Colors */
+        .card-type-know { border-top: 3px solid var(--know-color); }
+        .card-type-tips { border-top: 3px solid var(--tips-color); }
+        .card-type-abc { border-top: 3px solid var(--abc-color); }
+        .card-type-start { border-top: 3px solid var(--start-color); }
+        .card-type-why { border-top: 3px solid #f1c40f; }
+
+        .card-step {
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .step-know { color: var(--know-color); }
+        .step-tips { color: var(--tips-color); }
+        .step-abc { color: var(--abc-color); }
+        .step-start { color: var(--start-color); }
+        .step-why { color: #f1c40f; }
+
+        .card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .card-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.35;
+            margin-bottom: 0.3rem;
+        }
+        .card-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Grid Sections */
+        .tips-grid, .abc-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .tip-card, .abc-card {
+            background: linear-gradient(145deg, var(--card) 0%, var(--bg-elevated) 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+        .tip-card:hover, .abc-card:hover {
+            box-shadow: var(--card-shadow-hover);
+            border-color: var(--accent-dim);
+            transform: translateY(-4px);
+        }
+
+        .tip-letter, .abc-letter {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .tip-letter.time { color: var(--tips-color); }
+        .tip-letter.place { color: var(--know-color); }
+        .tip-letter.plan { color: var(--abc-color); }
+        .abc-letter.ask { color: var(--abc-color); }
+        .abc-letter.best { color: var(--accent); }
+        .abc-letter.commit { color: var(--prayer-color); }
+
+        .tip-title, .abc-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+        .tip-desc, .abc-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .tip-desc ul, .abc-desc ul {
+            margin: 0.5rem 0 0 1.2rem;
+            padding: 0;
+        }
+        .tip-desc li, .abc-desc li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Books Grid */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+        .book-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 0.9rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .book-card:hover {
+            border-color: var(--accent-dim);
+            box-shadow: var(--card-shadow-hover);
+        }
+        .book-name {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.2rem;
+        }
+        .book-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Verse Card */
+        .verse-card {
+            background: linear-gradient(145deg, var(--card) 0%, var(--bg-elevated) 100%);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .verse-ref {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-glow);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.5rem;
+        }
+        .verse-text {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Prayer Card */
+        .prayer-card {
+            background: linear-gradient(145deg, var(--card) 0%, var(--bg-elevated) 100%);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--prayer-color);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin: 1rem 0;
+        }
+        .prayer-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--prayer-color);
+            margin-bottom: 0.75rem;
+        }
+        .prayer-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-style: italic;
+        }
+        .prayer-text p {
+            margin-bottom: 0.4rem;
+        }
+
+        /* POPOVER MODAL */
+        .popover-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.95);
+            width: 90%;
+            max-width: 420px;
+            max-height: 75vh;
+            background: linear-gradient(145deg, var(--card) 0%, var(--bg-elevated) 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.25rem;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(212, 168, 67, 0.15);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow-y: auto;
+            text-align: left;
+        }
+        .popover-modal.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .popover-modal::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+        .popover-modal.open::before { opacity: 1; }
+
+        .popover-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .popover-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.35;
+        }
+        .popover-close {
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            font-size: 1.5rem;
+            line-height: 1;
+            cursor: pointer;
+            padding: 0;
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        .popover-close:hover { color: var(--accent-glow); background: var(--accent-bg); }
+
+        .popover-content {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .popover-content p { margin-bottom: 0.6rem; }
+        .popover-content p:last-child { margin-bottom: 0; }
+        .popover-content strong { color: var(--text); font-weight: 600; }
+        .popover-content blockquote {
+            border-left: 3px solid var(--accent-dim);
+            padding-left: 0.75rem;
+            margin: 0.75rem 0;
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .popover-content ul {
+            margin: 0.5rem 0;
+            padding-left: 1.2rem;
+        }
+        .popover-content li {
+            margin-bottom: 0.3rem;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .flow-card, .tip-card, .abc-card, .popover-modal { transition: none; }
+        }
+
+        @media (max-width: 900px) {
+            .tips-grid, .abc-grid { grid-template-columns: 1fr; }
+            .flow-card { width: 160px; padding: 0.75rem; }
+            .popover-modal { width: 95%; max-height: 80vh; padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="lang-switch" id="langBox">
+            <span class="l en">EN</span>
+            <label class="switch"><input type="checkbox" id="langToggle"><span class="slider"></span></label>
+            <span class="l zh">中文</span>
+        </div>
+        <h1 class="hero-title" data-i="hero.title">Quiet Time: Growing Closer to Jesus</h1>
+        <p class="hero-subtitle" data-i="hero.subtitle">A guide to developing a daily habit of spending time with God</p>
+        <p class="hero-author" data-i="hero.author">Leanna</p>
+    </header>
+
+    <main class="main-content">
+        <!-- Flow Overview -->
+        <div class="section-header">
+            <h2 data-i="sec.journey">The Journey</h2>
+        </div>
+
+        <div class="flow-container">
+            <article class="flow-card card-type-know" tabindex="0" data-card-id="what">
+                <span class="card-step step-know" data-i="step.1">STEP 1</span>
+                <div class="card-icon">🤫</div>
+                <h3 class="card-title" data-i="card.what.title">What is a Quiet Time?</h3>
+                <p class="card-desc" data-i="card.what.desc">Alone time with God</p>
+            </article>
+
+            <div class="flow-arrow">→</div>
+
+            <article class="flow-card card-type-why" tabindex="0" data-card-id="why">
+                <span class="card-step step-why" data-i="step.2">STEP 2</span>
+                <div class="card-icon">💡</div>
+                <h3 class="card-title" data-i="card.why.title">Why Quiet Time?</h3>
+                <p class="card-desc" data-i="card.why.desc">Relationships need time</p>
+            </article>
+
+            <div class="flow-arrow">→</div>
+
+            <article class="flow-card card-type-know" tabindex="0" data-card-id="know">
+                <span class="card-step step-know" data-i="step.3">STEP 3</span>
+                <div class="card-icon">📖</div>
+                <h3 class="card-title" data-i="card.know.title">Know Jesus</h3>
+                <p class="card-desc" data-i="card.know.desc">Through His Word</p>
+            </article>
+
+            <div class="flow-arrow">→</div>
+
+            <article class="flow-card card-type-tips" tabindex="0" data-card-id="time">
+                <span class="card-step step-tips" data-i="step.4">STEP 4</span>
+                <div class="card-icon">⏰</div>
+                <h3 class="card-title" data-i="card.time.title">Time</h3>
+                <p class="card-desc" data-i="card.time.desc">Pick a consistent time</p>
+            </article>
+
+            <div class="flow-arrow">→</div>
+
+            <article class="flow-card card-type-tips" tabindex="0" data-card-id="place">
+                <span class="card-step step-tips" data-i="step.5">STEP 5</span>
+                <div class="card-icon">📍</div>
+                <h3 class="card-title" data-i="card.place.title">Place</h3>
+                <p class="card-desc" data-i="card.place.desc">Find a distraction-free spot</p>
+            </article>
+
+            <div class="flow-arrow">→</div>
+
+            <article class="flow-card card-type-tips" tabindex="0" data-card-id="plan">
+                <span class="card-step step-tips" data-i="step.6">STEP 6</span>
+                <div class="card-icon">📝</div>
+                <h3 class="card-title" data-i="card.plan.title">Plan</h3>
+                <p class="card-desc" data-i="card.plan.desc">Decide what to read/do</p>
+            </article>
+
+            <div class="flow-arrow">→</div>
+
+            <article class="flow-card card-type-abc" tabindex="0" data-card-id="abc">
+                <span class="card-step step-abc" data-i="step.7">STEP 7</span>
+                <div class="card-icon">🔤</div>
+                <h3 class="card-title" data-i="card.abc.title">The ABCs</h3>
+                <p class="card-desc" data-i="card.abc.desc">Ask, Best Verse, Commit</p>
+            </article>
+
+            <div class="flow-arrow">→</div>
+
+            <article class="flow-card card-type-start" tabindex="0" data-card-id="start">
+                <span class="card-step step-start" data-i="step.start">START</span>
+                <div class="card-icon">🚀</div>
+                <h3 class="card-title" data-i="card.start.title">Where to Start</h3>
+                <p class="card-desc" data-i="card.start.desc">Pick a book of the Bible</p>
+            </article>
+        </div>
+
+        <!-- TIME, PLACE, PLAN Grid -->
+        <div class="section-header">
+            <h2 data-i="sec.keys">The Three Keys (Mark 1:35)</h2>
+        </div>
+
+        <div class="tips-grid">
+            <article class="tip-card" tabindex="0" data-card-id="time-detail">
+                <div class="tip-letter time">T</div>
+                <h3 class="tip-title" data-i="tip.time.title">TIME</h3>
+                <div class="tip-desc">
+                    <ul>
+                        <li data-i="tip.time.l1">Even 5 minutes is better than none</li>
+                        <li data-i="tip.time.l2">Consistency is key</li>
+                        <li data-i="tip.time.l3">Morning, lunch, after class, before bed?</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="tip-card" tabindex="0" data-card-id="place-detail">
+                <div class="tip-letter place">P</div>
+                <h3 class="tip-title" data-i="tip.place.title">PLACE</h3>
+                <div class="tip-desc">
+                    <ul>
+                        <li data-i="tip.place.l1">Find where you're not distracted</li>
+                        <li data-i="tip.place.l2">Bedroom, cafe, or at school</li>
+                        <li data-i="tip.place.l3">Jesus chose "a solitary place"</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="tip-card" tabindex="0" data-card-id="plan-detail">
+                <div class="tip-letter plan">P</div>
+                <h3 class="tip-title" data-i="tip.plan.title">PLAN</h3>
+                <div class="tip-desc">
+                    <ul>
+                        <li data-i="tip.plan.l1">Choose your Bible passage</li>
+                        <li data-i="tip.plan.l2">Meditate, memorize, or research</li>
+                        <li data-i="tip.plan.l3">Journal your reflections</li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+
+        <!-- ABCs Grid -->
+        <div class="section-header">
+            <h2 data-i="sec.abc">The ABCs of Bible Reading</h2>
+        </div>
+
+        <div class="abc-grid">
+            <article class="abc-card" tabindex="0" data-card-id="a">
+                <div class="abc-letter ask">A</div>
+                <h3 class="abc-title" data-i="abc.a.title">ASK Questions</h3>
+                <div class="abc-desc">
+                    <ul>
+                        <li data-i="abc.a.l1">Who is speaking? To whom? Why?</li>
+                        <li data-i="abc.a.l2">What's the main point?</li>
+                        <li data-i="abc.a.l3">What can I apply today?</li>
+                        <li data-i="abc.a.l4">What is God saying to me?</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="abc-card" tabindex="0" data-card-id="b">
+                <div class="abc-letter best">B</div>
+                <h3 class="abc-title" data-i="abc.b.title">BEST Verse</h3>
+                <div class="abc-desc">
+                    <ul>
+                        <li data-i="abc.b.l1">Find one key verse</li>
+                        <li data-i="abc.b.l2">Read it again or use in prayer</li>
+                        <li data-i="abc.b.l3">Listen to the Holy Spirit</li>
+                        <li data-i="abc.b.l4">Think about it throughout the day</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="abc-card" tabindex="0" data-card-id="c">
+                <div class="abc-letter commit">C</div>
+                <h3 class="abc-title" data-i="abc.c.title">COMMIT</h3>
+                <div class="abc-desc">
+                    <ul>
+                        <li data-i="abc.c.l1">Choose one area to commit to God</li>
+                        <li data-i="abc.c.l2">Work, test, meeting, or attitude</li>
+                        <li data-i="abc.c.l3">"Lord, I trust You with this"</li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+
+        <!-- John 1 Verse -->
+        <div class="verse-card">
+            <div class="verse-ref" data-i="verse.john.ref">John 1:1, 14 (ESV)</div>
+            <div class="verse-text" data-i="verse.john.text">
+                [1] In the beginning was the Word, and the Word was with God, and the Word was God.<br>
+                [14] And the Word became flesh and dwelt among us…
+            </div>
+        </div>
+
+        <!-- Where to Start -->
+        <div class="section-header">
+            <h2 data-i="sec.start">Where to Start?</h2>
+        </div>
+
+        <div class="books-grid">
+            <article class="book-card" tabindex="0" data-card-id="book-mark">
+                <div class="book-name" data-i="book.mark.name">Mark</div>
+                <div class="book-desc" data-i="book.mark.desc">The Life of Jesus</div>
+            </article>
+            <article class="book-card" tabindex="0" data-card-id="book-john">
+                <div class="book-name" data-i="book.john.name">John</div>
+                <div class="book-desc" data-i="book.john.desc">The Heart of Jesus</div>
+            </article>
+            <article class="book-card" tabindex="0" data-card-id="book-phil">
+                <div class="book-name" data-i="book.phil.name">Philippians</div>
+                <div class="book-desc" data-i="book.phil.desc">The Mindset of Joy</div>
+            </article>
+            <article class="book-card" tabindex="0" data-card-id="book-james">
+                <div class="book-name" data-i="book.james.name">James</div>
+                <div class="book-desc" data-i="book.james.desc">Faith in Action</div>
+            </article>
+            <article class="book-card" tabindex="0" data-card-id="book-gen">
+                <div class="book-name" data-i="book.gen.name">Genesis</div>
+                <div class="book-desc" data-i="book.gen.desc">The Big Picture</div>
+            </article>
+        </div>
+
+        <!-- Prayer Example -->
+        <div class="section-header">
+            <h2 data-i="sec.prayer">Example Prayer</h2>
+        </div>
+
+        <div class="prayer-card">
+            <div class="prayer-title" data-i="prayer.title">Start and End with Prayer</div>
+            <div class="prayer-text">
+                <p data-i="prayer.p1">God, give me wisdom, knowledge, and understanding.</p>
+                <p data-i="prayer.p2">Let any knowledge I gain help me love You and others more, and not puff me up.</p>
+                <p data-i="prayer.p3">Help me see something new about You that I've never seen before.</p>
+                <p data-i="prayer.p4">Correct any lies I believe about You or anything I misunderstand.</p>
+                <p data-i="prayer.p5">Direct my steps according to Your Word. Amen.</p>
+            </div>
+        </div>
+
+        <!-- Psalm 16:11 -->
+        <div class="verse-card">
+            <div class="verse-ref" data-i="verse.psalm.ref">Psalm 16:11 (ESV)</div>
+            <div class="verse-text" data-i="verse.psalm.text">
+                You make known to me the path of life; in your presence there is fullness of joy; at your right hand are pleasures forevermore.
+            </div>
+        </div>
+    </main>
+
+    <!-- POPOVER MODAL -->
+    <div class="popover-modal" id="popoverModal" role="dialog" aria-modal="true">
+        <div class="popover-header">
+            <div>
+                <h4 class="popover-title" id="popoverTitle"></h4>
+            </div>
+            <button class="popover-close" id="popoverClose" data-i-aria="modal.close" aria-label="Close">&times;</button>
+        </div>
+        <div class="popover-content" id="popoverContent"></div>
+    </div>
+
+    <script>
+        /* ---------- i18n dictionary ---------- */
+        const I18N = {
+            en: {
+                "hero.title": "Quiet Time: Growing Closer to Jesus",
+                "hero.subtitle": "A guide to developing a daily habit of spending time with God",
+                "hero.author": "Leanna",
+                "sec.journey": "The Journey",
+                "step.1": "STEP 1", "step.2": "STEP 2", "step.3": "STEP 3", "step.4": "STEP 4",
+                "step.5": "STEP 5", "step.6": "STEP 6", "step.7": "STEP 7", "step.start": "START",
+                "card.what.title": "What is a Quiet Time?", "card.what.desc": "Alone time with God",
+                "card.why.title": "Why Quiet Time?", "card.why.desc": "Relationships need time",
+                "card.know.title": "Know Jesus", "card.know.desc": "Through His Word",
+                "card.time.title": "Time", "card.time.desc": "Pick a consistent time",
+                "card.place.title": "Place", "card.place.desc": "Find a distraction-free spot",
+                "card.plan.title": "Plan", "card.plan.desc": "Decide what to read/do",
+                "card.abc.title": "The ABCs", "card.abc.desc": "Ask, Best Verse, Commit",
+                "card.start.title": "Where to Start", "card.start.desc": "Pick a book of the Bible",
+                "sec.keys": "The Three Keys (Mark 1:35)",
+                "tip.time.title": "TIME",
+                "tip.time.l1": "Even 5 minutes is better than none",
+                "tip.time.l2": "Consistency is key",
+                "tip.time.l3": "Morning, lunch, after class, before bed?",
+                "tip.place.title": "PLACE",
+                "tip.place.l1": "Find where you're not distracted",
+                "tip.place.l2": "Bedroom, cafe, or at school",
+                "tip.place.l3": "Jesus chose \u0022a solitary place\u0022",
+                "tip.plan.title": "PLAN",
+                "tip.plan.l1": "Choose your Bible passage",
+                "tip.plan.l2": "Meditate, memorize, or research",
+                "tip.plan.l3": "Journal your reflections",
+                "sec.abc": "The ABCs of Bible Reading",
+                "abc.a.title": "ASK Questions",
+                "abc.a.l1": "Who is speaking? To whom? Why?",
+                "abc.a.l2": "What's the main point?",
+                "abc.a.l3": "What can I apply today?",
+                "abc.a.l4": "What is God saying to me?",
+                "abc.b.title": "BEST Verse",
+                "abc.b.l1": "Find one key verse",
+                "abc.b.l2": "Read it again or use in prayer",
+                "abc.b.l3": "Listen to the Holy Spirit",
+                "abc.b.l4": "Think about it throughout the day",
+                "abc.c.title": "COMMIT",
+                "abc.c.l1": "Choose one area to commit to God",
+                "abc.c.l2": "Work, test, meeting, or attitude",
+                "abc.c.l3": "\u0022Lord, I trust You with this\u0022",
+                "verse.john.ref": "John 1:1, 14 (ESV)",
+                "verse.john.text": "[1] In the beginning was the Word, and the Word was with God, and the Word was God.<br>[14] And the Word became flesh and dwelt among us…",
+                "sec.start": "Where to Start?",
+                "book.mark.name": "Mark", "book.mark.desc": "The Life of Jesus",
+                "book.john.name": "John", "book.john.desc": "The Heart of Jesus",
+                "book.phil.name": "Philippians", "book.phil.desc": "The Mindset of Joy",
+                "book.james.name": "James", "book.james.desc": "Faith in Action",
+                "book.gen.name": "Genesis", "book.gen.desc": "The Big Picture",
+                "sec.prayer": "Example Prayer",
+                "prayer.title": "Start and End with Prayer",
+                "prayer.p1": "God, give me wisdom, knowledge, and understanding.",
+                "prayer.p2": "Let any knowledge I gain help me love You and others more, and not puff me up.",
+                "prayer.p3": "Help me see something new about You that I've never seen before.",
+                "prayer.p4": "Correct any lies I believe about You or anything I misunderstand.",
+                "prayer.p5": "Direct my steps according to Your Word. Amen.",
+                "verse.psalm.ref": "Psalm 16:11 (ESV)",
+                "verse.psalm.text": "You make known to me the path of life; in your presence there is fullness of joy; at your right hand are pleasures forevermore.",
+                "modal.close": "Close"
+            },
+            zh: {
+                "hero.title": "靜時刻：與耶穌更親近",
+                "hero.subtitle": "培養每日與神花時間的習慣指南",
+                "hero.author": "Leanna",
+                "sec.journey": "旅程",
+                "step.1": "步驟一", "step.2": "步驟二", "step.3": "步驟三", "step.4": "步驟四",
+                "step.5": "步驟五", "step.6": "步驟六", "step.7": "步驟七", "step.start": "開始",
+                "card.what.title": "什麼是靜時刻？", "card.what.desc": "與神獨處的時間",
+                "card.why.title": "為什麼要靜時刻？", "card.why.desc": "關係需要時間",
+                "card.know.title": "認識耶穌", "card.know.desc": "透過祂的話語",
+                "card.time.title": "時間", "card.time.desc": "選擇固定的時間",
+                "card.place.title": "地點", "card.place.desc": "找一個不分心的地方",
+                "card.plan.title": "計劃", "card.plan.desc": "決定要讀什麼/做什麼",
+                "card.abc.title": "ABC方法", "card.abc.desc": "問問題、最佳經文、委身",
+                "card.start.title": "從哪裡開始", "card.start.desc": "選一卷書",
+                "sec.keys": "三個關鍵（馬可福音 1:35）",
+                "tip.time.title": "時間",
+                "tip.time.l1": "即使只有5分鐘總比沒有好",
+                "tip.time.l2": "堅持是關鍵",
+                "tip.time.l3": "早上、午餐、下課後、睡前？",
+                "tip.place.title": "地點",
+                "tip.place.l1": "找一個不分心的地方",
+                "tip.place.l2": "臥室、咖啡廳或學校",
+                "tip.place.l3": "耶穌選擇了「一個荒僻的地方」",
+                "tip.plan.title": "計劃",
+                "tip.plan.l1": "選擇聖經經文",
+                "tip.plan.l2": "默想、記憶或研究",
+                "tip.plan.l3": "寫下你的反思",
+                "sec.abc": "聖經閱讀的ABC",
+                "abc.a.title": "問問題",
+                "abc.a.l1": "誰在說話？對誰說？為什麼？",
+                "abc.a.l2": "主要重點是什麼？",
+                "abc.a.l3": "今天我可以應用什麼？",
+                "abc.a.l4": "神在對我說什麼？",
+                "abc.b.title": "最佳經文",
+                "abc.b.l1": "找出一節關鍵經文",
+                "abc.b.l2": "再讀一遍或在禱告中使用",
+                "abc.b.l3": "聆聽聖靈的聲音",
+                "abc.b.l4": "整天思考這節經文",
+                "abc.c.title": "委身",
+                "abc.c.l1": "選擇一個領域委身給神",
+                "abc.c.l2": "工作、考試、會議或態度",
+                "abc.c.l3": "「主啊，我把這個交給你」",
+                "verse.john.ref": "約翰福音 1:1, 14（CSB）",
+                "verse.john.text": "[1] 太初有道，道與神同在，道就是神。<br>[14] 道成了肉身，居住在我們中間。我們看到了他的榮耀，正是從父而來的獨生子的榮耀，充滿了恩典和真理。",
+                "sec.start": "從哪裡開始？",
+                "book.mark.name": "馬可福音", "book.mark.desc": "耶穌的一生",
+                "book.john.name": "約翰福音", "book.john.desc": "耶穌的心",
+                "book.phil.name": "腓立比書", "book.phil.desc": "喜樂的心態",
+                "book.james.name": "雅各書", "book.james.desc": "行動的信心",
+                "book.gen.name": "創世記", "book.gen.desc": "整體圖景",
+                "sec.prayer": "禱告範例",
+                "prayer.title": "以禱告開始和結束",
+                "prayer.p1": "神啊，賜給我智慧、知識和理解力。",
+                "prayer.p2": "讓我獲得的任何知識都能幫助我更愛你和他人，而不是自高自大。",
+                "prayer.p3": "幫助我看到關於你的新事物，是我從未見過的。",
+                "prayer.p4": "糾正我對你所相信的任何謊言或任何誤解。",
+                "prayer.p5": "引導我的脚步按照你的話語。阿們。",
+                "verse.psalm.ref": "詩篇 16:11（CSB）",
+                "verse.psalm.text": "你使我明白生命的路途；在你面前有滿足的喜樂，在你的右手中有永久的美福。",
+                "modal.close": "關閉"
+            }
+        };
+
+        /* ---------- card data (bilingual) ---------- */
+        const cardData = {
+            'what': {
+                en: { title: 'What is a Quiet Time?', content: '<p>A Quiet Time is a <strong>quiet, alone time with God</strong>. Essentially, it is spending time with God.</p><p>Just like any relationship, you need to spend time together to grow closer. Your relationship with Jesus is no different!</p>' },
+                zh: { title: '什麼是靜時刻？', content: '<p>靜時刻是一段<strong>與神獨處的安靜時間</strong>。本質上，就是花時間與神在一起。</p><p>就像任何關係一樣，你需要花時間在一起才能更親近。你與耶穌的關係也是一樣！</p>' }
+            },
+            'why': {
+                en: { title: 'Why Quiet Time is Good and Needed', content: '<p>Now, take the next two minutes to think about how you became so close to these people. In other words, how do you have successful relationships with the people you love?</p><p><strong>Examples to consider:</strong></p><ul><li>Time</li><li>Effort</li><li>Communication</li><li>Shared experiences</li></ul><p>Using my relationship with my mom as an example, I know that her birthday is on January 1. I know this because she told me. She told me when we were having conversation together. We get to have conversations with each other because we spend time together. When we are in a conversation, it is a part of relationship-building to remember what the other person says! So when she tells me things, I do my best to remember it.</p><p>So now, let\'s think about having a relationship with Jesus. Having a relationship with Jesus is very similar to having a relationship with anyone else! In order to have a relationship with Him, you need to know Him. To know Him you should spend time with Him. You can spend time with Him by <strong>praying and reading His Word</strong>!</p>' },
+                zh: { title: '為什麼靜時刻是好的且必要的', content: '<p>現在，花兩分鐘想想你是如何與這些人變得如此親近的。換句話說，你如何與你所愛的人建立成功的關係？</p><p><strong>可以考慮的例子：</strong></p><ul><li>時間</li><li>努力</li><li>溝通</li><li>共同經歷</li></ul><p>以我與媽媽的關係為例，我知道她的生日是1月1日。我知道這是因為她告訴我的。她是在我們交談時告訴我的。我們能夠彼此交談是因為我們花時間在一起。當我們在交談時，記住對方所說的話是建立關係的一部分！所以當她告訴我事情時，我盡最大努力記住它。</p><p>那麼，現在讓我們想想與耶穌建立關係。與耶穌建立關係與與任何人建立關係非常相似！為了與祂建立關係，你需要認識祂。要認識祂，你應該花時間與祂在一起。你可以透過<strong>祈禱和閱讀祂的話語</strong>來花時間與祂在一起！</p>' }
+            },
+            'know': {
+                en: { title: 'Know Jesus Through His Word', content: '<p>In order to have a relationship with Jesus, you need to <strong>know Him</strong>. To know Him, you should spend time with Him.</p><p>You can spend time with Him by <strong>praying and reading His Word</strong>.</p><blockquote>"In the beginning was the Word, and the Word was with God, and the Word was God." — John 1:1</blockquote><p>Jesus is the Word! So <strong>spending time in the Word is spending time with Jesus</strong>!</p><p>God desires intimacy with us as His children — not just a surface-level relationship.</p>' },
+                zh: { title: '透過祂的話語認識耶穌', content: '<p>為了與耶穌建立關係，你需要<strong>認識祂</strong>。要認識祂，你應該花時間與祂在一起。</p><p>你可以透過<strong>祈禱和閱讀祂的話語</strong>來花時間與祂在一起。</p><blockquote>「太初有道，道與神同在，道就是神。」——約翰福音 1:1</blockquote><p>耶穌就是道！所以<strong>花時間在話語中就是花時間與耶穌在一起</strong>！</p><p>神渴望與我們——祂的兒女——有親密的關係，而不只是表面的關係。</p>' }
+            },
+            'time': {
+                en: { title: 'TIME — Choose Your Moment', content: '<p><strong>Choose a time during the day when you can give your full attention to God.</strong></p><ul><li>Even if it\'s only 5 minutes! 5 minutes is better than no time at all.</li><li>There\'s no correct amount of time to spend with God, but the more you spend with Him, the more you\'ll know Him!</li><li>Is it the morning? While you are eating lunch? After class? Before bed?</li><li>Create a daily habit. Consistency is key, so pick a time you can stick with.</li></ul>' },
+                zh: { title: '時間——選擇你的時刻', content: '<p><strong>選擇一天中你可以全心全意關注神的時間。</strong></p><ul><li>即使只有5分鐘！5分鐘總比沒有好。</li><li>與神在一起沒有正確的時間長度，但你花越多時間與祂在一起，你就越認識祂！</li><li>是早上嗎？吃午餐的時候？下課後？睡前？</li><li>培養每天的習慣。堅持是關鍵，所以選擇一個你可以堅持的時間。</li></ul>' }
+            },
+            'place': {
+                en: { title: 'PLACE — Find Your Spot', content: '<p><strong>Find a place where you are not distracted, so you can focus on what Jesus wants to teach you today.</strong></p><ul><li>For Jesus, this was "a solitary place" (Mark 1:35).</li><li>For you, it might be your bedroom, a cafe, or somewhere at school!</li></ul><blockquote>"And rising very early in the morning, while it was still dark, he departed and went out to a desolate place, and there he prayed." — Mark 1:35</blockquote>' },
+                zh: { title: '地點——找到你的地方', content: '<p><strong>找一個不會分心的地方，這樣你就可以專注於耶穌今天想要教導你的。</strong></p><ul><li>對耶穌來說，這是「一個荒僻的地方」（馬可福音 1:35）。</li><li>對你來說，可能是你的臥室、咖啡廳，或學校的某個地方！</li></ul><blockquote>「大清早，天還沒亮，耶穌就起來，走出去，到一個荒僻的地方，在那裡禱告。」——馬可福音 1:35</blockquote>' }
+            },
+            'plan': {
+                en: { title: 'PLAN — Decide What You\'ll Do', content: '<p><strong>Before you start, decide what you\'ll do.</strong></p><ul><li>Choose what passage in the Bible you\'ll read</li><li>You can meditate on Scripture, memorize verses, or do extra research</li><li>Some people like to journal or write reflections in their Bible</li></ul><p>Having a plan means spending less time figuring out what to do and <strong>spending more time with God</strong>.</p>' },
+                zh: { title: '計劃——決定你要做什麼', content: '<p><strong>在開始之前，決定你要做什麼。</strong></p><ul><li>選擇你要閱讀的聖經經文</li><li>你可以默想經文、嘗試記憶經文，或做額外的研究</li><li>有些人喜歡在筆記本中寫日記，或直接在聖經中寫反思</li></ul><p>有計劃意味著花更少的時間想著要做什麼，<strong>花更多的時間與神在一起</strong>。</p>' }
+            },
+            'abc': {
+                en: { title: 'The ABCs of Bible Reading', content: '<p>When you read your Bible, try the ABCs!</p><p><strong>A – ASK questions</strong> about what you are reading.</p><p><strong>B – BEST VERSE</strong> – Look for one verse that helps you focus on the big lesson.</p><p><strong>C – COMMIT</strong> – Choose one area of your life to commit to God.</p><p>Click on each letter below for more details!</p>' },
+                zh: { title: '聖經閱讀的ABC', content: '<p>當你閱讀聖經時，試試ABC！</p><p><strong>A——問問題</strong>關於你所閱讀的內容。</p><p><strong>B——最佳經文</strong>——找出一節幫助你專注於主要教訓的經文。</p><p><strong>C——委身</strong>——選擇你生活中的一個領域委身給神。</p><p>點擊下面的每個字母了解更多！</p>' }
+            },
+            'a': {
+                en: { title: 'A – ASK Questions', content: '<p>Ask questions about what you are reading. Here are some ideas:</p><ul><li>Who is speaking? To whom? Why?</li><li>What was the writer\'s intent in saying this to his original audience?</li><li>What was that audience thinking?</li><li>What is the main point in this passage?</li><li>What can I apply to my life today from this?</li><li>What is God saying to me here?</li></ul>' },
+                zh: { title: 'A——問問題', content: '<p>關於你所閱讀的內容，問一些問題。這裡有一些想法：</p><ul><li>誰在說話？對誰說？為什麼？</li><li>作者對原始聽眾說這話的意圖是什麼？</li><li>那些聽眾在想什麼？</li><li>這段經文的主要重點是什麼？</li><li>今天我可以從中應用到我的生活什麼？</li><li>神在這裡對我說什麼？</li></ul>' }
+            },
+            'b': {
+                en: { title: 'B – BEST VERSE', content: '<p><strong>Look for one verse in the passage that helps you focus on the big lesson or truth God is showing to you.</strong></p><ul><li>You can read it again, or use it in a prayer when you finish your Quiet Time.</li><li>Even take some time to listen to what the Holy Spirit is trying to tell you.</li><li>Think about this one verse throughout the day!</li></ul>' },
+                zh: { title: 'B——最佳經文', content: '<p><strong>在經文中找出一節幫助你專注於神要展示給你的主要教訓或真理的經文。</strong></p><ul><li>你可以再讀一遍，或在靜時刻結束時在禱告中使用它。</li><li>花一些時間聆聽聖靈要告訴你的。</li><li>整天思考這一節經文！</li></ul>' }
+            },
+            'c': {
+                en: { title: 'C – COMMIT', content: '<p><strong>Choose one area of your life — or some part of your upcoming day — that you can commit to God.</strong></p><ul><li>It might be work, a presentation, a test, or a meeting.</li><li>Think about your "best verse" and commit that to God.</li><li>Sometimes we commit an attitude of the heart to God.</li></ul><p>Examples:</p><blockquote>"Today, Lord, I trust You with this."</blockquote><blockquote>"Yes, Lord, I will go to her and ask her forgiveness."</blockquote>' },
+                zh: { title: 'C——委身', content: '<p><strong>選擇你生活中的一個領域——或你即將到來的一天的某個部分——你可以委身給神。</strong></p><ul><li>可能是工作、報告、考試或會議。</li><li>想想你的「最佳經文」並委身給神。</li><li>有時我們將内心的態度委身給神。</li></ul><p>例如：</p><blockquote>「主啊，今天我把這個交給你。」</blockquote><blockquote>「是的，主，我會去找她並請求她的原諒。」</blockquote>' }
+            },
+            'start': {
+                en: { title: 'Where to Start?', content: '<p><strong>Pick a book, and start!</strong></p><ul><li><strong>Mark</strong> – The Life of Jesus</li><li><strong>John</strong> – The Heart of Jesus</li><li><strong>Philippians</strong> – The Mindset of Joy</li><li><strong>James</strong> – Faith in Action</li><li><strong>Genesis</strong> – The Big Picture</li></ul><p>What if you\'re bored? That\'s part of a relationship! There are some days that are easy and some days that are hard.</p><blockquote>"You make known to me the path of life; in your presence there is fullness of joy; at your right hand are pleasures forevermore." — Psalm 16:11</blockquote>' },
+                zh: { title: '從哪裡開始？', content: '<p><strong>選一卷書，然後開始！</strong></p><ul><li><strong>馬可福音</strong>——耶穌的一生</li><li><strong>約翰福音</strong>——耶穌的心</li><li><strong>腓立比書</strong>——喜樂的心態</li><li><strong>雅各書</strong>——行動的信心</li><li><strong>創世記</strong>——整體圖景</li></ul><p>如果覺得無聊怎麼辦？這是關係的一部分！有些日子容易，有些日子困難。</p><blockquote>「你使我明白生命的路途；在你面前有滿足的喜樂，在你的右手中有永久的美福。」——詩篇 16:11</blockquote>' }
+            },
+            'book-mark': {
+                en: { title: 'Mark – The Life of Jesus', content: '<p><strong>A great place to start!</strong> Mark is the shortest Gospel and moves quickly through Jesus\' ministry, miracles, and mission.</p><p>You\'ll see Jesus as a man of action — always doing, always serving.</p>' },
+                zh: { title: '馬可福音——耶穌的一生', content: '<p><strong>一個很好的開始！</strong>馬可福音是最短的福音書，快速地通過耶穌的事工、神蹟和使命。</p><p>你會看到耶穌是一個行動的人——總是做事，總是服事。</p>' }
+            },
+            'book-john': {
+                en: { title: 'John – The Heart of Jesus', content: '<p><strong>Dive deep into who Jesus is.</strong> John focuses on Jesus\' divine identity and his intimate relationship with the Father.</p><p>Contains the "I am" statements and the Farewell Discourse (ch. 14-17).</p>' },
+                zh: { title: '約翰福音——耶穌的心', content: '<p><strong>深入了解耶穌是誰。</strong>約翰福音專注於耶穌的神聖身份和祂與父的親密關係。</p><p>包含「我是」的聲明和最後的講論（第14-17章）。</p>' }
+            },
+            'book-phil': {
+                en: { title: 'Philippians – The Mindset of Joy', content: '<p><strong>Short, joyful, and deeply practical.</strong> Written from prison, Paul teaches about joy, humility, and the mindset of Christ.</p><p>Key verse: "Rejoice in the Lord always. Again I will say, Rejoice!" (4:4)</p>' },
+                zh: { title: '腓立比書——喜樂的心態', content: '<p><strong>簡短、喜樂且非常實用。</strong>保羅在獄中寫的，教導喜樂、謙卑和基督的心態。</p><p>關鍵經文：「你們要靠主常常喜樂！我再說，你們要喜樂！」（4:4）</p>' }
+            },
+            'book-james': {
+                en: { title: 'James – Faith in Action', content: '<p><strong>Practical wisdom for daily life.</strong> James addresses trials, temptation, speech, favoritism, and faith without works.</p><p>Great for those who want their faith to impact how they live.</p>' },
+                zh: { title: '雅各書——行動的信心', content: '<p><strong>日常生活的實用智慧。</strong>雅各處理試探、言語、偏見和沒有行為的信心等問題。</p><p>非常適合那些想要讓信仰影響生活的人。</p>' }
+            },
+            'book-gen': {
+                en: { title: 'Genesis – The Big Picture', content: '<p><strong>See the grand narrative of God\'s plan.</strong> From creation to the patriarchs, Genesis sets the stage for the entire Bible story.</p><p>Learn about God\'s character, His promises, and His redemptive plan from the very beginning.</p>' },
+                zh: { title: '創世記——整體圖景', content: '<p><strong>看見神計劃的宏大敘事。</strong>從創造到族長，創世記為整個聖經故事奠定了基礎。</p><p>從一開始就學習神的品格、祂的應許和祂的救贖計劃。</p>' }
+            },
+            'time-detail': {
+                en: { title: 'TIME – Choosing Your Moment', content: '<p><strong>Choose a time during the day when you can give your full attention to God.</strong></p><ul><li>Even if it\'s only 5 minutes! 5 minutes is better than no time at all.</li><li>There\'s no correct amount of time to spend with God, but the more you spend with Him, the more you\'ll know Him!</li><li>Is it the morning? While you are eating lunch? After class? Before bed?</li><li>Create a daily habit of spending time with Jesus. When it comes to habits, consistency is key, so pick a time you can stick with.</li></ul>' },
+                zh: { title: '時間——選擇你的時刻', content: '<p><strong>選擇一天中你可以全心全意關注神的時間。</strong></p><ul><li>即使只有5分鐘！5分鐘總比沒有好。</li><li>與神在一起沒有正確的時間長度，但你花越多時間與祂在一起，你就越認識祂！</li><li>是早上嗎？吃午餐的時候？下課後？睡前？</li><li>培養每天花時間與耶穌在一起的習慣。習慣的關鍵是堅持，所以選擇一個你可以堅持的時間。</li></ul>' }
+            },
+            'place-detail': {
+                en: { title: 'PLACE – Finding Your Spot', content: '<p><strong>Find a place where you are not distracted, so you can focus on what Jesus wants to teach you today.</strong></p><ul><li>For Jesus, this was "a solitary place."</li><li>For you, it might be your bedroom, a cafe, or somewhere at school!</li></ul><blockquote>"And rising very early in the morning, while it was still dark, he departed and went out to a desolate place, and there he prayed." — Mark 1:35</blockquote>' },
+                zh: { title: '地點——找到你的地方', content: '<p><strong>找一個不會分心的地方，這樣你就可以專注於耶穌今天想要教導你的。</strong></p><ul><li>對耶穌來說，這是「一個荒僻的地方」。</li><li>對你來說，可能是你的臥室、咖啡廳，或學校的某個地方！</li></ul><blockquote>「大清早，天還沒亮，耶穌就起來，走出去，到一個荒僻的地方，在那裡禱告。」——馬可福音 1:35</blockquote>' }
+            },
+            'plan-detail': {
+                en: { title: 'PLAN – Decide What You\'ll Do', content: '<p><strong>Before you start, decide what you\'ll do.</strong></p><ul><li>Choose what passage in the Bible you\'ll read and what else you might do</li><li>You can meditate on Scripture, you can try to memorize verses, or do extra research on what you read!</li><li>Some people like to journal in a separate notebook or write any reflections they may have directly in their Bible.</li></ul><p>Having a plan means spending less time figuring out what to do and spending more time with God.</p>' },
+                zh: { title: '計劃——決定你要做什麼', content: '<p><strong>在開始之前，決定你要做什麼。</strong></p><ul><li>選擇你要閱讀的聖經經文和其他你可能做的事</li><li>你可以默想經文、嘗試記憶經文，或對你所讀的做額外的研究！</li><li>有些人喜歡在單獨的筆記本中寫日記，或直接在聖經中寫下他們的反思。</li></ul><p>有計劃意味著花更少的時間想著要做什麼，花更多的時間與神在一起。</p>' }
+            }
+        };
+
+        /* ---------- language ---------- */
+        let lang = localStorage.getItem('qt_lang') || 'en';
+        const toggle = document.getElementById('langToggle');
+        const langBox = document.getElementById('langBox');
+
+        function applyLang(l){
+            lang = l;
+            document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
+            document.querySelectorAll('[data-i]').forEach(el=>{
+                const key = el.dataset.i;
+                if (I18N[l][key] !== undefined) el.innerHTML = I18N[l][key];
+            });
+            document.querySelectorAll('[data-i-aria]').forEach(el=>{
+                el.setAttribute('aria-label', I18N[l][el.dataset.iAria]);
+            });
+            langBox.classList.toggle('zh', l==='zh');
+            toggle.checked = (l==='zh');
+            localStorage.setItem('qt_lang', l);
+        }
+
+        toggle.addEventListener('change', ()=> applyLang(toggle.checked ? 'zh' : 'en'));
+
+        // Popover Modal
+        const modal = document.getElementById('popoverModal');
+        const modalTitle = document.getElementById('popoverTitle');
+        const modalContent = document.getElementById('popoverContent');
+        const modalClose = document.getElementById('popoverClose');
+
+        function openModal(cardId) {
+            const data = cardData[cardId] && cardData[cardId][lang];
+            if (!data) return;
+
+            modalTitle.innerHTML = data.title;
+            modalContent.innerHTML = data.content;
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            modalClose.focus();
+        }
+
+        function closeModal() {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        modalClose.addEventListener('click', closeModal);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+        });
+
+        // Card Click Handlers
+        document.querySelectorAll('[data-card-id]').forEach(card => {
+            card.addEventListener('click', () => openModal(card.dataset.cardId));
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openModal(card.dataset.cardId);
+                }
+            });
+        });
+
+        applyLang(lang);
+    </script>
+</body>
+</html>
