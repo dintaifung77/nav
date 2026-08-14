@@ -789,6 +789,8 @@
         .vref:focus-visible { outline: 1px solid var(--gold); outline-offset: 2px; }
         .passage-card .p-ref .vref { border-bottom: none; background: none; padding: 0; }
         .passage-card .p-ref .vref:focus-visible { outline: 1px solid var(--gold); outline-offset: 4px; border-radius: 4px; }
+        section.block .stage { counter-reset: qn; }
+        .qnum::before { counter-increment: qn; content: counter(qn) ". "; font-weight: 600; }
 
         /* ---- verse modal ---- */
         .verse-overlay {
@@ -1060,9 +1062,9 @@
                 <p class="hq-sub" data-i="s1.q2">「你們要追求與眾人和睦，並要追求聖潔，非聖潔沒有人能見主。」<span class="vref" data-verse="來十二:14" tabindex="0">來十二:14</span></p>
             </div>
 
-            <p class="lead reveal" data-i="s1.lead">記下經文中有關上帝聖潔的本像。</p>
+            <p class="lead reveal qnum" data-i="s1.lead">記下經文中有關上帝聖潔的本像。</p>
 
-            <p class="content reveal" style="margin-top:1.6rem;" data-i="s1.content">因神是聖潔的，所以恨惡罪，我們在聖潔上越成長，我們就越恨惡罪。（<span class="ref-inline">箴十二:9</span>；<span class="ref-inline">羅十二:9</span>）你認為恨惡罪是什麼意思？</p>
+            <p class="content reveal qnum" style="margin-top:1.6rem;" data-i="s1.content">因神是聖潔的，所以恨惡罪，我們在聖潔上越成長，我們就越恨惡罪。（<span class="ref-inline">箴十二:9</span>；<span class="ref-inline">羅十二:9</span>）你認為恨惡罪是什麼意思？</p>
 
             <div class="ref-chips reveal" id="refChips">
                 <span class="chip vref" data-verse="出三:1～5" tabindex="0">出三:1～5</span>
@@ -1102,11 +1104,11 @@
                 </div>
             </div>
 
-            <p class="content reveal" style="margin-top:2.2rem;" data-i="s2.p1">閱讀<span class="ref-inline vref" data-verse="彼前一:15、16" tabindex="0">彼前一:15、16</span>，為什麼聖潔的神呼召我們成為聖潔？</p>
+            <p class="content reveal qnum" style="margin-top:2.2rem;" data-i="s2.p1">閱讀<span class="ref-inline vref" data-verse="彼前一:15、16" tabindex="0">彼前一:15、16</span>，為什麼聖潔的神呼召我們成為聖潔？</p>
 
-            <p class="content reveal" style="margin-top:1.6rem;" data-i="s2.p2">閱讀<span class="ref-inline vref" data-verse="利十:1、2" tabindex="0">利十:1、2</span>；<span class="ref-inline vref" data-verse="代上十三:7～11" tabindex="0">代上十三:7～11</span>及<span class="ref-inline vref" data-verse="民二十:1～13" tabindex="0">民二十:1～13</span>；當這些人不敬重神的聖潔時，就發生了什麼事？關於神聖潔的屬性部份，你的反應是什麼？</p>
+            <p class="content reveal qnum" style="margin-top:1.6rem;" data-i="s2.p2">閱讀<span class="ref-inline vref" data-verse="利十:1、2" tabindex="0">利十:1、2</span>；<span class="ref-inline vref" data-verse="代上十三:7～11" tabindex="0">代上十三:7～11</span>及<span class="ref-inline vref" data-verse="民二十:1～13" tabindex="0">民二十:1～13</span>；當這些人不敬重神的聖潔時，就發生了什麼事？關於神聖潔的屬性部份，你的反應是什麼？</p>
 
-            <p class="lead reveal" style="margin-top:2.2rem;" data-i="s2.p3">下列經文告訴你，我們的聖潔來自何處？我們可如何領受這聖潔？</p>
+            <p class="lead reveal qnum" style="margin-top:2.2rem;" data-i="s2.p3">下列經文告訴你，我們的聖潔來自何處？我們可如何領受這聖潔？</p>
 
             <div class="ref-chips reveal">
                 <span class="chip vref" data-verse="羅五:12～21" tabindex="0">羅五:12～21</span>
@@ -1115,7 +1117,7 @@
                 <span class="chip vref" data-verse="來四:15、16" tabindex="0">來四:15、16</span>
             </div>
 
-            <p class="lead reveal" style="margin-top:2.6rem;" data-i="s2.defhead">聖潔的主要定義包括：</p>
+            <p class="lead reveal qnum" style="margin-top:2.6rem;" data-i="s2.defhead">聖潔的主要定義包括：</p>
 
             <div class="reflect-grid">
                 <div class="reflect-card reveal">
@@ -1163,7 +1165,7 @@
             <div class="sec-rule reveal"></div>
 
             <div class="passage-grid">
-                <article class="passage-card reveal">
+                <article class="passage-card reveal qnum">
                     <div class="p-body">
                         <div class="p-kicker" data-i="s3.c1.kicker">查考</div>
                         <div class="p-ref" data-i="s3.c1.ref">賽六:1～8</div>
@@ -1173,7 +1175,7 @@
                     </div>
                 </article>
 
-                <article class="passage-card reveal">
+                <article class="passage-card reveal qnum">
                     <div class="p-body">
                         <div class="p-kicker" data-i="s3.c2.kicker">查考</div>
                         <div class="p-ref" data-i="s3.c2.ref">伯一:1及但一:8、六:4</div>
@@ -1200,15 +1202,15 @@
             <div class="reflect-grid">
                 <div class="reflect-card reveal">
                     <div class="r-tag" data-i="s4.tag">省思</div>
-                    <p class="r-text" data-i="s4.q1">你可以採行怎樣的步驟使自己越來越聖潔？</p>
+                    <p class="r-text qnum" data-i="s4.q1">你可以採行怎樣的步驟使自己越來越聖潔？</p>
                 </div>
                 <div class="reflect-card reveal">
                     <div class="r-tag" data-i="s4.tag">省思</div>
-                    <p class="r-text" data-i="s4.q2">你認為聖潔主要指你的性生活方面嗎？為什麼？</p>
+                    <p class="r-text qnum" data-i="s4.q2">你認為聖潔主要指你的性生活方面嗎？為什麼？</p>
                 </div>
                 <div class="reflect-card reveal">
                     <div class="r-tag" data-i="s4.tag">省思</div>
-                    <p class="r-text" data-i="s4.q3">閱讀<span class="ref-inline vref" data-verse="太五:27～30" tabindex="0">太五:27～30</span>是否有任何嗜好習慣或模式是你急需對付的，以使你更加聖潔？</p>
+                    <p class="r-text qnum" data-i="s4.q3">閱讀<span class="ref-inline vref" data-verse="太五:27～30" tabindex="0">太五:27～30</span>是否有任何嗜好習慣或模式是你急需對付的，以使你更加聖潔？</p>
                 </div>
             </div>
 
@@ -1236,11 +1238,11 @@
             <div class="reflect-grid">
                 <div class="reflect-card reveal">
                     <div class="r-tag" data-i="s5.tag">省思</div>
-                    <p class="r-text" data-i="s5.q1">有那些愛好或習慣是他人所做而你不做的？你如何決定不做？</p>
+                    <p class="r-text qnum" data-i="s5.q1">有那些愛好或習慣是他人所做而你不做的？你如何決定不做？</p>
                 </div>
                 <div class="reflect-card reveal">
                     <div class="r-tag" data-i="s5.tag">省思</div>
-                    <p class="r-text" data-i="s5.q2">如果有一個人告訴你他不想被習慣捆綁（例如觀看限制級電影）是因為他想過一個聖潔的生活，你有什麼反應？你會認為他們比你更聖潔嗎？如果他們說他們不是想比你聖潔，而是想過得比以前更聖潔，你會怎麼說？</p>
+                    <p class="r-text qnum" data-i="s5.q2">如果有一個人告訴你他不想被習慣捆綁（例如觀看限制級電影）是因為他想過一個聖潔的生活，你有什麼反應？你會認為他們比你更聖潔嗎？如果他們說他們不是想比你聖潔，而是想過得比以前更聖潔，你會怎麼說？</p>
                 </div>
             </div>
 
