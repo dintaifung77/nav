@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>曠野之行（第一課・門徒呼召）</title>
+    <title>門徒訓練（第十課・聖潔）| Discipleship Training (Lesson 10 · Holiness)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #050810;
-            --bg-2: #0a101f;
-            --card: #0e1628;
-            --card-2: #131d33;
-            --border: #1d2a47;
-            --border-2: #2b3d63;
-            --text: #eef2f9;
-            --muted: #94a5c6;
-            --dim: #5d6f92;
-            --gold: #f5c518;
-            --gold-soft: #ffd95c;
-            --gold-dim: #c9a227;
-            --gold-bg: rgba(245, 197, 24, 0.10);
-            --blue: #5b9bd5;
+            --bg: #f4f1ea;
+            --bg-2: #ece6d8;
+            --card: #fffef9;
+            --card-2: #f6f1e4;
+            --border: #e0d9c6;
+            --border-2: #cbbf9e;
+            --text: #2b2924;
+            --muted: #5e594b;
+            --dim: #8d8470;
+            --gold: #a97f14;
+            --gold-soft: #8f6c0f;
+            --gold-dim: #c2a32f;
+            --gold-bg: rgba(169, 127, 20, 0.12);
+            --blue: #2f6fa8;
         }
 
         * { box-sizing: border-box; }
@@ -42,9 +42,9 @@
             position: fixed;
             inset: 0;
             background:
-                radial-gradient(ellipse 90% 60% at 15% -10%, rgba(91, 155, 213, 0.10) 0%, transparent 55%),
-                radial-gradient(ellipse 70% 50% at 85% 100%, rgba(245, 197, 24, 0.05) 0%, transparent 55%),
-                radial-gradient(ellipse 60% 40% at 50% 40%, rgba(23, 36, 68, 0.55) 0%, transparent 70%);
+                radial-gradient(ellipse 90% 60% at 15% -10%, rgba(47, 111, 168, 0.10) 0%, transparent 55%),
+                radial-gradient(ellipse 70% 50% at 85% 100%, rgba(169, 127, 20, 0.07) 0%, transparent 55%),
+                radial-gradient(ellipse 60% 40% at 50% 40%, rgba(190, 175, 140, 0.22) 0%, transparent 70%);
             pointer-events: none;
             z-index: 0;
         }
@@ -53,13 +53,13 @@
         .star {
             position: absolute;
             border-radius: 50%;
-            background: #fff;
+            background: var(--gold-dim);
             opacity: 0;
             animation: twinkle ease-in-out infinite;
         }
         @keyframes twinkle {
-            0%, 100% { opacity: 0.15; transform: scale(1); }
-            50% { opacity: 0.9; transform: scale(1.25); }
+            0%, 100% { opacity: 0.08; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.25); }
         }
 
         /* ---- scroll progress ---- */
@@ -70,7 +70,7 @@
             width: 0;
             background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-soft));
             z-index: 200;
-            box-shadow: 0 0 14px rgba(245, 197, 24, 0.55);
+            box-shadow: 0 0 14px rgba(169, 127, 20, 0.55);
         }
 
         /* ---- navbar ---- */
@@ -82,10 +82,10 @@
             align-items: center;
             justify-content: space-between;
             padding: 0.9rem 1.6rem;
-            background: rgba(5, 8, 16, 0.55);
+            background: rgba(244, 241, 234, 0.78);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
-            border-bottom: 1px solid rgba(43, 61, 99, 0.35);
+            border-bottom: 1px solid rgba(203, 191, 158, 0.5);
         }
         .navbar-logo {
             font-family: 'Noto Serif TC', serif;
@@ -102,7 +102,7 @@
             width: 10px; height: 10px;
             border-radius: 50%;
             background: var(--gold);
-            box-shadow: 0 0 12px rgba(245, 197, 24, 0.8);
+            box-shadow: 0 0 12px rgba(169, 127, 20, 0.8);
         }
         .navbar-links { display: flex; align-items: center; gap: 1.1rem; }
         .navbar-links a {
@@ -112,7 +112,7 @@
             letter-spacing: 0.08em;
             transition: color 0.25s ease;
         }
-        .navbar-links a:hover { color: var(--gold-soft); }
+        .navbar-links a:hover { color: var(--gold); }
         .menu-btn {
             display: none;
             background: none;
@@ -124,7 +124,7 @@
             cursor: pointer;
             transition: all 0.25s ease;
         }
-        .menu-btn:hover { border-color: var(--gold); color: var(--gold-soft); }
+        .menu-btn:hover { border-color: var(--gold); color: var(--gold); }
 
         /* ---- chapter tabs ---- */
         .chapter-tabs {
@@ -147,12 +147,12 @@
             background: transparent;
             transition: all 0.25s ease;
         }
-        .ctab:hover { border-color: var(--gold); color: var(--gold-soft); }
+        .ctab:hover { border-color: var(--gold); color: var(--gold); }
         .ctab.active {
             background: linear-gradient(160deg, var(--gold-soft), var(--gold));
             color: #1a1403;
             border-color: transparent;
-            box-shadow: 0 2px 14px rgba(245, 197, 24, 0.4);
+            box-shadow: 0 2px 14px rgba(169, 127, 20, 0.35);
             cursor: default;
         }
 
@@ -160,7 +160,7 @@
             position: fixed;
             top: 56px; left: 0; right: 0;
             z-index: 99;
-            background: rgba(7, 11, 20, 0.96);
+            background: rgba(255, 254, 249, 0.98);
             backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border);
             padding: 1rem 1.5rem;
@@ -177,7 +177,7 @@
             font-size: 0.9rem;
         }
         .mobile-menu a:last-child { border-bottom: none; }
-        .mobile-menu a:hover { color: var(--gold-soft); }
+        .mobile-menu a:hover { color: var(--gold); }
         .mobile-chapters { display: flex; gap: 0.6rem; margin-bottom: 0.6rem; padding-bottom: 0.6rem; border-bottom: 1px dashed var(--border); }
         .mobile-chapters a, .mobile-chapters span {
             font-family: 'Noto Serif TC', serif;
@@ -230,12 +230,12 @@
         .tracker-item.active .tracker-dot {
             border-color: var(--gold);
             background: var(--gold);
-            box-shadow: 0 0 14px rgba(245, 197, 24, 0.8);
+            box-shadow: 0 0 14px rgba(169, 127, 20, 0.8);
         }
         .tracker-item.active .tracker-label {
             opacity: 1;
             transform: none;
-            color: var(--gold-soft);
+            color: var(--gold);
         }
 
         /* ---- reveal ---- */
@@ -275,7 +275,7 @@
             font-size: clamp(6rem, 16vw, 13rem);
             line-height: 1;
             color: transparent;
-            -webkit-text-stroke: 1px rgba(148, 165, 198, 0.12);
+            -webkit-text-stroke: 1px rgba(120, 110, 80, 0.18);
             pointer-events: none;
             user-select: none;
         }
@@ -305,7 +305,7 @@
             font-weight: 900;
             font-size: clamp(1.6rem, 4vw, 2.6rem);
             color: transparent;
-            -webkit-text-stroke: 1.5px rgba(238, 242, 249, 0.55);
+            -webkit-text-stroke: 1.5px rgba(43, 41, 36, 0.5);
             letter-spacing: 0.2em;
             text-indent: 0.2em;
             margin-bottom: 1.2rem;
@@ -315,12 +315,12 @@
             font-weight: 900;
             font-size: clamp(3rem, 10vw, 7rem);
             line-height: 1.08;
-            background: linear-gradient(160deg, #fff 20%, var(--gold-soft) 55%, var(--gold) 85%);
+            background: linear-gradient(160deg, #2b2924 20%, var(--gold) 55%, var(--gold-soft) 85%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: 0.06em;
-            text-shadow: 0 0 90px rgba(245, 197, 24, 0.25);
+            text-shadow: 0 0 90px rgba(169, 127, 20, 0.25);
             margin-bottom: 0.6rem;
         }
         .hero-tagline {
@@ -330,6 +330,7 @@
             font-weight: 500;
             letter-spacing: 0.1em;
         }
+        .hero-tagline .vref { color: var(--gold); }
         .hero-bubbles {
             display: flex;
             flex-wrap: wrap;
@@ -344,7 +345,7 @@
             padding: 0.55rem 1.25rem;
             border-radius: 999px;
             border: 1px solid var(--border-2);
-            background: rgba(19, 29, 51, 0.55);
+            background: rgba(255, 254, 249, 0.8);
             backdrop-filter: blur(6px);
             color: var(--muted);
             letter-spacing: 0.05em;
@@ -354,11 +355,50 @@
         }
         .bubble:nth-child(2n) { animation-delay: 1.2s; }
         .bubble:nth-child(3n) { animation-delay: 2.4s; }
-        .bubble:hover { border-color: var(--gold-dim); color: var(--gold-soft); transform: translateY(-3px); }
+        .bubble:hover { border-color: var(--gold-dim); color: var(--gold); transform: translateY(-3px); }
         @keyframes floaty {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-8px); }
         }
+
+        /* ---- language toggle ---- */
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 2.2rem;
+            justify-content: center;
+        }
+        .lang-switch .l {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .lang-switch .l.en { color: var(--gold); }
+        .lang-switch .l.zh { color: var(--dim); }
+        .switch { position: relative; width: 52px; height: 28px; flex: none; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute; inset: 0;
+            background: var(--border);
+            border-radius: 99px;
+            transition: 0.25s;
+            cursor: pointer;
+            box-shadow: inset 0 0 0 1px var(--border-2);
+        }
+        .slider:before {
+            content: "";
+            position: absolute; left: 3px; top: 3px;
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            background: var(--text);
+            transition: 0.25s;
+        }
+        .switch input:checked + .slider { background: var(--gold); }
+        .switch input:checked + .slider:before { transform: translateX(24px); background: #fff; }
+        .lang-switch.zh .l.en { color: var(--dim); }
+        .lang-switch.zh .l.zh { color: var(--gold); }
 
         .btn {
             display: inline-block;
@@ -372,13 +412,13 @@
             padding: 1rem 2.6rem;
             border-radius: 999px;
             text-decoration: none;
-            box-shadow: 0 8px 40px rgba(245, 197, 24, 0.35);
+            box-shadow: 0 8px 40px rgba(169, 127, 20, 0.35);
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             margin-top: 3rem;
         }
         .btn:hover {
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 14px 60px rgba(245, 197, 24, 0.5);
+            box-shadow: 0 14px 60px rgba(169, 127, 20, 0.5);
         }
 
         .scroll-hint {
@@ -459,10 +499,16 @@
             line-height: 1.9;
         }
         .lead strong, .content strong {
-            color: var(--gold-soft);
+            color: var(--gold);
             font-weight: 700;
         }
         .content { color: var(--muted); font-size: 0.98rem; line-height: 1.9; }
+        .ref-inline {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 700;
+            color: var(--gold);
+            white-space: nowrap;
+        }
 
         /* ---- question cards ---- */
         .q-grid {
@@ -478,7 +524,7 @@
             padding: 1.6rem 1.5rem;
             position: relative;
             transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 24px rgba(120, 110, 80, 0.18);
         }
         .q-card::before {
             content: '';
@@ -489,7 +535,7 @@
             opacity: 0;
             transition: opacity 0.35s ease;
         }
-        .q-card:hover { transform: translateY(-6px); border-color: var(--gold-dim); box-shadow: 0 14px 44px rgba(0,0,0,0.5); }
+        .q-card:hover { transform: translateY(-6px); border-color: var(--gold-dim); box-shadow: 0 14px 44px rgba(120,110,80,0.28); }
         .q-card:hover::before { opacity: 1; }
         .q-card .q-num {
             font-family: 'Noto Serif TC', serif;
@@ -522,16 +568,16 @@
             border-radius: 12px;
             border: 1px solid var(--border-2);
             background: var(--card);
-            color: var(--gold-soft);
-            cursor: pointer;
+            color: var(--gold);
+            cursor: default;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+            box-shadow: 0 2px 12px rgba(120,110,80,0.16);
         }
         .chip:hover {
             border-color: var(--gold);
             background: var(--gold-bg);
             transform: translateY(-3px);
-            box-shadow: 0 8px 28px rgba(245, 197, 24, 0.2);
+            box-shadow: 0 8px 28px rgba(169, 127, 20, 0.2);
         }
 
         /* ---- note ---- */
@@ -550,7 +596,7 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 10px 40px rgba(120, 110, 80, 0.18);
             background: var(--card);
         }
         .table-scroll { overflow-x: auto; }
@@ -575,17 +621,12 @@
             text-align: center;
             vertical-align: middle;
         }
-        tbody tr:nth-child(even) { background: rgba(19, 29, 51, 0.4); }
-        tbody tr:hover { background: rgba(245, 197, 24, 0.04); }
-        tbody tr.ref-row { transition: background 0.6s ease; }
-        tbody tr.flash {
-            background: var(--gold-bg);
-            box-shadow: inset 0 0 0 1px var(--gold-dim);
-        }
+        tbody tr:nth-child(even) { background: rgba(246, 241, 228, 0.7); }
+        tbody tr:hover { background: rgba(169, 127, 20, 0.05); }
         td.ref-cell {
             font-family: 'Noto Serif TC', serif;
             font-weight: 700;
-            color: var(--gold-soft);
+            color: var(--gold);
             letter-spacing: 0.05em;
             white-space: nowrap;
         }
@@ -594,7 +635,7 @@
             content: '';
             position: absolute;
             left: 14px; right: 14px; bottom: 10px;
-            border-bottom: 1px dashed rgba(148, 165, 198, 0.3);
+            border-bottom: 1px dashed rgba(141, 132, 112, 0.35);
         }
         td.app-label {
             font-family: 'Noto Serif TC', serif;
@@ -607,7 +648,7 @@
             display: block;
             font-size: 0.82rem;
             font-weight: 500;
-            color: var(--gold-soft);
+            color: var(--gold);
             margin-top: 0.25rem;
             letter-spacing: 0.04em;
         }
@@ -617,7 +658,7 @@
         .highlight-card {
             margin-top: 2.4rem;
             background:
-                radial-gradient(ellipse 120% 120% at 100% 0%, rgba(245, 197, 24, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse 120% 120% at 100% 0%, rgba(169, 127, 20, 0.08) 0%, transparent 50%),
                 linear-gradient(150deg, var(--card-2) 0%, var(--card) 100%);
             border: 1px solid var(--gold-dim);
             border-radius: 18px;
@@ -632,7 +673,7 @@
             right: 0.8rem;
             font-family: 'Noto Serif TC', serif;
             font-size: 8rem;
-            color: rgba(245, 197, 24, 0.12);
+            color: rgba(169, 127, 20, 0.12);
             line-height: 1;
             pointer-events: none;
         }
@@ -649,12 +690,14 @@
             margin-top: 1rem;
             line-height: 1.7;
         }
+        .highlight-card .hq-sub .ref-inline { color: var(--gold); }
+        .highlight-card .vref { border-bottom-color: rgba(169, 127, 20, 0.5); }
 
         /* ---- writing lines ---- */
         .write-lines { margin-top: 1.4rem; display: flex; flex-direction: column; gap: 1.1rem; }
         .write-line {
             height: 1px;
-            background: linear-gradient(90deg, rgba(148, 165, 198, 0.45), rgba(148, 165, 198, 0.12));
+            background: linear-gradient(90deg, rgba(141, 132, 112, 0.45), rgba(141, 132, 112, 0.15));
             position: relative;
         }
         .write-line::after {
@@ -681,12 +724,12 @@
             padding: 2rem 1.9rem;
             position: relative;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 6px 30px rgba(120, 110, 80, 0.16);
         }
         .passage-card:hover {
             transform: translateY(-6px);
             border-color: var(--gold-dim);
-            box-shadow: 0 18px 54px rgba(0, 0, 0, 0.55);
+            box-shadow: 0 18px 54px rgba(120, 110, 80, 0.26);
         }
         .passage-card .p-kicker {
             font-size: 0.72rem;
@@ -737,39 +780,13 @@
         /* ---- clickable scripture links ---- */
         .vref {
             cursor: pointer;
-            border-bottom: 1px dashed rgba(245, 197, 24, 0.5);
+            border-bottom: 1px dashed rgba(169, 127, 20, 0.5);
             border-radius: 3px;
             padding: 0 2px;
             transition: color 0.25s ease, background 0.25s ease;
         }
-        .vref:hover { color: var(--gold-soft); background: var(--gold-bg); }
+        .vref:hover { color: var(--gold); background: var(--gold-bg); }
         .vref:focus-visible { outline: 1px solid var(--gold); outline-offset: 2px; }
-        td.ref-cell.vref { border-bottom-color: transparent; }
-        td.ref-cell.vref:hover { background: var(--gold-bg); }
-        .bubble.vref { cursor: pointer; }
-        .app-label .ref.vref { border-bottom-color: transparent; }
-        .app-row .ref.vref { border-bottom-color: transparent; }
-
-        /* ---- passage images ---- */
-        .passage-card { padding: 0; overflow: hidden; }
-        .p-img { position: relative; margin: 0; }
-        .p-img img { width: 100%; height: 230px; object-fit: cover; display: block; }
-        .p-img::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(14, 22, 40, 0.95) 0%, rgba(14, 22, 40, 0.35) 45%, transparent 100%);
-        }
-        .p-img-cap {
-            position: absolute;
-            left: 0; right: 0; bottom: 0;
-            z-index: 2;
-            padding: 0.6rem 1.5rem;
-            font-size: 0.72rem;
-            letter-spacing: 0.14em;
-            color: rgba(238, 242, 249, 0.85);
-        }
-        .p-body { padding: 1.8rem 1.9rem 2.1rem; }
 
         /* ---- verse modal ---- */
         .verse-overlay {
@@ -780,7 +797,7 @@
             align-items: center;
             justify-content: center;
             padding: 1.2rem;
-            background: rgba(3, 5, 10, 0.72);
+            background: rgba(20, 18, 12, 0.5);
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
             opacity: 0;
@@ -796,7 +813,7 @@
             background: linear-gradient(155deg, var(--card-2) 0%, var(--card) 100%);
             border: 1px solid var(--gold-dim);
             border-radius: 20px;
-            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(245, 197, 24, 0.12), 0 0 70px rgba(245, 197, 24, 0.08);
+            box-shadow: 0 30px 90px rgba(60, 50, 20, 0.4), 0 0 0 1px rgba(169, 127, 20, 0.12), 0 0 70px rgba(169, 127, 20, 0.08);
             transform: translateY(18px) scale(0.97);
             transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -841,7 +858,7 @@
             justify-content: center;
             transition: all 0.2s ease;
         }
-        .verse-close:hover { color: var(--gold-soft); background: var(--gold-bg); }
+        .verse-close:hover { color: var(--gold); background: var(--gold-bg); }
         .verse-modal-body {
             padding: 1.4rem 1.6rem 1.2rem;
             overflow-y: auto;
@@ -875,24 +892,6 @@
             letter-spacing: 0.12em;
             text-align: center;
         }
-        @media (max-width: 640px) {
-            .p-img img { height: 170px; }
-            .p-body { padding: 1.4rem 1.4rem 1.6rem; }
-            .verse-modal-body { padding: 1.2rem 1.2rem 1rem; }
-        }
-
-        /* ---- application rows (mobile fallback) ---- */
-        .app-row {
-            background: linear-gradient(150deg, var(--card-2), var(--card));
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 1.2rem 1.3rem;
-            margin-top: 0.9rem;
-        }
-        .app-row .app-label { font-family: 'Noto Serif TC', serif; font-weight: 700; color: var(--text); }
-        .app-row .ref { color: var(--gold-soft); font-size: 0.85rem; margin-top: 0.2rem; }
-        .app-row .write-slot { margin-top: 0.8rem; border-bottom: 1px dashed rgba(148,165,198,0.3); height: 34px; }
-        @media (min-width: 768px) { .app-row { display: none; } }
 
         /* ---- reflection ---- */
         .reflect-grid {
@@ -908,7 +907,7 @@
             border-radius: 16px;
             padding: 1.7rem 2rem;
             transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 4px 22px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 22px rgba(120,110,80,0.15);
         }
         .reflect-card:hover { transform: translateX(6px); border-color: var(--gold-dim); }
         .reflect-card .r-tag {
@@ -925,6 +924,7 @@
             line-height: 1.75;
             color: var(--text);
         }
+        .reflect-card .r-text .ref-inline { color: var(--gold); }
 
         /* ---- footer ---- */
         footer.end {
@@ -933,13 +933,13 @@
             text-align: center;
             padding: 5rem 1.5rem 4rem;
             border-top: 1px solid var(--border);
-            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+            background: linear-gradient(to top, rgba(120,110,80,0.18), transparent);
         }
         footer.end .end-mark {
             font-family: 'Noto Serif TC', serif;
             font-weight: 900;
             font-size: clamp(2rem, 6vw, 3.5rem);
-            background: linear-gradient(160deg, #fff, var(--gold-soft));
+            background: linear-gradient(160deg, #2b2924, var(--gold));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -979,59 +979,70 @@
 
     <!-- NAVBAR -->
     <nav class="navbar">
-        <a href="#top" class="navbar-logo"><span class="dot"></span>曠野之行</a>
+        <a href="#top" class="navbar-logo"><span class="dot"></span><span data-i="brand">門徒訓練</span></a>
         <div class="navbar-links">
-            <a href="#sec1">站在高處</a>
-            <a href="#sec2">穿上鞋去行</a>
-            <a href="#sec3">實際應用</a>
-            <a href="#sec4">這樣去行</a>
+            <a href="#sec1" data-i="nav1">站在高處</a>
+            <a href="#sec2" data-i="nav2">是什麼意思</a>
+            <a href="#sec3" data-i="nav3">穿上鞋去行</a>
+            <a href="#sec4" data-i="nav4">實際應用</a>
+            <a href="#sec5" data-i="nav5">這樣去行</a>
         </div>
         <div class="chapter-tabs">
-            <span class="ctab active">第1課</span>
-            <a class="ctab" href="chapter-10.html">第10課</a>
+            <a class="ctab" href="index.html" data-i="ctab1">第1課</a>
+            <span class="ctab active" data-i="ctab10">第10課</span>
         </div>
-        <button class="menu-btn" id="menuBtn" aria-label="選單">目錄</button>
+        <button class="menu-btn" id="menuBtn" data-i-aria="menuBtnAria" aria-label="選單"><span data-i="menuBtn">目錄</span></button>
     </nav>
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-chapters">
-            <span>第1課</span>
-            <a href="chapter-10.html">第10課</a>
+            <a href="index.html" data-i="mctab1">第1課</a>
+            <span data-i="mctab10">第10課</span>
         </div>
-        <a href="#sec1">站在高處一聖經怎麼說？</a>
-        <a href="#sec2">穿上鞋去行</a>
-        <a href="#sec3">實際應用</a>
-        <a href="#sec4">這樣去行一他人怎麼說？</a>
+        <a href="#sec1" data-i="mnav1">站在高處一聖經怎麼說？</a>
+        <a href="#sec2" data-i="mnav2">是什麼意思？</a>
+        <a href="#sec3" data-i="mnav3">穿上鞋去行一我從他人的經驗中學習到了什麼？</a>
+        <a href="#sec4" data-i="mnav4">實際應用一我該怎麼做以成為耶穌的跟隨者？</a>
+        <a href="#sec5" data-i="mnav5">這樣去行一他人怎麼說？</a>
     </div>
 
     <!-- SIDE TRACKER -->
     <div class="tracker" id="tracker">
-        <a class="tracker-item" href="#sec1" data-track="0"><span class="tracker-dot"></span><span class="tracker-label">聖經怎麼說？</span></a>
-        <a class="tracker-item" href="#sec2" data-track="1"><span class="tracker-dot"></span><span class="tracker-label">穿上鞋去行</span></a>
-        <a class="tracker-item" href="#sec3" data-track="2"><span class="tracker-dot"></span><span class="tracker-label">實際應用</span></a>
-        <a class="tracker-item" href="#sec4" data-track="3"><span class="tracker-dot"></span><span class="tracker-label">這樣去行</span></a>
+        <a class="tracker-item" href="#sec1" data-track="0"><span class="tracker-dot"></span><span class="tracker-label" data-i="tr1">聖經怎麼說？</span></a>
+        <a class="tracker-item" href="#sec2" data-track="1"><span class="tracker-dot"></span><span class="tracker-label" data-i="tr2">是什麼意思？</span></a>
+        <a class="tracker-item" href="#sec3" data-track="2"><span class="tracker-dot"></span><span class="tracker-label" data-i="tr3">穿上鞋去行</span></a>
+        <a class="tracker-item" href="#sec4" data-track="3"><span class="tracker-dot"></span><span class="tracker-label" data-i="tr4">實際應用</span></a>
+        <a class="tracker-item" href="#sec5" data-track="4"><span class="tracker-dot"></span><span class="tracker-label" data-i="tr5">這樣去行</span></a>
     </div>
 
     <!-- HERO -->
     <header class="hero" id="top">
-        <div class="hero-chapter reveal">第一課</div>
-        <div class="hero-outline reveal">曠野之行</div>
-        <h1 class="hero-title reveal">門徒呼召</h1>
-        <p class="hero-tagline reveal">耶穌說要成為祂的門徒要有那些特性？</p>
+        <div class="hero-chapter reveal" data-i="hero.chapter">第十課</div>
+        <div class="hero-outline reveal" data-i="hero.outline">門徒訓練</div>
+        <h1 class="hero-title reveal" data-i="hero.title">聖潔</h1>
+        <p class="hero-tagline reveal" data-i="hero.tagline">「清心的人有福了，因為他們必得見神。」<span class="vref" data-verse="太五:8" tabindex="0">太五:8</span></p>
 
-        <div class="hero-bubbles reveal">
-            <span class="bubble vref" data-verse="太十六:24" tabindex="0">太十六:24</span>
-            <span class="bubble vref" data-verse="路十四:27" tabindex="0">路十四:27</span>
-            <span class="bubble vref" data-verse="十四:26" tabindex="0">十四:26</span>
-            <span class="bubble vref" data-verse="十四:33" tabindex="0">十四:33</span>
-            <span class="bubble vref" data-verse="約八:31、32" tabindex="0">約八:31、32</span>
-            <span class="bubble vref" data-verse="十三:34、35" tabindex="0">十三:34、35</span>
-            <span class="bubble vref" data-verse="十五:8" tabindex="0">十五:8</span>
+        <div class="lang-switch reveal" id="langBox">
+            <span class="l en">EN</span>
+            <label class="switch"><input type="checkbox" id="langToggle"><span class="slider"></span></label>
+            <span class="l zh">中文</span>
         </div>
 
-        <a href="#sec1" class="btn">開始</a>
+        <div class="hero-bubbles reveal">
+            <span class="bubble">出三:1～5</span>
+            <span class="bubble">十五:11～13</span>
+            <span class="bubble">撒上二:2、3</span>
+            <span class="bubble">詩九十九</span>
+            <span class="bubble">賽八:13</span>
+            <span class="bubble">五十七:15</span>
+            <span class="bubble">哈一:13</span>
+            <span class="bubble">啓四:8</span>
+            <span class="bubble">十五:4</span>
+        </div>
+
+        <a href="#sec1" class="btn" data-i="cta1">開始</a>
 
         <div class="scroll-hint">
-            <span>繼續</span>
+            <span data-i="scroll.hint">繼續</span>
             <div class="line"></div>
         </div>
     </header>
@@ -1040,130 +1051,108 @@
     <section class="block" id="sec1">
         <div class="ghost-num">01</div>
         <div class="stage">
-            <div class="kicker reveal">站在高處</div>
-            <div class="big-title reveal">站在高處<span class="hl">一</span>聖經怎麼說？</div>
+            <div class="kicker reveal" data-i="s1.kicker">站在高處</div>
+            <div class="big-title reveal" data-i="s1.title">站在高處<span class="hl">一</span>聖經怎麼說？</div>
 
             <div class="sec-rule reveal"></div>
 
-            <p class="lead reveal">閱讀以下經文，耶穌說要<strong>成為祂的門徒</strong>要有那些特性？</p>
-
-            <p class="content reveal" style="margin-top:1.6rem;">當你注意這些門徒特點時，思考這些問題：</p>
-
-            <div class="q-grid">
-                <div class="q-card reveal">
-                    <span class="q-num">Q1</span>
-                    <p class="q-text">耶穌在這段經文中真正要表達的是什麼？</p>
-                </div>
-                <div class="q-card reveal">
-                    <span class="q-num">Q2</span>
-                    <p class="q-text">祂的要求很高嗎？</p>
-                </div>
-                <div class="q-card reveal">
-                    <span class="q-num">Q3</span>
-                    <p class="q-text">在隨從每一個命令時，重要的心態是什麼？</p>
-                </div>
+            <div class="highlight-card reveal">
+                <p class="hq" data-i="s1.q1">「清心的人有福了，因為他們必得見神。」<span class="vref" data-verse="太五:8" tabindex="0">太五:8</span></p>
+                <p class="hq-sub" data-i="s1.q2">「你們要追求與眾人和睦，並要追求聖潔，非聖潔沒有人能見主。」<span class="vref" data-verse="來十二:14" tabindex="0">來十二:14</span></p>
             </div>
+
+            <p class="lead reveal" data-i="s1.lead">記下經文中有關上帝聖潔的本像。</p>
+
+            <p class="content reveal" style="margin-top:1.6rem;" data-i="s1.content">因神是聖潔的，所以恨惡罪，我們在聖潔上越成長，我們就越恨惡罪。（<span class="ref-inline">箴十二:9</span>；<span class="ref-inline">羅十二:9</span>）你認為恨惡罪是什麼意思？</p>
 
             <div class="ref-chips reveal" id="refChips">
-                <button class="chip" data-ref="0" data-verse="太十六:24">太十六:24</button>
-                <button class="chip" data-ref="1" data-verse="路十四:27">路十四:27</button>
-                <button class="chip" data-ref="2" data-verse="十四:26">十四:26</button>
-                <button class="chip" data-ref="3" data-verse="十四:33">十四:33</button>
-                <button class="chip" data-ref="4" data-verse="約八:31、32">約八:31、32</button>
-                <button class="chip" data-ref="5" data-verse="十三:34、35">十三:34、35</button>
-                <button class="chip" data-ref="6" data-verse="十五:8">十五:8</button>
+                <span class="chip">出三:1～5</span>
+                <span class="chip">十五:11～13</span>
+                <span class="chip">撒上二:2、3</span>
+                <span class="chip">詩九十九</span>
+                <span class="chip">賽八:13</span>
+                <span class="chip">五十七:15</span>
+                <span class="chip">哈一:13</span>
+                <span class="chip">啓四:8</span>
+                <span class="chip">十五:4</span>
             </div>
 
-            <p class="note reveal">（你可以如下圖，畫一個表來完成這部分學習）</p>
+            <p class="note reveal" data-i="s1.note">（你可以如下圖，畫一個表來完成這部分學習）</p>
 
             <div class="table-wrap reveal">
                 <div class="table-scroll">
                     <table>
                         <thead>
                             <tr>
-                                <th>經文</th>
-                                <th>當時狀況</th>
-                                <th>意義</th>
-                                <th>心態</th>
+                                <th data-i="s1.t1">經文</th>
+                                <th data-i="s1.t2">筆記</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="ref-row" data-ref="0"><td class="ref-cell vref" data-verse="太十六:24" tabindex="0">太十六:24</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
-                            <tr class="ref-row" data-ref="1"><td class="ref-cell vref" data-verse="路十四:27" tabindex="0">路十四:27</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
-                            <tr class="ref-row" data-ref="2"><td class="ref-cell vref" data-verse="十四:26" tabindex="0">十四:26</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
-                            <tr class="ref-row" data-ref="3"><td class="ref-cell vref" data-verse="十四:33" tabindex="0">十四:33</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
-                            <tr class="ref-row" data-ref="4"><td class="ref-cell vref" data-verse="約八:31、32" tabindex="0">約八:31、32</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
-                            <tr class="ref-row" data-ref="5"><td class="ref-cell vref" data-verse="十三:34、35" tabindex="0">十三:34、35</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
-                            <tr class="ref-row" data-ref="6"><td class="ref-cell vref" data-verse="十五:8" tabindex="0">十五:8</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+                            <tr><td class="ref-cell">出三:1～5</td><td class="write-cell"></td></tr>
+                            <tr><td class="ref-cell">十五:11～13</td><td class="write-cell"></td></tr>
+                            <tr><td class="ref-cell">撒上二:2、3</td><td class="write-cell"></td></tr>
+                            <tr><td class="ref-cell">詩九十九</td><td class="write-cell"></td></tr>
+                            <tr><td class="ref-cell">賽八:13</td><td class="write-cell"></td></tr>
+                            <tr><td class="ref-cell">五十七:15</td><td class="write-cell"></td></tr>
+                            <tr><td class="ref-cell">哈一:13</td><td class="write-cell"></td></tr>
+                            <tr><td class="ref-cell">啓四:8</td><td class="write-cell"></td></tr>
+                            <tr><td class="ref-cell">十五:4</td><td class="write-cell"></td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <div class="highlight-card reveal">
-                <p class="hq">耶穌有十二個門徒，今天我們是否可能成為門徒？</p>
-                <p class="hq-sub">查考<span class="vref" data-verse="太二十八:19、20" tabindex="0">太二十八:19、20</span>耶穌的命令如何幫助我們回答這個問題？</p>
-            </div>
-
-            <div class="highlight-card reveal" style="border-color: var(--border-2);">
-                <p class="hq">寫出你認為被呼召作基督門徒的目的。</p>
-                <p class="hq-sub">耶穌的門徒被呼召作 ....</p>
-                <div class="write-lines">
-                    <div class="write-line"></div>
-                    <div class="write-line"></div>
-                    <div class="write-line"></div>
-                </div>
-            </div>
-
             <div style="text-align:center; margin-top:3rem;">
-                <a href="#sec2" class="btn">繼續</a>
+                <a href="#sec2" class="btn" data-i="cta">繼續</a>
             </div>
         </div>
     </section>
 
     <!-- SECTION 2 -->
-    <section class="block" id="sec2" style="background: linear-gradient(to bottom, transparent, rgba(10,16,31,0.6) 18%, rgba(10,16,31,0.6) 82%, transparent);">
+    <section class="block" id="sec2" style="background: linear-gradient(to bottom, transparent, rgba(236,230,216,0.6) 18%, rgba(236,230,216,0.6) 82%, transparent);">
         <div class="ghost-num">02</div>
         <div class="stage">
-            <div class="kicker reveal">穿上鞋去行</div>
-            <div class="big-title reveal">穿上鞋去行<span class="hl">一</span>我從他人的經驗中學習到了什麼？</div>
+            <div class="kicker reveal" data-i="s2.kicker">是什麼意思</div>
+            <div class="big-title reveal" data-i="s2.title">是什麼意思？</div>
 
             <div class="sec-rule reveal"></div>
 
-            <p class="lead reveal">查考這些經文，看看門徒如何回應耶穌的呼召，以及作門徒要付出什麼代價。</p>
+            <p class="content reveal" data-i="s2.p1">閱讀<span class="ref-inline">彼前一:15、16</span>，為什麼聖潔的神呼召我們成為聖潔？</p>
 
-            <div class="passage-grid">
-                <article class="passage-card reveal" data-verse="可一:14 ～ 20" tabindex="0" role="button" aria-label="查看經文 可一:14 ～ 20">
-                    <figure class="p-img">
-                        <img src="peter-andrew-calling.jpg" alt="卡拉瓦喬《呼召彼得與安得烈》" loading="lazy">
-                        <figcaption class="p-img-cap">呼召彼得與安得烈 — 卡拉瓦喬 (Caravaggio)</figcaption>
-                    </figure>
-                    <div class="p-body">
-                        <div class="p-kicker">查考</div>
-                        <div class="p-ref vref" data-verse="可一:14 ～ 20">可一:14 ～ 20</div>
-                        <div class="p-q">耶穌向這些門徒潛力的人說些什麼？那是什麼意思？</div>
-                        <div class="p-q">他們對耶穌的回應是什麼？</div>
-                        <div class="p-q">對這些人而言，作門徒的代價有哪些？</div>
-                    </div>
-                </article>
+            <p class="content reveal" style="margin-top:1.6rem;" data-i="s2.p2">閱讀<span class="ref-inline">利十:1、2</span>；<span class="ref-inline">代上十三:7～11</span>及<span class="ref-inline">民二十:1～13</span>；當這些人不敬重神的聖潔時，就發生了什麼事？關於神聖潔的屬性部份，你的反應是什麼？</p>
 
-                <article class="passage-card reveal" data-verse="可十:17 ～ 31" tabindex="0" role="button" aria-label="查看經文 可十:17 ～ 31">
-                    <figure class="p-img">
-                        <img src="rich-young-ruler.jpg" alt="霍夫曼《基督與富有的青年官長》" loading="lazy">
-                        <figcaption class="p-img-cap">基督與富有的青年官長 — 海因里希・霍夫曼 (Heinrich Hofmann)</figcaption>
-                    </figure>
-                    <div class="p-body">
-                        <div class="p-kicker">查考</div>
-                        <div class="p-ref vref" data-verse="可十:17 ～ 31">可十:17 ～ 31</div>
-                        <div class="p-q">這個人的問題是什麼？耶穌怎麼回答？為什麼耶穌這樣回答？</div>
-                        <div class="p-q">什麼因素使得他要跟從耶穌？</div>
-                        <div class="p-q">門徒們從這件事學習到什麼？</div>
-                    </div>
-                </article>
+            <p class="lead reveal" style="margin-top:2.2rem;" data-i="s2.p3">下列經文告訴你，我們的聖潔來自何處？我們可如何領受這聖潔？</p>
+
+            <div class="ref-chips reveal">
+                <span class="chip">羅五:12～21</span>
+                <span class="chip">林前一:30～31</span>
+                <span class="chip">林後五:21</span>
+                <span class="chip">來四:15、16</span>
+            </div>
+
+            <p class="lead reveal" style="margin-top:2.6rem;" data-i="s2.defhead">聖潔的主要定義包括：</p>
+
+            <div class="reflect-grid">
+                <div class="reflect-card reveal">
+                    <div class="r-text" data-i="s2.d1">聖潔，神聖及聖徒，這是從希臘字 HAGIOS 來的，意思是「神使之特殊。」</div>
+                </div>
+                <div class="reflect-card reveal">
+                    <div class="r-text" data-i="s2.d2">這並非代表無罪完美，而是對神聖潔的生活。</div>
+                </div>
+                <div class="reflect-card reveal">
+                    <div class="r-text" data-i="s2.d3">敬拜神的，虔敬：用生活行動表明向神的奉獻及虔敬。</div>
+                </div>
+                <div class="reflect-card reveal">
+                    <div class="r-text" data-i="s2.d4">神聖：在行動、言語及思想上歸神為聖的過程。</div>
+                </div>
+                <div class="reflect-card reveal">
+                    <div class="r-text" data-i="s2.d5">聖潔：沒有比遵守神屬性及旨意更重要的事。</div>
+                </div>
             </div>
 
             <div style="text-align:center; margin-top:3.4rem;">
-                <a href="#sec3" class="btn">繼續</a>
+                <a href="#sec3" class="btn" data-i="cta">繼續</a>
             </div>
         </div>
     </section>
@@ -1172,100 +1161,104 @@
     <section class="block" id="sec3">
         <div class="ghost-num">03</div>
         <div class="stage">
-            <div class="kicker reveal">實際應用</div>
-            <div class="big-title reveal">實際應用<span class="hl">一</span>我該怎麼做以成為耶穌的跟隨者？</div>
+            <div class="kicker reveal" data-i="s3.kicker">穿上鞋去行</div>
+            <div class="big-title reveal" data-i="s3.title">穿上鞋去行<span class="hl">一</span>我從他人的經驗中學習到了什麼？</div>
 
             <div class="sec-rule reveal"></div>
 
-            <p class="lead reveal">查考下列經文，再次注意這些門徒的標誌。你可以實際的做些什麼以在生活中應用神的話？</p>
+            <p class="lead reveal" data-i="s3.lead">自以下經文中考查，我們如何過一個聖潔的生活？</p>
 
-            <div class="table-wrap reveal">
-                <div class="table-scroll">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>經文</th>
-                                <th>實際應用</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td class="app-label">遵守神的話<span class="ref vref" data-verse="約八:31、32" tabindex="0">— 約八:31、32</span></td><td class="write-cell app-write"></td></tr>
-                            <tr><td class="app-label">結果子<span class="ref vref" data-verse="約十五:8" tabindex="0">— 約十五:8</span></td><td class="write-cell app-write"></td></tr>
-                            <tr><td class="app-label">背十字架<span class="ref vref" data-verse="路十四:27" tabindex="0">— 路十四:27</span></td><td class="write-cell app-write"></td></tr>
-                            <tr><td class="app-label">捨己<span class="ref vref" data-verse="太十六:24" tabindex="0">— 太十六:24</span></td><td class="write-cell app-write"></td></tr>
-                            <tr><td class="app-label">基督居首位<span class="ref vref" data-verse="路十四:26" tabindex="0">— 路十四:26</span></td><td class="write-cell app-write"></td></tr>
-                            <tr><td class="app-label">捨棄一切<span class="ref vref" data-verse="路十四:33" tabindex="0">— 路十四:33</span></td><td class="write-cell app-write"></td></tr>
-                            <tr><td class="app-label">神的愛<span class="ref vref" data-verse="約十三:34、35" tabindex="0">— 約十三:34、35</span></td><td class="write-cell app-write"></td></tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="ref-chips reveal">
+                <span class="chip">羅六:12～14</span>
+                <span class="chip">八:13、14</span>
+                <span class="chip">十二:1、2</span>
+                <span class="chip">弗四:20～32</span>
+                <span class="chip">帖前四:1～8</span>
+                <span class="chip">提前四:7、8</span>
+                <span class="chip">提後二:21～22</span>
+                <span class="chip">多二:11～15</span>
+                <span class="chip">約壹一:9</span>
             </div>
 
-            <div id="appRows">
-                <div class="app-row">
-                    <div class="app-label">遵守神的話</div>
-                    <div class="ref vref" data-verse="約八:31、32" tabindex="0">— 約八:31、32</div>
-                    <div class="write-slot"></div>
-                </div>
-                <div class="app-row">
-                    <div class="app-label">結果子</div>
-                    <div class="ref vref" data-verse="約十五:8" tabindex="0">— 約十五:8</div>
-                    <div class="write-slot"></div>
-                </div>
-                <div class="app-row">
-                    <div class="app-label">背十字架</div>
-                    <div class="ref vref" data-verse="路十四:27" tabindex="0">— 路十四:27</div>
-                    <div class="write-slot"></div>
-                </div>
-                <div class="app-row">
-                    <div class="app-label">捨己</div>
-                    <div class="ref vref" data-verse="太十六:24" tabindex="0">— 太十六:24</div>
-                    <div class="write-slot"></div>
-                </div>
-                <div class="app-row">
-                    <div class="app-label">基督居首位</div>
-                    <div class="ref vref" data-verse="路十四:26" tabindex="0">— 路十四:26</div>
-                    <div class="write-slot"></div>
-                </div>
-                <div class="app-row">
-                    <div class="app-label">捨棄一切</div>
-                    <div class="ref vref" data-verse="路十四:33" tabindex="0">— 路十四:33</div>
-                    <div class="write-slot"></div>
-                </div>
-                <div class="app-row">
-                    <div class="app-label">神的愛</div>
-                    <div class="ref vref" data-verse="約十三:34、35" tabindex="0">— 約十三:34、35</div>
-                    <div class="write-slot"></div>
-                </div>
+            <div class="passage-grid">
+                <article class="passage-card reveal">
+                    <div class="p-body">
+                        <div class="p-kicker" data-i="s3.c1.kicker">查考</div>
+                        <div class="p-ref" data-i="s3.c1.ref">賽六:1～8</div>
+                        <div class="p-q" data-i="s3.c1.q1">以賽亞如何回應神的聖潔？他表明了什麼？</div>
+                        <div class="p-q" data-i="s3.c1.q2">神爲他做了什麼？神呼召他做什麼？</div>
+                        <div class="p-q" data-i="s3.c1.q3">以賽亞如何回應？</div>
+                    </div>
+                </article>
+
+                <article class="passage-card reveal">
+                    <div class="p-body">
+                        <div class="p-kicker" data-i="s3.c2.kicker">查考</div>
+                        <div class="p-ref" data-i="s3.c2.ref">伯一:1及但一:8、六:4</div>
+                        <div class="p-q" data-i="s3.c2.q1">在這些人的生活中，聖潔像是什麼？</div>
+                    </div>
+                </article>
             </div>
 
             <div style="text-align:center; margin-top:3.4rem;">
-                <a href="#sec4" class="btn">繼續</a>
+                <a href="#sec4" class="btn" data-i="cta">繼續</a>
             </div>
         </div>
     </section>
 
     <!-- SECTION 4 -->
-    <section class="block" id="sec4" style="background: linear-gradient(to bottom, transparent, rgba(10,16,31,0.6) 18%, rgba(10,16,31,0.6) 82%, transparent);">
+    <section class="block" id="sec4" style="background: linear-gradient(to bottom, transparent, rgba(236,230,216,0.6) 18%, rgba(236,230,216,0.6) 82%, transparent);">
         <div class="ghost-num">04</div>
         <div class="stage">
-            <div class="kicker reveal">這樣去行</div>
-            <div class="big-title reveal">這樣去行<span class="hl">一</span>他人怎麼說？</div>
+            <div class="kicker reveal" data-i="s4.kicker">實際應用</div>
+            <div class="big-title reveal" data-i="s4.title">實際應用<span class="hl">一</span>我該怎麼做以成為耶穌的跟隨者？</div>
 
             <div class="sec-rule reveal"></div>
 
             <div class="reflect-grid">
                 <div class="reflect-card reveal">
-                    <div class="r-tag">省思</div>
-                    <p class="r-text">你有否遵行任何現代或前人的教訓？你欣賞他們什麼？</p>
+                    <div class="r-tag" data-i="s4.tag">省思</div>
+                    <p class="r-text" data-i="s4.q1">你可以採行怎樣的步驟使自己越來越聖潔？</p>
                 </div>
                 <div class="reflect-card reveal">
-                    <div class="r-tag">省思</div>
-                    <p class="r-text">你認為一個人要跟隨耶穌可能嗎？</p>
+                    <div class="r-tag" data-i="s4.tag">省思</div>
+                    <p class="r-text" data-i="s4.q2">你認為聖潔主要指你的性生活方面嗎？為什麼？</p>
                 </div>
                 <div class="reflect-card reveal">
-                    <div class="r-tag">省思</div>
-                    <p class="r-text">如果你遇見一個人他想跟隨耶穌，你會期望他們是怎樣的人？</p>
+                    <div class="r-tag" data-i="s4.tag">省思</div>
+                    <p class="r-text" data-i="s4.q3">閱讀<span class="ref-inline">太五:27～30</span>是否有任何嗜好習慣或模式是你急需對付的，以使你更加聖潔？</p>
+                </div>
+            </div>
+
+            <div class="write-lines reveal" style="margin-top:2.4rem;">
+                <div class="write-line"></div>
+                <div class="write-line"></div>
+                <div class="write-line"></div>
+            </div>
+
+            <div style="text-align:center; margin-top:3.4rem;">
+                <a href="#sec5" class="btn" data-i="cta">繼續</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section class="block" id="sec5">
+        <div class="ghost-num">05</div>
+        <div class="stage">
+            <div class="kicker reveal" data-i="s5.kicker">這樣去行</div>
+            <div class="big-title reveal" data-i="s5.title">這樣去行<span class="hl">一</span>他人怎麼說？</div>
+
+            <div class="sec-rule reveal"></div>
+
+            <div class="reflect-grid">
+                <div class="reflect-card reveal">
+                    <div class="r-tag" data-i="s5.tag">省思</div>
+                    <p class="r-text" data-i="s5.q1">有那些愛好或習慣是他人所做而你不做的？你如何決定不做？</p>
+                </div>
+                <div class="reflect-card reveal">
+                    <div class="r-tag" data-i="s5.tag">省思</div>
+                    <p class="r-text" data-i="s5.q2">如果有一個人告訴你他不想被習慣捆綁（例如觀看限制級電影）是因為他想過一個聖潔的生活，你有什麼反應？你會認為他們比你更聖潔嗎？如果他們說他們不是想比你聖潔，而是想過得比以前更聖潔，你會怎麼說？</p>
                 </div>
             </div>
 
@@ -1279,10 +1272,10 @@
 
     <!-- FOOTER -->
     <footer class="end">
-        <div class="end-mark reveal">曠野之行</div>
-        <div class="end-sub reveal">第一課・門徒呼召</div>
+        <div class="end-mark reveal" data-i="f.mark">門徒訓練</div>
+        <div class="end-sub reveal" data-i="f.sub">第十課・聖潔</div>
         <div style="margin-top:2.4rem;">
-            <a href="#top" class="btn">回到頂部</a>
+            <a href="#top" class="btn" data-i="f.cta">回到頂部</a>
         </div>
     </footer>
 
@@ -1290,16 +1283,182 @@
     <div class="verse-overlay" id="verseOverlay">
         <div class="verse-modal" role="dialog" aria-modal="true" aria-labelledby="verseTitle">
             <div class="verse-modal-head">
-                <span class="verse-modal-tag">CCB</span>
+                <span class="verse-modal-tag" id="verseTag"></span>
                 <div class="verse-modal-title" id="verseTitle"></div>
-                <button class="verse-close" id="verseClose" aria-label="關閉">&times;</button>
+                <button class="verse-close" id="verseClose" data-i-aria="closeAria" aria-label="關閉">&times;</button>
             </div>
             <div class="verse-modal-body" id="verseBody"></div>
-            <div class="verse-modal-foot">中文當代譯本・Chinese Contemporary Bible (CCB)</div>
+            <div class="verse-modal-foot" data-i="modal.foot">經文取自教材・Scripture text as given in the lesson</div>
         </div>
     </div>
 
     <script>
+        // ---- i18n ----
+        const I18N = {
+            en: {
+                brand: 'Discipleship Training',
+                nav1: 'Standing High',
+                nav2: 'What It Means',
+                nav3: 'Walking It Out',
+                nav4: 'Application',
+                nav5: 'Doing It',
+                ctab1: 'Lesson 1',
+                ctab10: 'Lesson 10',
+                menuBtn: 'Menu',
+                menuBtnAria: 'Menu',
+                closeAria: 'Close',
+                mctab1: 'Lesson 1',
+                mctab10: 'Lesson 10',
+                mnav1: 'Standing on a High Place — What does the Bible say?',
+                mnav2: 'What does it mean?',
+                mnav3: 'Put on Your Shoes and Walk — What did I learn from the experiences of others?',
+                mnav4: 'Practical Application — What should I do to become a follower of Jesus?',
+                mnav5: 'Doing It This Way — What do others say?',
+                tr1: 'What Does the Bible Say?',
+                tr2: 'What Does It Mean?',
+                tr3: 'Walking It Out',
+                tr4: 'Practical Application',
+                tr5: 'Doing It This Way',
+                'hero.chapter': 'Lesson 10',
+                'hero.outline': 'Discipleship Training',
+                'hero.title': 'Holiness',
+                'hero.tagline': '"Blessed are the pure in heart, for they shall see God." <span class="vref" data-verse="太五:8" tabindex="0">Matthew 5:8</span>',
+                cta1: 'Begin',
+                cta: 'Continue',
+                'scroll.hint': 'Continue',
+                's1.kicker': 'Standing on a High Place',
+                's1.title': 'Standing on a High Place <span class="hl">—</span> What Does the Bible Say?',
+                's1.q1': '"Blessed are the pure in heart, for they shall see God." <span class="vref" data-verse="太五:8" tabindex="0">Matthew 5:8</span>',
+                's1.q2': '"Pursue peace with all people, and holiness, without which no one will see the Lord." <span class="vref" data-verse="來十二:14" tabindex="0">Hebrews 12:14</span>',
+                's1.lead': 'Note down the passages regarding the image and nature of God\'s holiness.',
+                's1.content': 'Because God is holy, He hates sin. The more we grow in holiness, the more we hate sin. (<span class="ref-inline">Proverbs 12:9</span>; <span class="ref-inline">Romans 12:9</span>) What do you think it means to hate sin?',
+                's1.note': '(You can draw a table like the one below to complete this section of study.)',
+                's1.t1': 'Scripture',
+                's1.t2': 'Notes',
+                's2.kicker': 'What Does It Mean',
+                's2.title': 'What Does It Mean?',
+                's2.p1': 'Read <span class="ref-inline">1 Peter 1:15, 16</span>. Why does the holy God call us to be holy?',
+                's2.p2': 'Read <span class="ref-inline">Leviticus 10:1, 2</span>; <span class="ref-inline">1 Chronicles 13:7–11</span>; and <span class="ref-inline">Numbers 20:1–13</span>. When these people did not respect God\'s holiness, what happened? Regarding God\'s holy attributes, what is your response?',
+                's2.p3': 'The following passages tell us where our holiness comes from and how we can receive this holiness:',
+                's2.defhead': 'The primary definitions of holiness include:',
+                's2.d1': 'Holiness, sacredness, and saints come from the Greek word HAGIOS, meaning "set apart by God."',
+                's2.d2': 'This does not mean sinless perfection, but rather a life dedicated to God\'s holiness.',
+                's2.d3': 'Worshiping God, piety: expressing dedication and godliness toward God through daily actions.',
+                's2.d4': 'Sacredness: the process of setting apart one\'s actions, words, and thoughts for God.',
+                's2.d5': 'Holiness: nothing is more important than obeying God\'s attributes and will.',
+                's3.kicker': 'Put on Your Shoes and Walk',
+                's3.title': 'Put on Your Shoes and Walk <span class="hl">—</span> What Did I Learn from the Experiences of Others?',
+                's3.lead': 'Examine the following passages and see how we can live a holy life:',
+                's3.c1.kicker': 'Examine',
+                's3.c1.ref': 'Isaiah 6:1–8',
+                's3.c1.q1': 'How did Isaiah respond to God\'s holiness? What did he express?',
+                's3.c1.q2': 'What did God do for him? What did God call him to do?',
+                's3.c1.q3': 'How did Isaiah respond?',
+                's3.c2.kicker': 'Examine',
+                's3.c2.ref': 'Job 1:1; Daniel 1:8; 6:4',
+                's3.c2.q1': 'In the lives of these people, what was holiness like?',
+                's4.kicker': 'Practical Application',
+                's4.title': 'Practical Application <span class="hl">—</span> What Should I Do to Become a Follower of Jesus?',
+                's4.tag': 'Reflect',
+                's4.q1': 'What steps can you take to make yourself increasingly holy?',
+                's4.q2': 'Do you think holiness primarily refers to your sexual life? Why or why not?',
+                's4.q3': 'Read <span class="ref-inline">Matthew 5:27–30</span>. Are there any hobbies, habits, or patterns that you urgently need to deal with in order to become more holy?',
+                's5.kicker': 'Doing It This Way',
+                's5.title': 'Doing It This Way <span class="hl">—</span> What Do Others Say?',
+                's5.tag': 'Reflect',
+                's5.q1': 'What are some hobbies or habits that others do which you do not? How do you decide not to do them?',
+                's5.q2': 'If someone tells you they do not want to be bound by habits (e.g., watching restricted-rated movies) because they want to live a holy life, what is your reaction? Do you think they are holier than you? If they say they do not want to be holier than you, but rather want to live more holily than before, what would you say?',
+                'f.mark': 'Discipleship Training',
+                'f.sub': 'Lesson 10 · Holiness',
+                'f.cta': 'Back to Top',
+                'modal.foot': 'Scripture text as given in the lesson',
+                'modal.tag': 'SCRIPTURE',
+                '太五:8': { title: 'Matthew 5:8', verses: [['8', '"Blessed are the pure in heart, for they shall see God."']] },
+                '來十二:14': { title: 'Hebrews 12:14', verses: [['14', '"Pursue peace with all people, and holiness, without which no one will see the Lord."']] }
+            },
+            zh: {
+                brand: '門徒訓練',
+                nav1: '站在高處',
+                nav2: '是什麼意思',
+                nav3: '穿上鞋去行',
+                nav4: '實際應用',
+                nav5: '這樣去行',
+                ctab1: '第1課',
+                ctab10: '第10課',
+                menuBtn: '目錄',
+                menuBtnAria: '選單',
+                closeAria: '關閉',
+                mctab1: '第1課',
+                mctab10: '第10課',
+                mnav1: '站在高處一聖經怎麼說？',
+                mnav2: '是什麼意思？',
+                mnav3: '穿上鞋去行一我從他人的經驗中學習到了什麼？',
+                mnav4: '實際應用一我該怎麼做以成為耶穌的跟隨者？',
+                mnav5: '這樣去行一他人怎麼說？',
+                tr1: '聖經怎麼說？',
+                tr2: '是什麼意思？',
+                tr3: '穿上鞋去行',
+                tr4: '實際應用',
+                tr5: '這樣去行',
+                'hero.chapter': '第十課',
+                'hero.outline': '門徒訓練',
+                'hero.title': '聖潔',
+                'hero.tagline': '「清心的人有福了，因為他們必得見神。」<span class="vref" data-verse="太五:8" tabindex="0">太五:8</span>',
+                cta1: '開始',
+                cta: '繼續',
+                'scroll.hint': '繼續',
+                's1.kicker': '站在高處',
+                's1.title': '站在高處<span class="hl">一</span>聖經怎麼說？',
+                's1.q1': '「清心的人有福了，因為他們必得見神。」<span class="vref" data-verse="太五:8" tabindex="0">太五:8</span>',
+                's1.q2': '「你們要追求與眾人和睦，並要追求聖潔，非聖潔沒有人能見主。」<span class="vref" data-verse="來十二:14" tabindex="0">來十二:14</span>',
+                's1.lead': '記下經文中有關上帝聖潔的本像。',
+                's1.content': '因神是聖潔的，所以恨惡罪，我們在聖潔上越成長，我們就越恨惡罪。（<span class="ref-inline">箴十二:9</span>；<span class="ref-inline">羅十二:9</span>）你認為恨惡罪是什麼意思？',
+                's1.note': '（你可以如下圖，畫一個表來完成這部分學習）',
+                's1.t1': '經文',
+                's1.t2': '筆記',
+                's2.kicker': '是什麼意思',
+                's2.title': '是什麼意思？',
+                's2.p1': '閱讀<span class="ref-inline">彼前一:15、16</span>，為什麼聖潔的神呼召我們成為聖潔？',
+                's2.p2': '閱讀<span class="ref-inline">利十:1、2</span>；<span class="ref-inline">代上十三:7～11</span>及<span class="ref-inline">民二十:1～13</span>；當這些人不敬重神的聖潔時，就發生了什麼事？關於神聖潔的屬性部份，你的反應是什麼？',
+                's2.p3': '下列經文告訴你，我們的聖潔來自何處？我們可如何領受這聖潔？',
+                's2.defhead': '聖潔的主要定義包括：',
+                's2.d1': '聖潔，神聖及聖徒，這是從希臘字 HAGIOS 來的，意思是「神使之特殊。」',
+                's2.d2': '這並非代表無罪完美，而是對神聖潔的生活。',
+                's2.d3': '敬拜神的，虔敬：用生活行動表明向神的奉獻及虔敬。',
+                's2.d4': '神聖：在行動、言語及思想上歸神為聖的過程。',
+                's2.d5': '聖潔：沒有比遵守神屬性及旨意更重要的事。',
+                's3.kicker': '穿上鞋去行',
+                's3.title': '穿上鞋去行<span class="hl">一</span>我從他人的經驗中學習到了什麼？',
+                's3.lead': '自以下經文中考查，我們如何過一個聖潔的生活？',
+                's3.c1.kicker': '查考',
+                's3.c1.ref': '賽六:1～8',
+                's3.c1.q1': '以賽亞如何回應神的聖潔？他表明了什麼？',
+                's3.c1.q2': '神爲他做了什麼？神呼召他做什麼？',
+                's3.c1.q3': '以賽亞如何回應？',
+                's3.c2.kicker': '查考',
+                's3.c2.ref': '伯一:1及但一:8、六:4',
+                's3.c2.q1': '在這些人的生活中，聖潔像是什麼？',
+                's4.kicker': '實際應用',
+                's4.title': '實際應用<span class="hl">一</span>我該怎麼做以成為耶穌的跟隨者？',
+                's4.tag': '省思',
+                's4.q1': '你可以採行怎樣的步驟使自己越來越聖潔？',
+                's4.q2': '你認為聖潔主要指你的性生活方面嗎？為什麼？',
+                's4.q3': '閱讀<span class="ref-inline">太五:27～30</span>是否有任何嗜好習慣或模式是你急需對付的，以使你更加聖潔？',
+                's5.kicker': '這樣去行',
+                's5.title': '這樣去行<span class="hl">一</span>他人怎麼說？',
+                's5.tag': '省思',
+                's5.q1': '有那些愛好或習慣是他人所做而你不做的？你如何決定不做？',
+                's5.q2': '如果有一個人告訴你他不想被習慣捆綁（例如觀看限制級電影）是因為他想過一個聖潔的生活，你有什麼反應？你會認為他們比你更聖潔嗎？如果他們說他們不是想比你聖潔，而是想過得比以前更聖潔，你會怎麼說？',
+                'f.mark': '門徒訓練',
+                'f.sub': '第十課・聖潔',
+                'f.cta': '回到頂部',
+                'modal.foot': '經文取自教材・Scripture text as given in the lesson',
+                'modal.tag': '經文',
+                '太五:8': { title: '馬太福音 5:8', verses: [['8', '「清心的人有福了，因為他們必得見神。」']] },
+                '來十二:14': { title: '希伯來書 12:14', verses: [['14', '「你們要追求與眾人和睦，並要追求聖潔，非聖潔沒有人能見主。」']] }
+            }
+        };
+
         // ---- starfield ----
         (function () {
             const wrap = document.getElementById('stars');
@@ -1322,7 +1481,8 @@
         // ---- scroll progress + tracker + reveal ----
         const progress = document.getElementById('scrollProgress');
         const trackerItems = document.querySelectorAll('.tracker-item');
-        const sections = ['sec1', 'sec2', 'sec3', 'sec4'].map(id => document.getElementById(id));
+
+        const sections = ['sec1', 'sec2', 'sec3', 'sec4', 'sec5'].map(id => document.getElementById(id));
         const revealEls = document.querySelectorAll('.reveal');
 
         function onScroll() {
@@ -1364,96 +1524,39 @@
             a.addEventListener('click', () => mobileMenu.classList.remove('open'));
         });
 
-        // ---- verse popup (CCB 中文當代譯本) ----
-        const VERSES = {
-            '太十六:24': {
-                title: '馬太福音 16:24',
-                verses: [['24', '於是耶穌對門徒說：“如果有人要跟從我，就應當捨己，背起他的十字架跟從我。']]
-            },
-            '路十四:27': {
-                title: '路加福音 14:27',
-                verses: [['27', '若不背起自己的十字架跟從我，就不能做我的門徒。']]
-            },
-            '十四:26': {
-                title: '路加福音 14:26',
-                verses: [['26', '“若有人要跟從我，就要愛我勝過愛他的父母、妻子、兒女、弟兄、姊妹，甚至自己的生命，否則就不能做我的門徒。']]
-            },
-            '十四:33': {
-                title: '路加福音 14:33',
-                verses: [['33', '“同樣，你們若不撇下一切，就不能做我的門徒。']]
-            },
-            '約八:31、32': {
-                title: '約翰福音 8:31-32',
-                verses: [
-                    ['31', '耶穌對信祂的猶太人說：“你們若持守我的道，就真是我的門徒了。'],
-                    ['32', '你們必認識真理，真理必叫你們得到自由。”']
-                ]
-            },
-            '十三:34、35': {
-                title: '約翰福音 13:34-35',
-                verses: [
-                    ['34', '我賜給你們一條新命令——你們要彼此相愛。我怎樣愛你們，你們也要怎樣彼此相愛。'],
-                    ['35', '你們如果彼此相愛，世人就會認出你們是我的門徒。”']
-                ]
-            },
-            '十五:8': {
-                title: '約翰福音 15:8',
-                verses: [['8', '你們多結果子，證明自己是我的門徒，就會給我父帶來榮耀。']]
-            },
-            '太二十八:19、20': {
-                title: '馬太福音 28:19-20',
-                verses: [
-                    ['19', '所以，你們要去使萬民做我的門徒，奉父、子、聖靈的名給他們施洗，'],
-                    ['20', '教導他們遵守我吩咐你們的一切。記住，我必常與你們同在，一直到世界的末了。”']
-                ]
-            },
-            '可一:14 ～ 20': {
-                title: '馬可福音 1:14-20',
-                verses: [
-                    ['14', '約翰被捕後，耶穌來到加利利宣講上帝的福音，說：'],
-                    ['15', '“時候到了，上帝的國臨近了，你們要悔改，相信福音。”'],
-                    ['16', '耶穌沿著加利利湖邊走，看見兩個漁夫——西門和他的弟弟安得烈正在湖上撒網捕魚。'],
-                    ['17', '耶穌對他們說：“來跟從我！我要使你們成為得人的漁夫。”'],
-                    ['18', '他們立刻拋下漁網，跟從了耶穌。'],
-                    ['19', '耶穌往前走了不遠，又看見西庇太的兩個兒子雅各和約翰正在船上補網，'],
-                    ['20', '便立刻呼召他們。他們就辭別父親和船上的工人，跟從了耶穌。']
-                ]
-            },
-            '可十:17 ～ 31': {
-                title: '馬可福音 10:17-31',
-                verses: [
-                    ['17', '耶穌正要上路，有一個人跑來跪在祂跟前，問祂：“良善的老師，我該做什麼才能承受永生？”'],
-                    ['18', '耶穌說：“你為什麼稱呼我‘良善的老師’呢？只有上帝是良善的。'],
-                    ['19', '你知道‘不可殺人，不可通姦，不可偷盜，不可作偽證，不可欺詐，要孝敬父母’這些誡命。”'],
-                    ['20', '那人說：“老師，我從小就遵行這些誡命。”'],
-                    ['21', '耶穌望著他，心中愛他，便說：“你還有一件事沒有做，就是變賣你所有的產業，送給窮人，你必有財寶存在天上，然後你還要來跟從我。”'],
-                    ['22', '那人聽了，臉色驟變，便沮喪地走了，因為他有許多產業。'],
-                    ['23', '耶穌看看周圍的人，對門徒說：“有錢人進上帝的國真難啊！”'],
-                    ['24', '門徒聽了感到驚奇，耶穌便再次對他們說：“孩子們，進上帝的國多麼難啊！'],
-                    ['25', '駱駝穿過針眼比有錢人進上帝的國還容易呢！”'],
-                    ['26', '門徒更加驚奇，便議論說：“這樣，誰能得救呢？”'],
-                    ['27', '耶穌看著他們說：“對人而言，這不可能，但對上帝而言，凡事都可能。”'],
-                    ['28', '彼得說：“你看，我們已經撇下一切來跟從你了。”'],
-                    ['29', '耶穌說：“我實在告訴你們，任何人為了我和福音而撇下房屋、弟兄、姊妹、父母、兒女或田地，'],
-                    ['30', '今世必在房屋、弟兄、姊妹、父母、兒女或田地方面獲得百倍的回報，來世必得永生。當然他也會受到迫害。'],
-                    ['31', '然而，許多為首的將要殿後，殿後的將要為首。”']
-                ]
-            }
-        };
+        // ---- language toggle ----
+        let lang = localStorage.getItem('c10_lang') || 'zh';
+        const toggle = document.getElementById('langToggle');
+        const langBox = document.getElementById('langBox');
 
-        VERSES['約十五:8'] = VERSES['十五:8'];
-        VERSES['約十三:34、35'] = VERSES['十三:34、35'];
-        VERSES['路十四:26'] = VERSES['十四:26'];
-        VERSES['路十四:33'] = VERSES['十四:33'];
+        function applyLang(l) {
+            lang = l;
+            document.documentElement.lang = (l === 'zh') ? 'zh-Hant' : 'en';
+            document.querySelectorAll('[data-i]').forEach(el => {
+                const key = el.dataset.i;
+                if (I18N[l][key] !== undefined) el.innerHTML = I18N[l][key];
+            });
+            document.querySelectorAll('[data-i-aria]').forEach(el => {
+                const key = el.dataset.iAria;
+                if (I18N[l][key] !== undefined) el.setAttribute('aria-label', I18N[l][key]);
+            });
+            langBox.classList.toggle('zh', l === 'zh');
+            toggle.checked = (l === 'zh');
+            localStorage.setItem('c10_lang', l);
+        }
+        toggle.addEventListener('change', () => applyLang(toggle.checked ? 'zh' : 'en'));
 
+        // ---- verse popup ----
         const verseOverlay = document.getElementById('verseOverlay');
         const verseTitleEl = document.getElementById('verseTitle');
         const verseBodyEl = document.getElementById('verseBody');
+        const verseTagEl = document.getElementById('verseTag');
         const verseCloseEl = document.getElementById('verseClose');
 
         function openVerse(key) {
-            const data = VERSES[key];
+            const data = I18N[lang][key];
             if (!data) return;
+            verseTagEl.textContent = I18N[lang]['modal.tag'];
             verseTitleEl.textContent = data.title;
             verseBodyEl.innerHTML = data.verses.map(function (v) {
                 return '<div class="verse-line"><span class="vnum">' + v[0] + '</span><span class="vtext">' + v[1] + '</span></div>';
@@ -1475,33 +1578,18 @@
             if (e.key === 'Escape' && verseOverlay.classList.contains('open')) closeVerse();
         });
 
-        document.querySelectorAll('[data-verse]').forEach(function (el) {
-            el.addEventListener('click', function () {
-                openVerse(el.dataset.verse);
-            });
-            el.addEventListener('keydown', function (e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    openVerse(el.dataset.verse);
-                }
-            });
+        document.addEventListener('click', function (e) {
+            const ref = e.target.closest('[data-verse]');
+            if (ref) openVerse(ref.dataset.verse);
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                const t = e.target.closest('[data-verse]');
+                if (t) { e.preventDefault(); openVerse(t.dataset.verse); }
+            }
         });
 
-        // ---- scripture chip -> table row highlight ----
-        const chips = document.querySelectorAll('#refChips .chip');
-        const rows = document.querySelectorAll('tbody tr.ref-row');
-        chips.forEach(chip => {
-            chip.addEventListener('click', () => {
-                const target = chip.dataset.ref;
-                rows.forEach(r => r.classList.remove('flash'));
-                const row = document.querySelector('tr.ref-row[data-ref="' + target + '"]');
-                if (row) {
-                    row.classList.add('flash');
-                    row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    setTimeout(() => row.classList.remove('flash'), 2200);
-                }
-            });
-        });
+        applyLang(lang);
     </script>
 </body>
 </html>
