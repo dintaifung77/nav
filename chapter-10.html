@@ -787,6 +787,8 @@
         }
         .vref:hover { color: var(--gold); background: var(--gold-bg); }
         .vref:focus-visible { outline: 1px solid var(--gold); outline-offset: 2px; }
+        .passage-card .p-ref .vref { border-bottom: none; background: none; padding: 0; }
+        .passage-card .p-ref .vref:focus-visible { outline: 1px solid var(--gold); outline-offset: 4px; border-radius: 4px; }
 
         /* ---- verse modal ---- */
         .verse-overlay {
@@ -982,10 +984,9 @@
         <a href="#top" class="navbar-logo"><span class="dot"></span><span data-i="brand">門徒訓練</span></a>
         <div class="navbar-links">
             <a href="#sec1" data-i="nav1">站在高處</a>
-            <a href="#sec2" data-i="nav2">是什麼意思</a>
-            <a href="#sec3" data-i="nav3">穿上鞋去行</a>
-            <a href="#sec4" data-i="nav4">實際應用</a>
-            <a href="#sec5" data-i="nav5">這樣去行</a>
+            <a href="#sec2" data-i="nav2">穿上鞋去行</a>
+            <a href="#sec3" data-i="nav3">實際應用</a>
+            <a href="#sec4" data-i="nav4">這樣去行</a>
         </div>
         <div class="chapter-tabs">
             <a class="ctab" href="index.html" data-i="ctab1">第1課</a>
@@ -999,19 +1000,17 @@
             <span data-i="mctab10">第10課</span>
         </div>
         <a href="#sec1" data-i="mnav1">站在高處一聖經怎麼說？</a>
-        <a href="#sec2" data-i="mnav2">是什麼意思？</a>
-        <a href="#sec3" data-i="mnav3">穿上鞋去行一我從他人的經驗中學習到了什麼？</a>
-        <a href="#sec4" data-i="mnav4">實際應用一我該怎麼做以成為耶穌的跟隨者？</a>
-        <a href="#sec5" data-i="mnav5">這樣去行一他人怎麼說？</a>
+        <a href="#sec2" data-i="mnav2">穿上鞋去行一我從他人的經驗中學習到了什麼？</a>
+        <a href="#sec3" data-i="mnav3">實際應用一我該怎麼做以成為耶穌的跟隨者？</a>
+        <a href="#sec4" data-i="mnav4">這樣去行一他人怎麼說？</a>
     </div>
 
     <!-- SIDE TRACKER -->
     <div class="tracker" id="tracker">
         <a class="tracker-item" href="#sec1" data-track="0"><span class="tracker-dot"></span><span class="tracker-label" data-i="tr1">聖經怎麼說？</span></a>
-        <a class="tracker-item" href="#sec2" data-track="1"><span class="tracker-dot"></span><span class="tracker-label" data-i="tr2">是什麼意思？</span></a>
-        <a class="tracker-item" href="#sec3" data-track="2"><span class="tracker-dot"></span><span class="tracker-label" data-i="tr3">穿上鞋去行</span></a>
-        <a class="tracker-item" href="#sec4" data-track="3"><span class="tracker-dot"></span><span class="tracker-label" data-i="tr4">實際應用</span></a>
-        <a class="tracker-item" href="#sec5" data-track="4"><span class="tracker-dot"></span><span class="tracker-label" data-i="tr5">這樣去行</span></a>
+        <a class="tracker-item" href="#sec2" data-track="1"><span class="tracker-dot"></span><span class="tracker-label" data-i="tr2">穿上鞋去行</span></a>
+        <a class="tracker-item" href="#sec3" data-track="2"><span class="tracker-dot"></span><span class="tracker-label" data-i="tr3">實際應用</span></a>
+        <a class="tracker-item" href="#sec4" data-track="3"><span class="tracker-dot"></span><span class="tracker-label" data-i="tr4">這樣去行</span></a>
     </div>
 
     <!-- HERO -->
@@ -1028,15 +1027,15 @@
         </div>
 
         <div class="hero-bubbles reveal">
-            <span class="bubble">出三:1～5</span>
-            <span class="bubble">十五:11～13</span>
-            <span class="bubble">撒上二:2、3</span>
-            <span class="bubble">詩九十九</span>
-            <span class="bubble">賽八:13</span>
-            <span class="bubble">五十七:15</span>
-            <span class="bubble">哈一:13</span>
-            <span class="bubble">啓四:8</span>
-            <span class="bubble">十五:4</span>
+            <span class="bubble vref" data-verse="出三:1～5" tabindex="0">出三:1～5</span>
+            <span class="bubble vref" data-verse="出十五:11～13" tabindex="0">十五:11～13</span>
+            <span class="bubble vref" data-verse="撒上二:2、3" tabindex="0">撒上二:2、3</span>
+            <span class="bubble vref" data-verse="詩九十九" tabindex="0">詩九十九</span>
+            <span class="bubble vref" data-verse="賽八:13" tabindex="0">賽八:13</span>
+            <span class="bubble vref" data-verse="賽五十七:15" tabindex="0">五十七:15</span>
+            <span class="bubble vref" data-verse="哈一:13" tabindex="0">哈一:13</span>
+            <span class="bubble vref" data-verse="啓四:8" tabindex="0">啓四:8</span>
+            <span class="bubble vref" data-verse="啓十五:4" tabindex="0">十五:4</span>
         </div>
 
         <a href="#sec1" class="btn" data-i="cta1">開始</a>
@@ -1066,15 +1065,15 @@
             <p class="content reveal" style="margin-top:1.6rem;" data-i="s1.content">因神是聖潔的，所以恨惡罪，我們在聖潔上越成長，我們就越恨惡罪。（<span class="ref-inline">箴十二:9</span>；<span class="ref-inline">羅十二:9</span>）你認為恨惡罪是什麼意思？</p>
 
             <div class="ref-chips reveal" id="refChips">
-                <span class="chip">出三:1～5</span>
-                <span class="chip">十五:11～13</span>
-                <span class="chip">撒上二:2、3</span>
-                <span class="chip">詩九十九</span>
-                <span class="chip">賽八:13</span>
-                <span class="chip">五十七:15</span>
-                <span class="chip">哈一:13</span>
-                <span class="chip">啓四:8</span>
-                <span class="chip">十五:4</span>
+                <span class="chip vref" data-verse="出三:1～5" tabindex="0">出三:1～5</span>
+                <span class="chip vref" data-verse="出十五:11～13" tabindex="0">十五:11～13</span>
+                <span class="chip vref" data-verse="撒上二:2、3" tabindex="0">撒上二:2、3</span>
+                <span class="chip vref" data-verse="詩九十九" tabindex="0">詩九十九</span>
+                <span class="chip vref" data-verse="賽八:13" tabindex="0">賽八:13</span>
+                <span class="chip vref" data-verse="賽五十七:15" tabindex="0">五十七:15</span>
+                <span class="chip vref" data-verse="哈一:13" tabindex="0">哈一:13</span>
+                <span class="chip vref" data-verse="啓四:8" tabindex="0">啓四:8</span>
+                <span class="chip vref" data-verse="啓十五:4" tabindex="0">十五:4</span>
             </div>
 
             <p class="note reveal" data-i="s1.note">（你可以如下圖，畫一個表來完成這部分學習）</p>
@@ -1089,46 +1088,31 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td class="ref-cell">出三:1～5</td><td class="write-cell"></td></tr>
-                            <tr><td class="ref-cell">十五:11～13</td><td class="write-cell"></td></tr>
-                            <tr><td class="ref-cell">撒上二:2、3</td><td class="write-cell"></td></tr>
-                            <tr><td class="ref-cell">詩九十九</td><td class="write-cell"></td></tr>
-                            <tr><td class="ref-cell">賽八:13</td><td class="write-cell"></td></tr>
-                            <tr><td class="ref-cell">五十七:15</td><td class="write-cell"></td></tr>
-                            <tr><td class="ref-cell">哈一:13</td><td class="write-cell"></td></tr>
-                            <tr><td class="ref-cell">啓四:8</td><td class="write-cell"></td></tr>
-                            <tr><td class="ref-cell">十五:4</td><td class="write-cell"></td></tr>
+                            <tr><td class="ref-cell vref" data-verse="出三:1～5" tabindex="0">出三:1～5</td><td class="write-cell"></td></tr>
+                            <tr><td class="ref-cell vref" data-verse="出十五:11～13" tabindex="0">十五:11～13</td><td class="write-cell"></td></tr>
+                            <tr><td class="ref-cell vref" data-verse="撒上二:2、3" tabindex="0">撒上二:2、3</td><td class="write-cell"></td></tr>
+                            <tr><td class="ref-cell vref" data-verse="詩九十九" tabindex="0">詩九十九</td><td class="write-cell"></td></tr>
+                            <tr><td class="ref-cell vref" data-verse="賽八:13" tabindex="0">賽八:13</td><td class="write-cell"></td></tr>
+                            <tr><td class="ref-cell vref" data-verse="賽五十七:15" tabindex="0">五十七:15</td><td class="write-cell"></td></tr>
+                            <tr><td class="ref-cell vref" data-verse="哈一:13" tabindex="0">哈一:13</td><td class="write-cell"></td></tr>
+                            <tr><td class="ref-cell vref" data-verse="啓四:8" tabindex="0">啓四:8</td><td class="write-cell"></td></tr>
+                            <tr><td class="ref-cell vref" data-verse="啓十五:4" tabindex="0">十五:4</td><td class="write-cell"></td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <div style="text-align:center; margin-top:3rem;">
-                <a href="#sec2" class="btn" data-i="cta">繼續</a>
-            </div>
-        </div>
-    </section>
+            <p class="content reveal" style="margin-top:2.2rem;" data-i="s2.p1">閱讀<span class="ref-inline vref" data-verse="彼前一:15、16" tabindex="0">彼前一:15、16</span>，為什麼聖潔的神呼召我們成為聖潔？</p>
 
-    <!-- SECTION 2 -->
-    <section class="block" id="sec2" style="background: linear-gradient(to bottom, transparent, rgba(236,230,216,0.6) 18%, rgba(236,230,216,0.6) 82%, transparent);">
-        <div class="ghost-num">02</div>
-        <div class="stage">
-            <div class="kicker reveal" data-i="s2.kicker">是什麼意思</div>
-            <div class="big-title reveal" data-i="s2.title">是什麼意思？</div>
-
-            <div class="sec-rule reveal"></div>
-
-            <p class="content reveal" data-i="s2.p1">閱讀<span class="ref-inline">彼前一:15、16</span>，為什麼聖潔的神呼召我們成為聖潔？</p>
-
-            <p class="content reveal" style="margin-top:1.6rem;" data-i="s2.p2">閱讀<span class="ref-inline">利十:1、2</span>；<span class="ref-inline">代上十三:7～11</span>及<span class="ref-inline">民二十:1～13</span>；當這些人不敬重神的聖潔時，就發生了什麼事？關於神聖潔的屬性部份，你的反應是什麼？</p>
+            <p class="content reveal" style="margin-top:1.6rem;" data-i="s2.p2">閱讀<span class="ref-inline vref" data-verse="利十:1、2" tabindex="0">利十:1、2</span>；<span class="ref-inline vref" data-verse="代上十三:7～11" tabindex="0">代上十三:7～11</span>及<span class="ref-inline vref" data-verse="民二十:1～13" tabindex="0">民二十:1～13</span>；當這些人不敬重神的聖潔時，就發生了什麼事？關於神聖潔的屬性部份，你的反應是什麼？</p>
 
             <p class="lead reveal" style="margin-top:2.2rem;" data-i="s2.p3">下列經文告訴你，我們的聖潔來自何處？我們可如何領受這聖潔？</p>
 
             <div class="ref-chips reveal">
-                <span class="chip">羅五:12～21</span>
-                <span class="chip">林前一:30～31</span>
-                <span class="chip">林後五:21</span>
-                <span class="chip">來四:15、16</span>
+                <span class="chip vref" data-verse="羅五:12～21" tabindex="0">羅五:12～21</span>
+                <span class="chip vref" data-verse="林前一:30～31" tabindex="0">林前一:30～31</span>
+                <span class="chip vref" data-verse="林後五:21" tabindex="0">林後五:21</span>
+                <span class="chip vref" data-verse="來四:15、16" tabindex="0">來四:15、16</span>
             </div>
 
             <p class="lead reveal" style="margin-top:2.6rem;" data-i="s2.defhead">聖潔的主要定義包括：</p>
@@ -1136,9 +1120,7 @@
             <div class="reflect-grid">
                 <div class="reflect-card reveal">
                     <div class="r-text" data-i="s2.d1">聖潔，神聖及聖徒，這是從希臘字 HAGIOS 來的，意思是「神使之特殊。」</div>
-                </div>
-                <div class="reflect-card reveal">
-                    <div class="r-text" data-i="s2.d2">這並非代表無罪完美，而是對神聖潔的生活。</div>
+                    <div class="r-text" style="margin-top:0.9rem;" data-i="s2.d2">這並非代表無罪完美，而是對神聖潔的生活。</div>
                 </div>
                 <div class="reflect-card reveal">
                     <div class="r-text" data-i="s2.d3">敬拜神的，虔敬：用生活行動表明向神的奉獻及虔敬。</div>
@@ -1151,34 +1133,34 @@
                 </div>
             </div>
 
-            <div style="text-align:center; margin-top:3.4rem;">
-                <a href="#sec3" class="btn" data-i="cta">繼續</a>
+            <p class="lead reveal" style="margin-top:2.6rem;" data-i="s3.lead">自以下經文中考查，我們如何過一個聖潔的生活？</p>
+
+            <div class="ref-chips reveal">
+                <span class="chip vref" data-verse="羅六:12～14" tabindex="0">羅六:12～14</span>
+                <span class="chip vref" data-verse="羅八:13、14" tabindex="0">八:13、14</span>
+                <span class="chip vref" data-verse="羅十二:1、2" tabindex="0">十二:1、2</span>
+                <span class="chip vref" data-verse="弗四:20～32" tabindex="0">弗四:20～32</span>
+                <span class="chip vref" data-verse="帖前四:1～8" tabindex="0">帖前四:1～8</span>
+                <span class="chip vref" data-verse="提前四:7、8" tabindex="0">提前四:7、8</span>
+                <span class="chip vref" data-verse="提後二:21～22" tabindex="0">提後二:21～22</span>
+                <span class="chip vref" data-verse="多二:11～15" tabindex="0">多二:11～15</span>
+                <span class="chip vref" data-verse="約壹一:9" tabindex="0">約壹一:9</span>
+            </div>
+
+            <div style="text-align:center; margin-top:3rem;">
+                <a href="#sec2" class="btn" data-i="cta">繼續</a>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 3 -->
-    <section class="block" id="sec3">
-        <div class="ghost-num">03</div>
+    <!-- SECTION 2 -->
+    <section class="block" id="sec2">
+        <div class="ghost-num">02</div>
         <div class="stage">
             <div class="kicker reveal" data-i="s3.kicker">穿上鞋去行</div>
             <div class="big-title reveal" data-i="s3.title">穿上鞋去行<span class="hl">一</span>我從他人的經驗中學習到了什麼？</div>
 
             <div class="sec-rule reveal"></div>
-
-            <p class="lead reveal" data-i="s3.lead">自以下經文中考查，我們如何過一個聖潔的生活？</p>
-
-            <div class="ref-chips reveal">
-                <span class="chip">羅六:12～14</span>
-                <span class="chip">八:13、14</span>
-                <span class="chip">十二:1、2</span>
-                <span class="chip">弗四:20～32</span>
-                <span class="chip">帖前四:1～8</span>
-                <span class="chip">提前四:7、8</span>
-                <span class="chip">提後二:21～22</span>
-                <span class="chip">多二:11～15</span>
-                <span class="chip">約壹一:9</span>
-            </div>
 
             <div class="passage-grid">
                 <article class="passage-card reveal">
@@ -1201,14 +1183,14 @@
             </div>
 
             <div style="text-align:center; margin-top:3.4rem;">
-                <a href="#sec4" class="btn" data-i="cta">繼續</a>
+                <a href="#sec3" class="btn" data-i="cta">繼續</a>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 4 -->
-    <section class="block" id="sec4" style="background: linear-gradient(to bottom, transparent, rgba(236,230,216,0.6) 18%, rgba(236,230,216,0.6) 82%, transparent);">
-        <div class="ghost-num">04</div>
+    <!-- SECTION 3 -->
+    <section class="block" id="sec3" style="background: linear-gradient(to bottom, transparent, rgba(236,230,216,0.6) 18%, rgba(236,230,216,0.6) 82%, transparent);">
+        <div class="ghost-num">03</div>
         <div class="stage">
             <div class="kicker reveal" data-i="s4.kicker">實際應用</div>
             <div class="big-title reveal" data-i="s4.title">實際應用<span class="hl">一</span>我該怎麼做以成為耶穌的跟隨者？</div>
@@ -1226,7 +1208,7 @@
                 </div>
                 <div class="reflect-card reveal">
                     <div class="r-tag" data-i="s4.tag">省思</div>
-                    <p class="r-text" data-i="s4.q3">閱讀<span class="ref-inline">太五:27～30</span>是否有任何嗜好習慣或模式是你急需對付的，以使你更加聖潔？</p>
+                    <p class="r-text" data-i="s4.q3">閱讀<span class="ref-inline vref" data-verse="太五:27～30" tabindex="0">太五:27～30</span>是否有任何嗜好習慣或模式是你急需對付的，以使你更加聖潔？</p>
                 </div>
             </div>
 
@@ -1237,14 +1219,14 @@
             </div>
 
             <div style="text-align:center; margin-top:3.4rem;">
-                <a href="#sec5" class="btn" data-i="cta">繼續</a>
+                <a href="#sec4" class="btn" data-i="cta">繼續</a>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 5 -->
-    <section class="block" id="sec5">
-        <div class="ghost-num">05</div>
+    <!-- SECTION 4 -->
+    <section class="block" id="sec4">
+        <div class="ghost-num">04</div>
         <div class="stage">
             <div class="kicker reveal" data-i="s5.kicker">這樣去行</div>
             <div class="big-title reveal" data-i="s5.title">這樣去行<span class="hl">一</span>他人怎麼說？</div>
@@ -1298,10 +1280,9 @@
             en: {
                 brand: 'Discipleship Training',
                 nav1: 'Standing High',
-                nav2: 'What It Means',
-                nav3: 'Walking It Out',
-                nav4: 'Application',
-                nav5: 'Doing It',
+                nav2: 'Walking It Out',
+                nav3: 'Practical Application',
+                nav4: 'Doing It',
                 ctab1: 'Lesson 1',
                 ctab10: 'Lesson 10',
                 menuBtn: 'Menu',
@@ -1310,15 +1291,13 @@
                 mctab1: 'Lesson 1',
                 mctab10: 'Lesson 10',
                 mnav1: 'Standing on a High Place — What does the Bible say?',
-                mnav2: 'What does it mean?',
-                mnav3: 'Put on Your Shoes and Walk — What did I learn from the experiences of others?',
-                mnav4: 'Practical Application — What should I do to become a follower of Jesus?',
-                mnav5: 'Doing It This Way — What do others say?',
+                mnav2: 'Put on Your Shoes and Walk — What did I learn from the experiences of others?',
+                mnav3: 'Practical Application — What should I do to become a follower of Jesus?',
+                mnav4: 'Doing It This Way — What do others say?',
                 tr1: 'What Does the Bible Say?',
-                tr2: 'What Does It Mean?',
-                tr3: 'Walking It Out',
-                tr4: 'Practical Application',
-                tr5: 'Doing It This Way',
+                tr2: 'Walking It Out',
+                tr3: 'Practical Application',
+                tr4: 'Doing It This Way',
                 'hero.chapter': 'Lesson 10',
                 'hero.outline': 'Discipleship Training',
                 'hero.title': 'Holiness',
@@ -1331,14 +1310,12 @@
                 's1.q1': '"Blessed are the pure in heart, for they shall see God." <span class="vref" data-verse="太五:8" tabindex="0">Matthew 5:8</span>',
                 's1.q2': '"Pursue peace with all people, and holiness, without which no one will see the Lord." <span class="vref" data-verse="來十二:14" tabindex="0">Hebrews 12:14</span>',
                 's1.lead': 'Note down the passages regarding the image and nature of God\'s holiness.',
-                's1.content': 'Because God is holy, He hates sin. The more we grow in holiness, the more we hate sin. (<span class="ref-inline">Proverbs 12:9</span>; <span class="ref-inline">Romans 12:9</span>) What do you think it means to hate sin?',
+                's1.content': 'Because God is holy, He hates sin. The more we grow in holiness, the more we hate sin. (<span class="ref-inline vref" data-verse="箴十二:9" tabindex="0">Proverbs 12:9</span>; <span class="ref-inline vref" data-verse="羅十二:9" tabindex="0">Romans 12:9</span>) What do you think it means to hate sin?',
                 's1.note': '(You can draw a table like the one below to complete this section of study.)',
                 's1.t1': 'Scripture',
                 's1.t2': 'Notes',
-                's2.kicker': 'What Does It Mean',
-                's2.title': 'What Does It Mean?',
-                's2.p1': 'Read <span class="ref-inline">1 Peter 1:15, 16</span>. Why does the holy God call us to be holy?',
-                's2.p2': 'Read <span class="ref-inline">Leviticus 10:1, 2</span>; <span class="ref-inline">1 Chronicles 13:7–11</span>; and <span class="ref-inline">Numbers 20:1–13</span>. When these people did not respect God\'s holiness, what happened? Regarding God\'s holy attributes, what is your response?',
+                's2.p1': 'Read <span class="ref-inline vref" data-verse="彼前一:15、16" tabindex="0">1 Peter 1:15, 16</span>. Why does the holy God call us to be holy?',
+                's2.p2': 'Read <span class="ref-inline vref" data-verse="利十:1、2" tabindex="0">Leviticus 10:1, 2</span>; <span class="ref-inline vref" data-verse="代上十三:7～11" tabindex="0">1 Chronicles 13:7–11</span>; and <span class="ref-inline vref" data-verse="民二十:1～13" tabindex="0">Numbers 20:1–13</span>. When these people did not respect God\'s holiness, what happened? Regarding God\'s holy attributes, what is your response?',
                 's2.p3': 'The following passages tell us where our holiness comes from and how we can receive this holiness:',
                 's2.defhead': 'The primary definitions of holiness include:',
                 's2.d1': 'Holiness, sacredness, and saints come from the Greek word HAGIOS, meaning "set apart by God."',
@@ -1350,19 +1327,19 @@
                 's3.title': 'Put on Your Shoes and Walk <span class="hl">—</span> What Did I Learn from the Experiences of Others?',
                 's3.lead': 'Examine the following passages and see how we can live a holy life:',
                 's3.c1.kicker': 'Examine',
-                's3.c1.ref': 'Isaiah 6:1–8',
+                's3.c1.ref': '<span class="vref" data-verse="賽六:1～8" tabindex="0">Isaiah 6:1–8</span>',
                 's3.c1.q1': 'How did Isaiah respond to God\'s holiness? What did he express?',
                 's3.c1.q2': 'What did God do for him? What did God call him to do?',
                 's3.c1.q3': 'How did Isaiah respond?',
                 's3.c2.kicker': 'Examine',
-                's3.c2.ref': 'Job 1:1; Daniel 1:8; 6:4',
+                's3.c2.ref': '<span class="vref" data-verse="伯一:1" tabindex="0">Job 1:1</span>; <span class="vref" data-verse="但一:8" tabindex="0">Daniel 1:8</span>; <span class="vref" data-verse="但六:4" tabindex="0">Daniel 6:4</span>',
                 's3.c2.q1': 'In the lives of these people, what was holiness like?',
                 's4.kicker': 'Practical Application',
                 's4.title': 'Practical Application <span class="hl">—</span> What Should I Do to Become a Follower of Jesus?',
                 's4.tag': 'Reflect',
                 's4.q1': 'What steps can you take to make yourself increasingly holy?',
                 's4.q2': 'Do you think holiness primarily refers to your sexual life? Why or why not?',
-                's4.q3': 'Read <span class="ref-inline">Matthew 5:27–30</span>. Are there any hobbies, habits, or patterns that you urgently need to deal with in order to become more holy?',
+                's4.q3': 'Read <span class="ref-inline vref" data-verse="太五:27～30" tabindex="0">Matthew 5:27–30</span>. Are there any hobbies, habits, or patterns that you urgently need to deal with in order to become more holy?',
                 's5.kicker': 'Doing It This Way',
                 's5.title': 'Doing It This Way <span class="hl">—</span> What Do Others Say?',
                 's5.tag': 'Reflect',
@@ -1371,18 +1348,50 @@
                 'f.mark': 'Discipleship Training',
                 'f.sub': 'Lesson 10 · Holiness',
                 'f.cta': 'Back to Top',
-                'modal.foot': 'Scripture text as given in the lesson',
+                'modal.foot': '中文：當代譯本（繁體）・English: ESV',
                 'modal.tag': 'SCRIPTURE',
+                '出三:1～5': { title: 'Exodus 3:1–5', verses: [['1', 'Now Moses was keeping the flock of his father-in-law, Jethro, the priest of Midian, and he led his flock to the west side of the wilderness and came to Horeb, the mountain of God.'], ['2', 'And the angel of the Lord appeared to him in a flame of fire out of the midst of a bush. He looked, and behold, the bush was burning, yet it was not consumed.'], ['3', 'And Moses said, “I will turn aside to see this great sight, why the bush is not burned.”'], ['4', 'When the Lord saw that he turned aside to see, God called to him out of the bush, “Moses, Moses!” And he said, “Here I am.”'], ['5', 'Then he said, “Do not come near; take your sandals off your feet, for the place on which you are standing is holy ground.”']] },
+                '出十五:11～13': { title: 'Exodus 15:11–13', verses: [['11', '“Who is like you, O Lord, among the gods? Who is like you, majestic in holiness, awesome in glorious deeds, doing wonders?'], ['12', 'You stretched out your right hand; the earth swallowed them.'], ['13', '“You have led in your steadfast love the people whom you have redeemed; you have guided them by your strength to your holy abode.']] },
+                '撒上二:2、3': { title: '1 Samuel 2:2, 3', verses: [['2', '“There is none holy like the Lord: for there is none besides you; there is no rock like our God.'], ['3', 'Talk no more so very proudly, let not arrogance come from your mouth; for the Lord is a God of knowledge, and by him actions are weighed.']] },
+                '詩九十九': { title: 'Psalm 99', verses: [['1', 'The Lord reigns; let the peoples tremble! He sits enthroned upon the cherubim; let the earth quake!'], ['2', 'The Lord is great in Zion; he is exalted over all the peoples.'], ['3', 'Let them praise your great and awesome name! Holy is he!'], ['4', 'The King in his might loves justice. You have established equity; you have executed justice and righteousness in Jacob.'], ['5', 'Exalt the Lord our God; worship at his footstool! Holy is he!'], ['6', 'Moses and Aaron were among his priests, Samuel also was among those who called upon his name. They called to the Lord, and he answered them.'], ['7', 'In the pillar of the cloud he spoke to them; they kept his testimonies and the statute that he gave them.'], ['8', 'O Lord our God, you answered them; you were a forgiving God to them, but an avenger of their wrongdoings.'], ['9', 'Exalt the Lord our God, and worship at his holy mountain; for the Lord our God is holy!']] },
+                '賽八:13': { title: 'Isaiah 8:13', verses: [['13', 'But the Lord of hosts, him you shall honor as holy. Let him be your fear, and let him be your dread.']] },
+                '賽五十七:15': { title: 'Isaiah 57:15', verses: [['15', 'For thus says the One who is high and lifted up, who inhabits eternity, whose name is Holy: “I dwell in the high and holy place, and also with him who is of a contrite and lowly spirit, to revive the spirit of the lowly, and to revive the heart of the contrite.']] },
+                '哈一:13': { title: 'Habakkuk 1:13', verses: [['13', 'You who are of purer eyes than to see evil and cannot look at wrong, why do you idly look at traitors and remain silent when the wicked swallows up the man more righteous than he?']] },
+                '啓四:8': { title: 'Revelation 4:8', verses: [['8', 'And the four living creatures, each of them with six wings, are full of eyes all around and within, and day and night they never cease to say, “Holy, holy, holy, is the Lord God Almighty, who was and is and is to come!”']] },
+                '啓十五:4': { title: 'Revelation 15:4', verses: [['4', 'Who will not fear, O Lord, and glorify your name? For you alone are holy. All nations will come and worship you, for your righteous acts have been revealed.”']] },
+                '箴十二:9': { title: 'Proverbs 12:9', verses: [['9', 'Better to be lowly and have a servant than to play the great man and lack bread.']] },
+                '羅十二:9': { title: 'Romans 12:9', verses: [['9', 'Let love be genuine. Abhor what is evil; hold fast to what is good.']] },
+                '彼前一:15、16': { title: '1 Peter 1:15, 16', verses: [['15', 'but as he who called you is holy, you also be holy in all your conduct,'], ['16', 'since it is written, “You shall be holy, for I am holy.”']] },
+                '利十:1、2': { title: 'Leviticus 10:1, 2', verses: [['1', 'Now Nadab and Abihu, the sons of Aaron, each took his censer and put fire in it and laid incense on it and offered unauthorized fire before the Lord, which he had not commanded them.'], ['2', 'And fire came out from before the Lord and consumed them, and they died before the Lord.']] },
+                '代上十三:7～11': { title: '1 Chronicles 13:7–11', verses: [['7', 'And they carried the ark of God on a new cart, from the house of Abinadab, and Uzzah and Ahio were driving the cart.'], ['8', 'And David and all Israel were celebrating before God with all their might, with song and lyres and harps and tambourines and cymbals and trumpets.'], ['9', 'And when they came to the threshing floor of Chidon, Uzzah put out his hand to take hold of the ark, for the oxen stumbled.'], ['10', 'And the anger of the Lord was kindled against Uzzah, and he struck him down because he put out his hand to the ark, and he died there before God.'], ['11', 'And David was angry because the Lord had broken out against Uzzah. And that place is called Perez-uzza to this day.']] },
+                '民二十:1～13': { title: 'Numbers 20:1–13', verses: [['1', 'And the people of Israel, the whole congregation, came into the wilderness of Zin in the first month, and the people stayed in Kadesh. And Miriam died there and was buried there.'], ['2', 'Now there was no water for the congregation. And they assembled themselves together against Moses and against Aaron.'], ['3', 'And the people quarreled with Moses and said, “Would that we had perished when our brothers perished before the Lord!'], ['4', 'Why have you brought the assembly of the Lord into this wilderness, that we should die here, both we and our cattle?'], ['5', 'And why have you made us come up out of Egypt to bring us to this evil place? It is no place for grain or figs or vines or pomegranates, and there is no water to drink.”'], ['6', 'Then Moses and Aaron went from the presence of the assembly to the entrance of the tent of meeting and fell on their faces. And the glory of the Lord appeared to them,'], ['7', 'and the Lord spoke to Moses, saying,'], ['8', '“Take the staff, and assemble the congregation, you and Aaron your brother, and tell the rock before their eyes to yield its water. So you shall bring water out of the rock for them and give drink to the congregation and their cattle.”'], ['9', 'And Moses took the staff from before the Lord, as he commanded him.'], ['10', 'Then Moses and Aaron gathered the assembly together before the rock, and he said to them, “Hear now, you rebels: shall we bring water for you out of this rock?”'], ['11', 'And Moses lifted up his hand and struck the rock with his staff twice, and water came out abundantly, and the congregation drank, and their livestock.'], ['12', 'And the Lord said to Moses and Aaron, “Because you did not believe in me, to uphold me as holy in the eyes of the people of Israel, therefore you shall not bring this assembly into the land that I have given them.”'], ['13', 'These are the waters of Meribah, where the people of Israel quarreled with the Lord, and through them he showed himself holy.']] },
+                '羅五:12～21': { title: 'Romans 5:12–21', verses: [['12', 'Therefore, just as sin came into the world through one man, and death through sin, and so death spread to all men because all sinned—'], ['13', 'for sin indeed was in the world before the law was given, but sin is not counted where there is no law.'], ['14', 'Yet death reigned from Adam to Moses, even over those whose sinning was not like the transgression of Adam, who was a type of the one who was to come.'], ['15', 'But the free gift is not like the trespass. For if many died through one man\'s trespass, much more have the grace of God and the free gift by the grace of that one man Jesus Christ abounded for many.'], ['16', 'And the free gift is not like the result of that one man\'s sin. For the judgment following one trespass brought condemnation, but the free gift following many trespasses brought justification.'], ['17', 'For if, because of one man\'s trespass, death reigned through that one man, much more will those who receive the abundance of grace and the free gift of righteousness reign in life through the one man Jesus Christ.'], ['18', 'Therefore, as one trespass led to condemnation for all men, so one act of righteousness leads to justification and life for all men.'], ['19', 'For as by the one man\'s disobedience the many were made sinners, so by the one man\'s obedience the many will be made righteous.'], ['20', 'Now the law came in to increase the trespass, but where sin increased, grace abounded all the more,'], ['21', 'so that, as sin reigned in death, grace also might reign through righteousness leading to eternal life through Jesus Christ our Lord.']] },
+                '林前一:30～31': { title: '1 Corinthians 1:30–31', verses: [['30', 'And because of him you are in Christ Jesus, who became to us wisdom from God, righteousness and sanctification and redemption,'], ['31', 'so that, as it is written, “Let the one who boasts, boast in the Lord.”']] },
+                '林後五:21': { title: '2 Corinthians 5:21', verses: [['21', 'For our sake he made him to be sin who knew no sin, so that in him we might become the righteousness of God.']] },
+                '來四:15、16': { title: 'Hebrews 4:15, 16', verses: [['15', 'For we do not have a high priest who is unable to sympathize with our weaknesses, but one who in every respect has been tempted as we are, yet without sin.'], ['16', 'Let us then with confidence draw near to the throne of grace, that we may receive mercy and find grace to help in time of need.']] },
+                '羅六:12～14': { title: 'Romans 6:12–14', verses: [['12', 'Let not sin therefore reign in your mortal body, to make you obey its passions.'], ['13', 'Do not present your members to sin as instruments for unrighteousness, but present yourselves to God as those who have been brought from death to life, and your members to God as instruments for righteousness.'], ['14', 'For sin will have no dominion over you, since you are not under law but under grace.']] },
+                '羅八:13、14': { title: 'Romans 8:13, 14', verses: [['13', 'For if you live according to the flesh you will die, but if by the Spirit you put to death the deeds of the body, you will live.'], ['14', 'For all who are led by the Spirit of God are sons of God.']] },
+                '羅十二:1、2': { title: 'Romans 12:1, 2', verses: [['1', 'I appeal to you therefore, brothers, by the mercies of God, to present your bodies as a living sacrifice, holy and acceptable to God, which is your spiritual worship.'], ['2', 'Do not be conformed to this world, but be transformed by the renewal of your mind, that by testing you may discern what is the will of God, what is good and acceptable and perfect.']] },
+                '弗四:20～32': { title: 'Ephesians 4:20–32', verses: [['20', 'But that is not the way you learned Christ!—'], ['21', 'assuming that you have heard about him and were taught in him, as the truth is in Jesus,'], ['22', 'to put off your old self, which belongs to your former manner of life and is corrupt through deceitful desires,'], ['23', 'and to be renewed in the spirit of your minds,'], ['24', 'and to put on the new self, created after the likeness of God in true righteousness and holiness.'], ['25', 'Therefore, having put away falsehood, let each one of you speak the truth with his neighbor, for we are members one of another.'], ['26', 'Be angry and do not sin; do not let the sun go down on your anger,'], ['27', 'and give no opportunity to the devil.'], ['28', 'Let the thief no longer steal, but rather let him labor, doing honest work with his own hands, so that he may have something to share with anyone in need.'], ['29', 'Let no corrupting talk come out of your mouths, but only such as is good for building up, as fits the occasion, that it may give grace to those who hear.'], ['30', 'And do not grieve the Holy Spirit of God, by whom you were sealed for the day of redemption.'], ['31', 'Let all bitterness and wrath and anger and clamor and slander be put away from you, along with all malice.'], ['32', 'Be kind to one another, tenderhearted, forgiving one another, as God in Christ forgave you.']] },
+                '帖前四:1～8': { title: '1 Thessalonians 4:1–8', verses: [['1', 'Finally, then, brothers, we ask and urge you in the Lord Jesus, that as you received from us how you ought to walk and to please God, just as you are doing, that you do so more and more.'], ['2', 'For you know what instructions we gave you through the Lord Jesus.'], ['3', 'For this is the will of God, your sanctification: that you abstain from sexual immorality;'], ['4', 'that each one of you know how to control his own body in holiness and honor,'], ['5', 'not in the passion of lust like the Gentiles who do not know God;'], ['6', 'that no one transgress and wrong his brother in this matter, because the Lord is an avenger in all these things, as we told you beforehand and solemnly warned you.'], ['7', 'For God has not called us for impurity, but in holiness.'], ['8', 'Therefore whoever disregards this, disregards not man but God, who gives his Holy Spirit to you.']] },
+                '提前四:7、8': { title: '1 Timothy 4:7, 8', verses: [['7', 'Have nothing to do with irreverent, silly myths. Rather train yourself for godliness;'], ['8', 'for while bodily training is of some value, godliness is of value in every way, as it holds promise for the present life and also for the life to come.']] },
+                '提後二:21～22': { title: '2 Timothy 2:21–22', verses: [['21', 'Therefore, if anyone cleanses himself from what is dishonorable, he will be a vessel for honorable use, set apart as holy, useful to the master of the house, ready for every good work.'], ['22', 'So flee youthful passions and pursue righteousness, faith, love, and peace, along with those who call on the Lord from a pure heart.']] },
+                '多二:11～15': { title: 'Titus 2:11–15', verses: [['11', 'For the grace of God has appeared, bringing salvation for all people,'], ['12', 'training us to renounce ungodliness and worldly passions, and to live self-controlled, upright, and godly lives in the present age,'], ['13', 'waiting for our blessed hope, the appearing of the glory of our great God and Savior Jesus Christ,'], ['14', 'who gave himself for us to redeem us from all lawlessness and to purify for himself a people for his own possession who are zealous for good works.'], ['15', 'Declare these things; exhort and rebuke with all authority. Let no one disregard you.']] },
+                '約壹一:9': { title: '1 John 1:9', verses: [['9', 'If we confess our sins, he is faithful and just to forgive us our sins and to cleanse us from all unrighteousness.']] },
+                '賽六:1～8': { title: 'Isaiah 6:1–8', verses: [['1', 'In the year that King Uzziah died I saw the Lord sitting upon a throne, high and lifted up; and the train of his robe filled the temple.'], ['2', 'Above him stood the seraphim. Each had six wings: with two he covered his face, and with two he covered his feet, and with two he flew.'], ['3', 'And one called to another and said: “Holy, holy, holy is the Lord of hosts; the whole earth is full of his glory!”'], ['4', 'And the foundations of the thresholds shook at the voice of him who called, and the house was filled with smoke.'], ['5', 'And I said: “Woe is me! For I am lost; for I am a man of unclean lips, and I dwell in the midst of a people of unclean lips; for my eyes have seen the King, the Lord of hosts!”'], ['6', 'Then one of the seraphim flew to me, having in his hand a burning coal that he had taken with tongs from the altar.'], ['7', 'And he touched my mouth and said: “Behold, this has touched your lips; your guilt is taken away, and your sin atoned for.”'], ['8', 'And I heard the voice of the Lord saying, “Whom shall I send, and who will go for us?” Then I said, “Here I am! Send me.”']] },
+                '伯一:1': { title: 'Job 1:1', verses: [['1', 'There was a man in the land of Uz whose name was Job, and that man was blameless and upright, one who feared God and turned away from evil.']] },
+                '但一:8': { title: 'Daniel 1:8', verses: [['8', 'But Daniel resolved that he would not defile himself with the king\'s food, or with the wine that he drank. Therefore he asked the chief of the eunuchs to allow him not to defile himself.']] },
+                '但六:4': { title: 'Daniel 6:4', verses: [['4', 'Then the high officials and the satraps sought to find a ground for complaint against Daniel with regard to the kingdom, but they could find no ground for complaint or any fault, because he was faithful, and no error or fault was found in him.']] },
+                '太五:27～30': { title: 'Matthew 5:27–30', verses: [['27', '“You have heard that it was said, ‘You shall not commit adultery.’'], ['28', 'But I say to you that everyone who looks at a woman with lustful intent has already committed adultery with her in his heart.'], ['29', 'If your right eye causes you to sin, tear it out and throw it away. For it is better that you lose one of your members than that your whole body be thrown into hell.'], ['30', 'And if your right hand causes you to sin, cut it off and throw it away. For it is better that you lose one of your members than that your whole body go into hell.']] },
                 '太五:8': { title: 'Matthew 5:8', verses: [['8', '"Blessed are the pure in heart, for they shall see God."']] },
                 '來十二:14': { title: 'Hebrews 12:14', verses: [['14', '"Pursue peace with all people, and holiness, without which no one will see the Lord."']] }
             },
             zh: {
                 brand: '門徒訓練',
                 nav1: '站在高處',
-                nav2: '是什麼意思',
-                nav3: '穿上鞋去行',
-                nav4: '實際應用',
-                nav5: '這樣去行',
+                nav2: '穿上鞋去行',
+                nav3: '實際應用',
+                nav4: '這樣去行',
                 ctab1: '第1課',
                 ctab10: '第10課',
                 menuBtn: '目錄',
@@ -1391,15 +1400,13 @@
                 mctab1: '第1課',
                 mctab10: '第10課',
                 mnav1: '站在高處一聖經怎麼說？',
-                mnav2: '是什麼意思？',
-                mnav3: '穿上鞋去行一我從他人的經驗中學習到了什麼？',
-                mnav4: '實際應用一我該怎麼做以成為耶穌的跟隨者？',
-                mnav5: '這樣去行一他人怎麼說？',
+                mnav2: '穿上鞋去行一我從他人的經驗中學習到了什麼？',
+                mnav3: '實際應用一我該怎麼做以成為耶穌的跟隨者？',
+                mnav4: '這樣去行一他人怎麼說？',
                 tr1: '聖經怎麼說？',
-                tr2: '是什麼意思？',
-                tr3: '穿上鞋去行',
-                tr4: '實際應用',
-                tr5: '這樣去行',
+                tr2: '穿上鞋去行',
+                tr3: '實際應用',
+                tr4: '這樣去行',
                 'hero.chapter': '第十課',
                 'hero.outline': '門徒訓練',
                 'hero.title': '聖潔',
@@ -1412,14 +1419,12 @@
                 's1.q1': '「清心的人有福了，因為他們必得見神。」<span class="vref" data-verse="太五:8" tabindex="0">太五:8</span>',
                 's1.q2': '「你們要追求與眾人和睦，並要追求聖潔，非聖潔沒有人能見主。」<span class="vref" data-verse="來十二:14" tabindex="0">來十二:14</span>',
                 's1.lead': '記下經文中有關上帝聖潔的本像。',
-                's1.content': '因神是聖潔的，所以恨惡罪，我們在聖潔上越成長，我們就越恨惡罪。（<span class="ref-inline">箴十二:9</span>；<span class="ref-inline">羅十二:9</span>）你認為恨惡罪是什麼意思？',
+                's1.content': '因神是聖潔的，所以恨惡罪，我們在聖潔上越成長，我們就越恨惡罪。（<span class="ref-inline vref" data-verse="箴十二:9" tabindex="0">箴十二:9</span>；<span class="ref-inline vref" data-verse="羅十二:9" tabindex="0">羅十二:9</span>）你認為恨惡罪是什麼意思？',
                 's1.note': '（你可以如下圖，畫一個表來完成這部分學習）',
                 's1.t1': '經文',
                 's1.t2': '筆記',
-                's2.kicker': '是什麼意思',
-                's2.title': '是什麼意思？',
-                's2.p1': '閱讀<span class="ref-inline">彼前一:15、16</span>，為什麼聖潔的神呼召我們成為聖潔？',
-                's2.p2': '閱讀<span class="ref-inline">利十:1、2</span>；<span class="ref-inline">代上十三:7～11</span>及<span class="ref-inline">民二十:1～13</span>；當這些人不敬重神的聖潔時，就發生了什麼事？關於神聖潔的屬性部份，你的反應是什麼？',
+                's2.p1': '閱讀<span class="ref-inline vref" data-verse="彼前一:15、16" tabindex="0">彼前一:15、16</span>，為什麼聖潔的神呼召我們成為聖潔？',
+                's2.p2': '閱讀<span class="ref-inline vref" data-verse="利十:1、2" tabindex="0">利十:1、2</span>；<span class="ref-inline vref" data-verse="代上十三:7～11" tabindex="0">代上十三:7～11</span>及<span class="ref-inline vref" data-verse="民二十:1～13" tabindex="0">民二十:1～13</span>；當這些人不敬重神的聖潔時，就發生了什麼事？關於神聖潔的屬性部份，你的反應是什麼？',
                 's2.p3': '下列經文告訴你，我們的聖潔來自何處？我們可如何領受這聖潔？',
                 's2.defhead': '聖潔的主要定義包括：',
                 's2.d1': '聖潔，神聖及聖徒，這是從希臘字 HAGIOS 來的，意思是「神使之特殊。」',
@@ -1431,19 +1436,19 @@
                 's3.title': '穿上鞋去行<span class="hl">一</span>我從他人的經驗中學習到了什麼？',
                 's3.lead': '自以下經文中考查，我們如何過一個聖潔的生活？',
                 's3.c1.kicker': '查考',
-                's3.c1.ref': '賽六:1～8',
+                's3.c1.ref': '<span class="vref" data-verse="賽六:1～8" tabindex="0">賽六:1～8</span>',
                 's3.c1.q1': '以賽亞如何回應神的聖潔？他表明了什麼？',
                 's3.c1.q2': '神爲他做了什麼？神呼召他做什麼？',
                 's3.c1.q3': '以賽亞如何回應？',
                 's3.c2.kicker': '查考',
-                's3.c2.ref': '伯一:1及但一:8、六:4',
+                's3.c2.ref': '<span class="vref" data-verse="伯一:1" tabindex="0">伯一:1</span>及<span class="vref" data-verse="但一:8" tabindex="0">但一:8</span>、<span class="vref" data-verse="但六:4" tabindex="0">六:4</span>',
                 's3.c2.q1': '在這些人的生活中，聖潔像是什麼？',
                 's4.kicker': '實際應用',
                 's4.title': '實際應用<span class="hl">一</span>我該怎麼做以成為耶穌的跟隨者？',
                 's4.tag': '省思',
                 's4.q1': '你可以採行怎樣的步驟使自己越來越聖潔？',
                 's4.q2': '你認為聖潔主要指你的性生活方面嗎？為什麼？',
-                's4.q3': '閱讀<span class="ref-inline">太五:27～30</span>是否有任何嗜好習慣或模式是你急需對付的，以使你更加聖潔？',
+                's4.q3': '閱讀<span class="ref-inline vref" data-verse="太五:27～30" tabindex="0">太五:27～30</span>是否有任何嗜好習慣或模式是你急需對付的，以使你更加聖潔？',
                 's5.kicker': '這樣去行',
                 's5.title': '這樣去行<span class="hl">一</span>他人怎麼說？',
                 's5.tag': '省思',
@@ -1452,8 +1457,41 @@
                 'f.mark': '門徒訓練',
                 'f.sub': '第十課・聖潔',
                 'f.cta': '回到頂部',
-                'modal.foot': '經文取自教材・Scripture text as given in the lesson',
+                'modal.foot': '中文：當代譯本（繁體）・English: ESV',
                 'modal.tag': '經文',
+                '出三:1～5': { title: '出埃及記 3:1～5', verses: [['1', '摩西為岳父米甸祭司葉忒羅放羊。一天他領著羊群穿越曠野，來到上帝的山——何烈山。'], ['2', '忽然有耶和華的天使在荊棘裡的火焰中向他顯現。摩西看見荊棘雖然在燃燒，卻沒有被燒毀。'], ['3', '摩西想：「我要過去看這個奇異的景象，荊棘為什麼沒有被燒掉呢？」'], ['4', '耶和華上帝見他要上前觀看，就從荊棘叢中呼喚他說：「摩西！摩西！」摩西說：「我在這裡。」'], ['5', '上帝說：「別再靠近，脫下你腳上的鞋子，因為你所站的地方是聖地。」']] },
+                '出十五:11～13': { title: '出埃及記 15:11～13', verses: [['11', '耶和華啊，萬神之中，誰能像你？ 誰能像你——威嚴神聖， 可頌可畏，廣行神蹟？'], ['12', '你伸出右手，大地便吞滅他們。'], ['13', '你以不變的愛引領你所救贖的子民， 以大能帶他們進入你的聖所。']] },
+                '撒上二:2、3': { title: '撒母耳記上 2:2、3', verses: [['2', '「耶和華聖潔無比， 獨一無二， 沒有磐石像我們的上帝。'], ['3', '不要再驕橫傲慢、口出狂言， 因為耶和華鑒察萬事， 祂會按著人的行為施行審判。']] },
+                '詩九十九': { title: '詩篇 99', verses: [['1', '耶和華掌權，萬民當戰抖； 祂坐在基路伯天使之上， 大地當戰抖。'], ['2', '耶和華在錫安偉大無比， 超越萬邦。'], ['3', '萬國要讚美你偉大而可畏的名， 你是聖潔的。'], ['4', '你是大能的君王， 喜愛正義，維護公平， 在雅各家秉公行義。'], ['5', '要尊崇我們的上帝耶和華， 俯伏在祂腳凳前敬拜， 祂是聖潔的。'], ['6', '祂的祭司中有摩西和亞倫， 呼求祂的人中有撒母耳。 他們求告耶和華， 祂就應允他們。'], ['7', '祂在雲柱中向他們說話， 他們遵守祂賜下的法度和律例。'], ['8', '耶和華，我們的上帝啊， 你應允了他們， 向他們顯明你是赦罪的上帝， 但也懲罰他們的罪惡。'], ['9', '要尊崇我們的上帝耶和華， 在祂的聖山上敬拜祂， 因為我們的上帝耶和華是聖潔的。']] },
+                '賽八:13': { title: '以賽亞書 8:13', verses: [['13', '你們當尊萬軍之耶和華為聖，當敬畏祂，畏懼祂。']] },
+                '賽五十七:15': { title: '以賽亞書 57:15', verses: [['15', '那至高至上、永遠長存的聖者說： 「我住在至高至聖之處， 但我也跟痛悔、 謙卑的人同住， 使他們心靈振作。']] },
+                '哈一:13': { title: '哈巴谷書 1:13', verses: [['13', '你的眼目極為清潔， 見不得邪惡， 也不能容忍罪惡。 但你為何容忍奸惡之人呢？ 惡人吞滅比他們公義的人， 你為何默然不語呢？']] },
+                '啓四:8': { title: '啟示錄 4:8', verses: [['8', '這四個活物各有三對翅膀，翅膀內外都長滿眼睛。他們晝夜不停地說： 「聖哉！聖哉！聖哉！ 主上帝是昔在、今在、 以後永在的全能者。」']] },
+                '啓十五:4': { title: '啟示錄 15:4', verses: [['4', '主啊，誰敢不敬畏你， 不尊崇你的名呢？ 因為只有你是聖潔的， 萬民都必到你面前敬拜你， 因為你公義的作為已經彰顯出來了。」']] },
+                '箴十二:9': { title: '箴言 12:9', verses: [['9', '地位卑微卻有僕人， 勝過自高卻餓肚子。']] },
+                '羅十二:9': { title: '羅馬書 12:9', verses: [['9', '不可虛情假意地愛人。要嫉惡如仇，一心向善。']] },
+                '彼前一:15、16': { title: '彼得前書 1:15、16', verses: [['15', '那呼召你們的是聖潔的，你們在一切事上也要聖潔。'], ['16', '因為聖經上說：「你們要聖潔，因為我是聖潔的。」']] },
+                '利十:1、2': { title: '利未記 10:1、2', verses: [['1', '亞倫的兒子拿答和亞比戶各拿自己的香爐，點火加香，在耶和華面前獻上凡火。他們這樣做不合耶和華的吩咐。'], ['2', '於是，有火從耶和華面前出來吞噬了他們，他們就死在耶和華面前。']] },
+                '代上十三:7～11': { title: '歷代志上 13:7～11', verses: [['7', '他們把上帝的約櫃從亞比拿達家抬出來，放在一輛新車上，由烏撒和亞希約趕車。'], ['8', '大衛和以色列眾人就在上帝面前用琴、瑟、鼓、鈸和號奏樂，盡情歌舞。'], ['9', '他們來到基頓麥場的時候，拉車的牛失蹄，烏撒就伸手去扶約櫃。'], ['10', '因他伸手碰了約櫃，上帝便向他發怒，擊殺了他，他就死在上帝面前。'], ['11', '大衛因耶和華擊殺烏撒而煩惱，就稱那地方為毗列斯·烏撒，沿用至今。']] },
+                '民二十:1～13': { title: '民數記 20:1～13', verses: [['1', '一月，以色列全體會眾抵達荀曠野，在加低斯安營。米利暗離世，葬在那裡。'], ['2', '會眾沒有水喝，就聚集起來反對摩西和亞倫，'], ['3', '他們埋怨說：「還不如當初跟我們的弟兄一起死在耶和華面前！'], ['4', '你們為什麼領耶和華的會眾到這曠野來，要叫我們和牲畜都死在這裡嗎？'], ['5', '你們為什麼把我們領出埃及，帶到這不毛之地？這裡沒有五穀、無花果樹、葡萄樹和石榴樹，甚至沒有水喝。」'], ['6', '摩西和亞倫離開會眾到會幕門口，俯伏在地。耶和華的榮光向他們顯現。'], ['7', '耶和華對摩西說：'], ['8', '「你拿著杖和你哥哥亞倫招聚會眾，當著他們的面吩咐磐石流出水來，水就會從磐石流出，供會眾和牲畜喝。」'], ['9', '摩西遵命而行，從耶和華面前取了杖，'], ['10', '然後和亞倫把會眾招聚到磐石前，說：「你們這些叛逆之徒聽著，非要我們叫磐石給你們流出水來嗎？」'], ['11', '接著，摩西舉起手中的杖擊打磐石兩下，水便噴湧而出，會眾和牲畜都喝了。'], ['12', '耶和華對摩西和亞倫說：「你們對我沒有足夠的信心，沒有當著以色列人的面尊我為聖，所以你們不得帶領會眾進入我將要賜給他們的土地。」'], ['13', '這地方叫米利巴泉，因為以色列人在那裡埋怨耶和華，耶和華就向他們彰顯了祂的聖潔。']] },
+                '羅五:12～21': { title: '羅馬書 5:12～21', verses: [['12', '因此，罪怎樣從一個人進入世界並帶來了死亡，死亡也怎樣臨到了全人類，因為全人類都犯了罪。'], ['13', '沒有律法之前，罪已經在世上了；但沒有律法，罪也不算為罪。'], ['14', '事實上，從亞當到摩西的時代，死亡一直辖制著人類，甚至連那些不與亞當犯同樣罪的人也不能倖免。亞當是將要來的那位的預表。'], ['15', '然而，上帝的洪恩遠超過亞當的過犯。若因一人的過犯，眾人都要死亡，那麼上帝的恩典，也就是通過耶穌基督一人所賜的恩典，豈不要更豐富地臨到眾人嗎？'], ['16', '再者，上帝的恩賜不同於一人犯罪的後果。一人犯罪便帶來審判和定罪，恩賜卻使眾人罪惡得赦、被稱為義人。'], ['17', '如果因一人的過犯，死亡就藉著那人作了王，那麼接受上帝洪恩又得到祂所賜之義的人，豈不更要藉著耶穌基督一人在生命中作王嗎？'], ['18', '如此說來，因為一人的過犯，眾人都被定罪；照樣，因為一人的義行，眾人都被稱為義人，得到生命。'], ['19', '因為一人的悖逆，眾人成為罪人；照樣，因為一人的順服，眾人將被稱為義人。'], ['20', '律法是後來頒佈的，使過犯更多地顯出來，只是哪裡的罪越多，哪裡的恩典就顯得越豐富。'], ['21', '罪怎樣掌權帶來死亡，恩典也照樣藉著義掌權，為要藉著我們主耶穌基督帶來永生。']] },
+                '林前一:30～31': { title: '哥林多前書 1:30～31', verses: [['30', '上帝使你們活在基督耶穌裡，祂使基督耶穌成為我們的智慧、公義、聖潔和救贖。'], ['31', '所以，正如聖經上說：「要誇耀，就當誇耀主的作為。」']] },
+                '林後五:21': { title: '哥林多後書 5:21', verses: [['21', '上帝使無罪的基督擔當我們的罪，使我們可以藉著基督成為被上帝接納的義人。']] },
+                '來四:15、16': { title: '希伯來書 4:15、16', verses: [['15', '因為我們這位大祭司並非不能體恤我們的軟弱，祂與我們一樣曾經面對各樣的試探，卻從來沒有犯罪。'], ['16', '所以，讓我們坦然無懼地到祂賜恩的寶座前，好領受憐憫和恩典，作隨時的幫助。']] },
+                '羅六:12～14': { title: '羅馬書 6:12～14', verses: [['12', '所以，不要讓罪辖制你們必死的身體，使你們順從身體的私慾；'], ['13', '也不要將你們的身體獻給罪作不義的工具，而是要像一個從死裡復活的人將自己奉獻給上帝，把身體獻給上帝作義的工具。'], ['14', '罪不能再主宰你們，因為你們已經不在律法之下，而是在恩典之中。']] },
+                '羅八:13、14': { title: '羅馬書 8:13、14', verses: [['13', '你們若隨從罪惡本性活著，必定死亡；但若靠著聖靈除去身體的惡行，就必活著。'], ['14', '因為凡有上帝的聖靈引導的人都是上帝的兒女。']] },
+                '羅十二:1、2': { title: '羅馬書 12:1、2', verses: [['1', '所以，弟兄姊妹，我憑上帝的憐憫勸你們獻上自己的身體，作聖潔、蒙上帝悅納的活祭。你們理當這樣事奉。'], ['2', '你們不可追隨世界的潮流，要隨著思想的不斷更新而改變，這樣就能明辨上帝的旨意，知道什麼是良善、純全、蒙祂悅納的。']] },
+                '弗四:20～32': { title: '以弗所書 4:20～32', verses: [['20', '但基督絕不是這樣教導你們的。'], ['21', '如果你們聽過祂的事，領受了祂的教誨，就是在祂裡面的真理，'], ['22', '就應該與從前的生活方式一刀兩斷，脫去因私慾的迷惑而漸漸敗壞的舊人，'], ['23', '洗心革面，'], ['24', '穿上照著上帝形像所造的新人。這新人有從真理而來的公義和聖潔。'], ['25', '所以不要再說謊，大家都要彼此說真話，因為我們都是一個身體的肢體。'], ['26', '不要因生氣而犯罪，不要到日落時還怒氣未消，'], ['27', '不要讓魔鬼有機可乘。'], ['28', '從前偷竊的要改過自新，自食其力，做正當事，以便能夠分給有需要的人。'], ['29', '污言穢語一句都不可出口，要隨時隨地說造就人的好話，使聽的人得益處。'], ['30', '不要讓上帝的聖靈擔憂，你們已經蓋上了聖靈的印記，將來必蒙救贖。'], ['31', '要從你們當中除掉一切的苦毒、惱恨、怒氣、爭吵、毀謗和邪惡。'], ['32', '總要以恩慈、憐憫的心彼此相待，要互相饒恕，正如上帝在基督裡饒恕了你們一樣。']] },
+                '帖前四:1～8': { title: '帖撒羅尼迦前書 4:1～8', verses: [['1', '最後，弟兄姊妹，既然你們領受了我們的教導，知道怎樣行才能討上帝的喜悅，如你們現在所行的，我們靠著主耶穌懇求、勸勉你們要更加努力。'], ['2', '你們都知道我們靠著主耶穌傳給你們的誡命。'], ['3', '上帝的旨意是要你們聖潔，遠避淫亂的事，'], ['4', '要你們人人都知道持守身體的聖潔和尊貴，'], ['5', '不可荒淫縱慾，像那些不認識上帝的外族人一樣。'], ['6', '你們在這種事上不可越軌，虧負弟兄姊妹。我們曾經對你們說過，並且鄭重地警告過你們，主必懲治犯這種罪的人。'], ['7', '因為上帝呼召我們不是要我們沾染污穢，而是要我們聖潔。'], ['8', '所以，人若拒絕遵行這命令，他不是拒絕人，而是拒絕賜聖靈給你們的上帝。']] },
+                '提前四:7、8': { title: '提摩太前書 4:7、8', verses: [['7', '但你要棄絕世俗、荒誕的傳說，要訓練自己做個敬虔的人。'], ['8', '鍛煉體魄益處還少，敬虔生活受益無窮，擁有今生和永世的應許。']] },
+                '提後二:21～22': { title: '提摩太後書 2:21～22', verses: [['21', '人若潔身自愛，遠離卑賤的事，就必成為聖潔無瑕的貴重器皿，可以被主用來成就各樣的善事。'], ['22', '你要逃避年輕人的邪情私慾，要跟那些以清潔的心求告主的人一同追求公義、信心、仁愛、和平。']] },
+                '多二:11～15': { title: '提多書 2:11～15', verses: [['11', '因為上帝拯救世人的恩典已經顯明了，'], ['12', '這恩典教導我們除掉不敬虔的心和世俗的私慾，在今世過自律、公義、敬畏上帝的生活，'], ['13', '懷著美好的盼望等候耶穌基督——我們偉大的上帝和救主的榮耀顯現。'], ['14', '主耶穌為我們犧牲自己，要救贖我們脫離一切罪惡，並潔淨我們，使我們作祂的子民，成為熱心行善的人。'], ['15', '你要講明這些事，運用各樣權柄勸勉人、責備人，別讓人輕看你。']] },
+                '約壹一:9': { title: '約翰一書 1:9', verses: [['9', '如果我們承認自己的罪，上帝是信實公義的，必赦免我們的罪，洗淨我們一切的不義。']] },
+                '賽六:1～8': { title: '以賽亞書 6:1～8', verses: [['1', '烏西雅王駕崩那年，我看見主坐在高高的寶座上，衣袍下垂，覆蓋了聖殿。'], ['2', '在祂上方侍立著撒拉弗天使，他們各有三對翅膀：一對遮臉，一對遮腳，一對飛翔。'], ['3', '他們彼此呼喊： 「聖哉，聖哉，聖哉， 萬軍之耶和華！ 祂的榮耀充滿大地。」'], ['4', '他們的聲音震動聖殿的根基，聖殿裡煙雲彌漫。'], ['5', '那時我說：「我有禍了！我要滅亡了！因為我口出不潔之言，又住在口出不潔之言的人群中，並且親眼看見了大君王——萬軍之耶和華。」'], ['6', '有個撒拉弗天使用火鉗從祭壇上取了一塊燃燒的炭，飛到我面前，'], ['7', '用炭碰我的嘴唇，說：「看啊，這炭碰了你的嘴唇，你的過犯已被除掉，你的罪惡已被赦免。」'], ['8', '然後，我聽見主說：「我可以差遣誰呢？誰肯為我們去呢？」我說：「我在這裡，請差遣我！」']] },
+                '伯一:1': { title: '約伯記 1:1', verses: [['1', '烏斯有一個人名叫約伯，他純全正直，敬畏上帝，遠離罪惡。']] },
+                '但一:8': { title: '但以理書 1:8', verses: [['8', '然而，但以理決心不用王的膳食和酒，以免玷污自己。他請求太監長准許他不玷污自己。']] },
+                '但六:4': { title: '但以理書 6:4', verses: [['4', '於是，其他總長和總督想在但以理的政務中找把柄控告他，卻找不到任何把柄或過失，因為他誠實可靠，毫無過失。']] },
+                '太五:27～30': { title: '馬太福音 5:27～30', verses: [['27', '「你們聽過這樣的話，『不可通姦。』'], ['28', '但我告訴你們，凡看見婦女就動淫念的，他在心裡已經犯了通姦罪。'], ['29', '如果你的右眼使你犯罪，就把它剜掉！寧可失去身體的一部分，也比整個人下地獄好。'], ['30', '如果你的右手使你犯罪，就把它砍掉！寧可失去身體的一部分，也比整個人下地獄好。']] },
                 '太五:8': { title: '馬太福音 5:8', verses: [['8', '「清心的人有福了，因為他們必得見神。」']] },
                 '來十二:14': { title: '希伯來書 12:14', verses: [['14', '「你們要追求與眾人和睦，並要追求聖潔，非聖潔沒有人能見主。」']] }
             }
@@ -1482,7 +1520,7 @@
         const progress = document.getElementById('scrollProgress');
         const trackerItems = document.querySelectorAll('.tracker-item');
 
-        const sections = ['sec1', 'sec2', 'sec3', 'sec4', 'sec5'].map(id => document.getElementById(id));
+        const sections = ['sec1', 'sec2', 'sec3', 'sec4'].map(id => document.getElementById(id));
         const revealEls = document.querySelectorAll('.reveal');
 
         function onScroll() {
